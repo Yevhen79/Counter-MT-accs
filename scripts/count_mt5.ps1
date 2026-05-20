@@ -41,7 +41,7 @@ Write-Host "Using MT5 install: $mt5Dir"
 # Symbol candidates to try as the [StartUp] chart symbol. Pick the first one
 # the broker has — without a valid Symbol the chart does not open and the
 # EA never attaches.
-$symbolCandidates = @("EURUSD", "EURUSD.", "EURUSD.spot", "EURUSDsp", "USDRUB", "BTCUSD")
+$symbolCandidates = @("EURUSD", "EURUSDx", "GBPUSD", "USDRUB")
 
 $results = New-Object System.Collections.ArrayList
 
@@ -159,7 +159,7 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt5" }) {
                                -ArgumentList "/portable","/config:start.ini","/skipupdate" `
                                -PassThru
 
-        $timeout = 240
+        $timeout = 90
         $elapsed = 0
         while (-not (Test-Path (Join-Path $filesDir "done.flag")) -and $elapsed -lt $timeout) {
             Start-Sleep -Seconds 3

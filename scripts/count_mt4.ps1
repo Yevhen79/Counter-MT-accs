@@ -122,10 +122,11 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
         continue
     }
 
-    # Try multiple symbol candidates — Symbol=EURUSD might not exist on the
-    # broker, in which case the chart never opens and the EA never attaches.
-    $symbolCandidates = @("EURUSD", "EURUSDx", "EURUSDi", "EURUSDsp", "EURUSDc",
-                          "USDRUB", "USDRUR", "EUR/USD", "GBPUSD", "BTCUSD")
+    # Try a handful of symbol candidates — Symbol=EURUSD might not exist on
+    # the broker, in which case the chart never opens and the EA never
+    # attaches. Keep the list short so the per-attempt timeout x candidates
+    # x accounts stays well inside the workflow's 30 min cap.
+    $symbolCandidates = @("EURUSD", "EURUSDx", "GBPUSD", "USDRUB")
 
     $vsBase = Join-Path $env:LOCALAPPDATA "VirtualStore"
     $vsMt4 = Join-Path $vsBase ($mt4Dir.Substring(3))
@@ -185,8 +186,10 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
         Write-Host "Launching terminal.exe $safeArgs"
         $proc = Start-Process -FilePath $terminal -ArgumentList $tArgs -PassThru
 
-        # Poll for done flag (240s gives plenty of time for login + symbol load).
-        $timeout = 240
+        # Poll for done flag. 90s is enough if [StartUp] is honored
+        # (terminal logs in + opens chart + EA runs within ~30-60s); if
+        # [StartUp] is ignored, no amount of waiting will help.
+        $timeout = 90
         $elapsed = 0
         while ($elapsed -lt $timeout) {
             if ((Test-Path (Join-Path $filesDir "done.flag")) -or
