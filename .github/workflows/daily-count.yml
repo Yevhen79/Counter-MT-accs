@@ -39,14 +39,21 @@ jobs:
           python-version: "3.11"
 
       - name: Install Python dependencies
-        run: pip install --no-cache-dir MetaTrader5 pyyaml
+        run: pip install --no-cache-dir MetaTrader5 pyyaml tzdata
 
       - name: Should we run today?
         id: check
         shell: pwsh
         env:
           FORCE: ${{ github.event.inputs.force }}
-        run: python scripts/should_run.py
+        run: |
+          Write-Host "Python: $(python --version)"
+          Write-Host "Working dir: $(Get-Location)"
+          python scripts/should_run.py
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "should_run.py exited $LASTEXITCODE"
+            exit $LASTEXITCODE
+          }
 
       - name: Install MetaTrader 5
         if: steps.check.outputs.should_run == 'true'

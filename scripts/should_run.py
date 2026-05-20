@@ -11,12 +11,21 @@ from __future__ import annotations
 import csv
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from zoneinfo import ZoneInfo
+
+try:
+    from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+    try:
+        KYIV: object = ZoneInfo("Europe/Kyiv")
+    except ZoneInfoNotFoundError:
+        # Windows Python has no IANA db unless the tzdata package is installed.
+        print("[should_run] tzdata not present; falling back to fixed UTC+3", file=sys.stderr)
+        KYIV = timezone(timedelta(hours=3))
+except ImportError:
+    KYIV = timezone(timedelta(hours=3))
 
 HISTORY = Path("data/history.csv")
-KYIV = ZoneInfo("Europe/Kyiv")
 
 
 def emit(should_run: bool, today: str) -> None:

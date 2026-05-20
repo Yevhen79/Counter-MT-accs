@@ -9,11 +9,21 @@ from __future__ import annotations
 
 import csv
 import json
-from datetime import datetime
+import sys
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 import yaml
+
+try:
+    from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+    try:
+        KYIV: object = ZoneInfo("Europe/Kyiv")
+    except ZoneInfoNotFoundError:
+        print("[aggregate] tzdata not present; falling back to fixed UTC+3", file=sys.stderr)
+        KYIV = timezone(timedelta(hours=3))
+except ImportError:
+    KYIV = timezone(timedelta(hours=3))
 
 ARTIFACT_FILES = [
     Path("artifacts/mt5_results.json"),
@@ -21,7 +31,6 @@ ARTIFACT_FILES = [
 ]
 HISTORY = Path("data/history.csv")
 DOCS_COPY = Path("docs/history.csv")
-KYIV = ZoneInfo("Europe/Kyiv")
 
 
 def collect_results() -> dict[str, dict]:
