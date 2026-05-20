@@ -26,7 +26,11 @@ import MetaTrader5 as mt5
 import yaml
 
 ARTIFACT = Path("artifacts/mt5_results.json")
-TERMINAL_PATH = r"C:\Program Files\MetaTrader 5\terminal64.exe"
+# Honor MT5_TERMINAL set by the install step, fall back to the default location.
+TERMINAL_PATH = os.environ.get(
+    "MT5_TERMINAL",
+    r"C:\Program Files\MetaTrader 5\terminal64.exe",
+)
 INIT_TIMEOUT_MS = 120_000
 LOGIN_TIMEOUT_MS = 120_000
 

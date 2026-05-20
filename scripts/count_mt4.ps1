@@ -143,6 +143,14 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
     $iniPath = Join-Path $configDir "start.ini"
     [System.IO.File]::WriteAllLines($iniPath, $iniLines, [System.Text.Encoding]::ASCII)
 
+    # Diagnostic: dump <install>\config so we can see what srv files
+    # are bundled — if our broker server isn't there, login can't resolve.
+    Write-Host "--- $configDir contents ---"
+    Get-ChildItem -Path $configDir -Force -ErrorAction SilentlyContinue |
+        Select-Object Name, Length, LastWriteTime |
+        Format-Table | Out-String | Write-Host
+    Write-Host "--- end config dir ---"
+
     # Launch terminal.
     $terminal = Join-Path $mt4Dir "terminal.exe"
     Write-Host "Launching terminal.exe ..."
