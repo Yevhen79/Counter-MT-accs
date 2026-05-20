@@ -1,0 +1,18 @@
+# Build artifacts that only exist on the Windows runner
+artifacts/
+mt5setup.exe
+mt4setup.exe
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

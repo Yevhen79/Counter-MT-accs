@@ -1,0 +1,127 @@
+name: Daily Instrument Count
+
+# Runs on schedule and on manual dispatch. Cron is UTC; Kyiv is UTC+2 (winter)
+# or UTC+3 (summer). To land on 13:00 Kyiv year-round we trigger at both
+# 10:00 UTC and 11:00 UTC and let scripts/should_run.py skip the second
+# trigger of the day idempotently. Mon-Fri only (FX markets are closed
+# Sat/Sun anyway, and MODE_TRADEALLOWED would falsely report 0 on weekends).
+
+on:
+  schedule:
+    - cron: "0 10 * * 1-5"   # 13:00 Kyiv during EEST (summer)
+    - cron: "0 11 * * 1-5"   # 13:00 Kyiv during EET (winter)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even if today's row already exists"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-count
+  cancel-in-progress: false
+
+jobs:
+  count:
+    runs-on: windows-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install --no-cache-dir MetaTrader5 pyyaml
+
+      - name: Should we run today?
+        id: check
+        shell: pwsh
+        env:
+          FORCE: ${{ github.event.inputs.force }}
+        run: python scripts/should_run.py
+
+      - name: Install MetaTrader 5
+        if: steps.check.outputs.should_run == 'true'
+        shell: pwsh
+        run: |
+          Write-Host "Downloading MT5 installer..."
+          Invoke-WebRequest `
+            -Uri "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" `
+            -OutFile "$env:RUNNER_TEMP\mt5setup.exe" `
+            -UseBasicParsing
+          Write-Host "Installing MT5 silently..."
+          Start-Process -FilePath "$env:RUNNER_TEMP\mt5setup.exe" -ArgumentList "/auto" -Wait
+          if (-not (Test-Path "C:\Program Files\MetaTrader 5\terminal64.exe")) {
+            Write-Error "MT5 install failed: terminal64.exe not found."
+            exit 1
+          }
+          Write-Host "MT5 installed."
+
+      - name: Count MT5 instruments
+        if: steps.check.outputs.should_run == 'true'
+        continue-on-error: true
+        env:
+          MT5_MARKET_PASSWORD:  ${{ secrets.MT5_MARKET_PASSWORD }}
+          MT5_INSTANT_PASSWORD: ${{ secrets.MT5_INSTANT_PASSWORD }}
+        run: python scripts/count_mt5.py
+
+      - name: Install MetaTrader 4
+        if: steps.check.outputs.should_run == 'true'
+        continue-on-error: true
+        shell: pwsh
+        run: pwsh scripts/install_mt4.ps1
+
+      - name: Count MT4 instruments
+        if: steps.check.outputs.should_run == 'true'
+        continue-on-error: true
+        env:
+          MT4_MARKET_PASSWORD:  ${{ secrets.MT4_MARKET_PASSWORD }}
+          MT4_INSTANT_PASSWORD: ${{ secrets.MT4_INSTANT_PASSWORD }}
+        run: pwsh scripts/count_mt4.ps1
+
+      - name: Upload raw artifacts
+        if: steps.check.outputs.should_run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-counts-${{ steps.check.outputs.today }}
+          path: artifacts/
+          if-no-files-found: ignore
+
+      - name: Aggregate into history.csv
+        if: steps.check.outputs.should_run == 'true'
+        run: python scripts/aggregate.py
+
+      - name: Commit and push
+        if: steps.check.outputs.should_run == 'true'
+        shell: pwsh
+        run: |
+          git config user.name  "trading-counter-bot"
+          git config user.email "trading-counter-bot@users.noreply.github.com"
+          git pull --rebase origin $env:GITHUB_REF_NAME
+          git add data docs
+          git diff --cached --quiet
+          if ($LASTEXITCODE -ne 0) {
+            git commit -m "Daily count ${{ steps.check.outputs.today }}"
+            $maxAttempts = 4
+            for ($i = 1; $i -le $maxAttempts; $i++) {
+              git push origin HEAD:$env:GITHUB_REF_NAME
+              if ($LASTEXITCODE -eq 0) { break }
+              if ($i -eq $maxAttempts) {
+                Write-Error "Push failed after $maxAttempts attempts."
+                exit 1
+              }
+              $sleep = [Math]::Pow(2, $i)
+              Write-Warning "Push failed, retrying in $sleep s..."
+              Start-Sleep -Seconds $sleep
+            }
+          } else {
+            Write-Host "No changes to commit."
+          }
