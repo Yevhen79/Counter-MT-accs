@@ -10,13 +10,6 @@
 
 $ErrorActionPreference = "Stop"
 
-function Ensure-Module($name) {
-    if (-not (Get-Module -ListAvailable -Name $name)) {
-        Install-Module $name -Force -Scope CurrentUser -AllowClobber | Out-Null
-    }
-    Import-Module $name -Force
-}
-
 function Is-PE($path) {
     if (-not (Test-Path $path)) { return $false }
     try {
@@ -40,9 +33,11 @@ function Fetch-Installer($url, $out) {
     return $true
 }
 
-Ensure-Module powershell-yaml
-
-$config = (Get-Content -Raw -Path "config.yaml") | ConvertFrom-Yaml
+if (-not (Test-Path "config.json")) {
+    Write-Error "config.json missing — was the 'Convert config.yaml to JSON' step skipped?"
+    exit 1
+}
+$config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
 $url = $config.mt4_installer_url
 
 if ([string]::IsNullOrWhiteSpace($url)) {

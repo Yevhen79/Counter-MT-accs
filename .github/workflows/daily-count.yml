@@ -55,6 +55,18 @@ jobs:
             exit $LASTEXITCODE
           }
 
+      - name: Convert config.yaml to JSON for PowerShell consumers
+        if: steps.check.outputs.should_run == 'true'
+        shell: pwsh
+        run: |
+          python -c "import yaml, json, sys; json.dump(yaml.safe_load(open('config.yaml', encoding='utf-8')), sys.stdout, ensure_ascii=False)" | Out-File -FilePath config.json -Encoding utf8
+          if (-not (Test-Path config.json)) {
+            Write-Error "Failed to produce config.json"
+            exit 1
+          }
+          Write-Host "config.json:"
+          Get-Content config.json -Raw | Write-Host
+
       - name: Install MetaTrader 5
         if: steps.check.outputs.should_run == 'true'
         shell: pwsh

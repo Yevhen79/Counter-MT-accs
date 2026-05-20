@@ -15,25 +15,23 @@
 
 $ErrorActionPreference = "Stop"
 
-function Ensure-Module($name) {
-    if (-not (Get-Module -ListAvailable -Name $name)) {
-        Install-Module $name -Force -Scope CurrentUser -AllowClobber | Out-Null
-    }
-    Import-Module $name -Force
-}
-
-Ensure-Module powershell-yaml
-
-$config = (Get-Content -Raw -Path "config.yaml") | ConvertFrom-Yaml
-$mt4Dir = $env:MT4_DIR
-
+# Always write at least a baseline empty results file so the aggregator and
+# upload-artifact step never see a missing file regardless of what happens
+# below. This is overwritten by the real results at the end.
 if (-not (Test-Path "artifacts")) {
     New-Item -ItemType Directory -Path "artifacts" -Force | Out-Null
 }
+"[]" | Set-Content -Path "artifacts/mt4_results.json" -Encoding utf8
+
+if (-not (Test-Path "config.json")) {
+    Write-Warning "config.json missing — Convert config.yaml step was skipped, nothing to do."
+    exit 0
+}
+$config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
+$mt4Dir = $env:MT4_DIR
 
 if ([string]::IsNullOrWhiteSpace($mt4Dir) -or -not (Test-Path "$mt4Dir\terminal.exe")) {
-    Write-Warning "MT4_DIR is empty or terminal.exe missing — MT4 step was probably skipped earlier."
-    "[]" | Set-Content -Path "artifacts/mt4_results.json" -Encoding utf8
+    Write-Warning "MT4_DIR is empty or terminal.exe missing — MT4 install was skipped or failed."
     exit 0
 }
 
