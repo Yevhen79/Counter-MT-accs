@@ -1,0 +1,10 @@
+[
+  {
+    "label": "MT5 Market",
+    "error": "terminal_warmup_failed: (1, 'Success')"
+  },
+  {
+    "label": "MT5 Instant",
+    "error": "terminal_warmup_failed: (1, 'Success')"
+  }
+]
