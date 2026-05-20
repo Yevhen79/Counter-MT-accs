@@ -2,6 +2,7 @@
 artifacts/
 mt5setup.exe
 mt4setup.exe
+config.json
 
 # Python
 __pycache__/

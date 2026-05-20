@@ -130,23 +130,40 @@ jobs:
         run: |
           git config user.name  "trading-counter-bot"
           git config user.email "trading-counter-bot@users.noreply.github.com"
-          git pull --rebase origin $env:GITHUB_REF_NAME
+
+          # Stage only the files we actually want to publish, so any
+          # leftover working-tree noise (generated config.json, EA temp
+          # files dropped under MQL4\, etc.) does not block the rebase.
           git add data docs
+
           git diff --cached --quiet
-          if ($LASTEXITCODE -ne 0) {
-            git commit -m "Daily count ${{ steps.check.outputs.today }}"
-            $maxAttempts = 4
-            for ($i = 1; $i -le $maxAttempts; $i++) {
-              git push origin HEAD:$env:GITHUB_REF_NAME
-              if ($LASTEXITCODE -eq 0) { break }
-              if ($i -eq $maxAttempts) {
-                Write-Error "Push failed after $maxAttempts attempts."
-                exit 1
-              }
-              $sleep = [Math]::Pow(2, $i)
-              Write-Warning "Push failed, retrying in $sleep s..."
-              Start-Sleep -Seconds $sleep
-            }
-          } else {
+          if ($LASTEXITCODE -eq 0) {
             Write-Host "No changes to commit."
+            exit 0
+          }
+          git commit -m "Daily count ${{ steps.check.outputs.today }}"
+
+          # Push with retry; on non-fast-forward, fetch + rebase the bot
+          # commit on top of remote before retrying. --autostash protects
+          # against any unrelated unstaged changes the runner produced.
+          $maxAttempts = 4
+          for ($i = 1; $i -le $maxAttempts; $i++) {
+            git push origin HEAD:$env:GITHUB_REF_NAME
+            if ($LASTEXITCODE -eq 0) {
+              Write-Host "Push succeeded on attempt $i."
+              break
+            }
+            if ($i -eq $maxAttempts) {
+              Write-Error "Push failed after $maxAttempts attempts."
+              exit 1
+            }
+            $sleep = [Math]::Pow(2, $i)
+            Write-Warning "Push attempt $i failed — rebasing on remote and retrying in $sleep s..."
+            git fetch origin $env:GITHUB_REF_NAME
+            git rebase --autostash origin/$env:GITHUB_REF_NAME
+            if ($LASTEXITCODE -ne 0) {
+              Write-Warning "Rebase reported conflicts — aborting and trying plain pull."
+              git rebase --abort
+            }
+            Start-Sleep -Seconds $sleep
           }

@@ -119,7 +119,7 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
     if (Test-Path $countFile) {
         try {
             $obj = Get-Content -Raw -Path $countFile | ConvertFrom-Json
-            Write-Host "$label: full=$($obj.full) total=$($obj.total)"
+            Write-Host "${label}: full=$($obj.full) total=$($obj.total)"
             [void]$results.Add(@{
                 label = $label
                 full  = [int]$obj.full
