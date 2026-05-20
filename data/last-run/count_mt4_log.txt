@@ -7,11 +7,54 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 83 msec elapsed
+Result: 0 errors, 0 warnings, 104 msec elapsed
 
 --- end compile log ---
 Launching terminal.exe ...
 [33;1mWARNING: Timed out after 180s waiting for done.flag (MT4 Market)[0m
+--- C:\Program Files (x86)\ForexClub MT4\logs\20260520.log (tail) ---
+0	11:53:33.104	Migration: data to 'C:\Program Files (x86)\ForexClub MT4' migration started
+0	11:53:33.104	Migration: data migration finished, no virtual folder
+0	11:53:33.104	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder started
+0	11:53:33.244	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder finished
+0	11:53:33.338	FC MT4 build 1471 started (Forex Club International LLC)
+0	11:53:33.338	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13893 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
+0	11:53:33.338	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	11:53:33.479	Sources recompilation started
+0	11:53:38.079	Sources recompilation finished (28 compiled in 4609 msec)
+--- end ---
+--- C:\Program Files (x86)\ForexClub MT4\MQL4\Logs\20260520.log (tail) ---
+0	11:53:33.479	Compiling 'MACD Sample'
+0	11:53:33.479	Compiling 'Moving Average'
+0	11:53:33.855	Compiling 'Accelerator'
+0	11:53:33.855	Compiling 'Accumulation'
+0	11:53:33.855	Compiling 'Alligator'
+0	11:53:33.855	Compiling 'ATR'
+0	11:53:33.855	Compiling 'Awesome'
+0	11:53:33.855	Compiling 'Bands'
+0	11:53:33.855	Compiling 'Bears'
+0	11:53:33.855	Compiling 'Bulls'
+0	11:53:33.855	Compiling 'CCI'
+0	11:53:33.855	Compiling 'Custom Moving Averages'
+0	11:53:33.855	Compiling 'Heiken Ashi'
+0	11:53:33.855	Compiling 'Ichimoku'
+0	11:53:33.855	Compiling 'iExposure'
+0	11:53:33.855	Compiling 'MACD'
+0	11:53:33.855	Compiling 'Momentum'
+0	11:53:33.855	Compiling 'OsMA'
+0	11:53:33.855	Compiling 'Parabolic'
+0	11:53:33.855	Compiling 'RSI'
+0	11:53:33.855	Compiling 'Stochastic'
+0	11:53:33.855	Compiling 'ZigZag'
+0	11:53:33.855	Compiling 'SimplePanel'
+0	11:53:36.921	Compiling 'PeriodConverter'
+0	11:53:36.921	Compiling 'DLLSampleTester'
+0	11:53:36.921	Compiling 'PipeClient'
+0	11:53:36.921	Compiling 'PipeClientPure'
+0	11:53:37.626	Compiling 'stdlib'
+--- end ---
+Listing C:\Program Files (x86)\ForexClub MT4\MQL4\Files :
+
 
 === MT4 Instant (login=710268540, server='ForexClub-MT4 Real 2 Server') ===
 Compiling EA via C:\Program Files (x86)\ForexClub MT4\metaeditor.exe in C:\Program Files (x86)\ForexClub MT4\MQL4\Experts ...
@@ -20,10 +63,56 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 83 msec elapsed
+Result: 0 errors, 0 warnings, 93 msec elapsed
 
 --- end compile log ---
 Launching terminal.exe ...
 [33;1mWARNING: Timed out after 180s waiting for done.flag (MT4 Instant)[0m
+--- C:\Program Files (x86)\ForexClub MT4\logs\20260520.log (tail) ---
+0	11:53:33.104	Migration: data to 'C:\Program Files (x86)\ForexClub MT4' migration started
+0	11:53:33.104	Migration: data migration finished, no virtual folder
+0	11:53:33.104	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder started
+0	11:53:33.244	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder finished
+0	11:53:33.338	FC MT4 build 1471 started (Forex Club International LLC)
+0	11:53:33.338	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13893 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
+0	11:53:33.338	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	11:53:33.479	Sources recompilation started
+0	11:53:38.079	Sources recompilation finished (28 compiled in 4609 msec)
+0	11:56:38.479	FC MT4 build 1471 started (Forex Club International LLC)
+0	11:56:38.495	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13882 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
+0	11:56:38.495	Data Folder: C:\Program Files (x86)\ForexClub MT4
+--- end ---
+--- C:\Program Files (x86)\ForexClub MT4\MQL4\Logs\20260520.log (tail) ---
+0	11:53:33.479	Compiling 'MACD Sample'
+0	11:53:33.479	Compiling 'Moving Average'
+0	11:53:33.855	Compiling 'Accelerator'
+0	11:53:33.855	Compiling 'Accumulation'
+0	11:53:33.855	Compiling 'Alligator'
+0	11:53:33.855	Compiling 'ATR'
+0	11:53:33.855	Compiling 'Awesome'
+0	11:53:33.855	Compiling 'Bands'
+0	11:53:33.855	Compiling 'Bears'
+0	11:53:33.855	Compiling 'Bulls'
+0	11:53:33.855	Compiling 'CCI'
+0	11:53:33.855	Compiling 'Custom Moving Averages'
+0	11:53:33.855	Compiling 'Heiken Ashi'
+0	11:53:33.855	Compiling 'Ichimoku'
+0	11:53:33.855	Compiling 'iExposure'
+0	11:53:33.855	Compiling 'MACD'
+0	11:53:33.855	Compiling 'Momentum'
+0	11:53:33.855	Compiling 'OsMA'
+0	11:53:33.855	Compiling 'Parabolic'
+0	11:53:33.855	Compiling 'RSI'
+0	11:53:33.855	Compiling 'Stochastic'
+0	11:53:33.855	Compiling 'ZigZag'
+0	11:53:33.855	Compiling 'SimplePanel'
+0	11:53:36.921	Compiling 'PeriodConverter'
+0	11:53:36.921	Compiling 'DLLSampleTester'
+0	11:53:36.921	Compiling 'PipeClient'
+0	11:53:36.921	Compiling 'PipeClientPure'
+0	11:53:37.626	Compiling 'stdlib'
+--- end ---
+Listing C:\Program Files (x86)\ForexClub MT4\MQL4\Files :
+
 
 Wrote artifacts/mt4_results.json
