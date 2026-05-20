@@ -147,9 +147,12 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
     [System.IO.File]::WriteAllLines($iniPath, $iniLines, [System.Text.Encoding]::ASCII)
 
     # Diagnostic: dump our start.ini back so we can confirm the content
-    # actually written (any encoding/transformation surprises).
-    Write-Host "--- start.ini (just written) ---"
-    Get-Content -Raw -Path $iniPath | Write-Host
+    # actually written (any encoding/transformation surprises) — with the
+    # password redacted because this log gets committed to the (public)
+    # repo as data/last-run/count_mt4_log.txt and GitHub's secret masking
+    # does NOT apply to file content, only to live job-step output.
+    Write-Host "--- start.ini (just written, password redacted) ---"
+    (Get-Content -Raw -Path $iniPath) -replace '(?im)^(Password=).+$','$1***REDACTED***' | Write-Host
     Write-Host "--- end start.ini ---"
 
     # And dump <install>\config contents (the bundled .srv files and other ini).
@@ -171,7 +174,9 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
         "/server:$server",
         "/password:$password"
     )
-    Write-Host "Launching terminal.exe $($tArgs -join ' ')"
+    # Redact /password:X in the log line — see start.ini dump comment above.
+    $safeArgs = ($tArgs -join ' ') -replace '(/password:)[^\s]+','$1***REDACTED***'
+    Write-Host "Launching terminal.exe $safeArgs"
     $proc = Start-Process -FilePath $terminal -ArgumentList $tArgs -PassThru
 
     # Poll for the done flag.

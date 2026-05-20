@@ -14,7 +14,7 @@ Result: 0 errors, 0 warnings, 62 msec elapsed
 [Common]
 Login=730232800
 Account=730232800
-Password=xiTLjKqM
+Password=***REDACTED***
 Server=ForexClub-MT4 Market Real 2 Server
 EnableExperts=true
 EnableDDE=false
@@ -49,7 +49,7 @@ terminal.lic                            19349 5/20/2026 12:54:37 PM
 
 
 --- end config dir ---
-Launching terminal.exe /portable /config:start.ini /skipupdate /login:730232800 /server:ForexClub-MT4 Market Real 2 Server /password:xiTLjKqM
+Launching terminal.exe /portable /config:start.ini /skipupdate /login:730232800 /server:ForexClub-MT4 Market Real 2 Server /password:***REDACTED***
 [33;1mWARNING: Timed out after 180s waiting for done.flag (MT4 Market)[0m
 --- C:\Program Files (x86)\ForexClub MT4\logs\20260520.log (tail) ---
 0	12:54:50.548	Migration: data to 'C:\Program Files (x86)\ForexClub MT4' migration started
@@ -109,7 +109,7 @@ Result: 0 errors, 0 warnings, 61 msec elapsed
 [Common]
 Login=710268540
 Account=710268540
-Password=CceYNPxt
+Password=***REDACTED***
 Server=ForexClub-MT4 Real 2 Server
 EnableExperts=true
 EnableDDE=false
@@ -137,7 +137,7 @@ terminal.lic   19349 5/20/2026 12:54:37 PM
 
 
 --- end config dir ---
-Launching terminal.exe /portable /config:start.ini /skipupdate /login:710268540 /server:ForexClub-MT4 Real 2 Server /password:CceYNPxt
+Launching terminal.exe /portable /config:start.ini /skipupdate /login:710268540 /server:ForexClub-MT4 Real 2 Server /password:***REDACTED***
 [33;1mWARNING: Timed out after 180s waiting for done.flag (MT4 Instant)[0m
 --- C:\Program Files (x86)\ForexClub MT4\logs\20260520.log (tail) ---
 0	12:54:50.548	Migration: data to 'C:\Program Files (x86)\ForexClub MT4' migration started
