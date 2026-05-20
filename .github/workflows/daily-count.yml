@@ -53,9 +53,11 @@ jobs:
 
       - name: Install Python dependencies
         # MetaTrader5 5.0.45 is the last build known to consistently work
-        # against MetaQuotes' generic MT5 terminal on GitHub Actions.
-        # Latest (5.0.5735) ships but its IPC pairing was failing on us.
-        run: pip install --no-cache-dir "MetaTrader5==5.0.45" pyyaml tzdata
+        # against MetaQuotes' generic MT5 terminal on GitHub Actions; it was
+        # built against NumPy 1.x though, so pin numpy<2 to avoid the
+        # "numpy.core.multiarray failed to import" runtime ImportError that
+        # blocks even the import statement on Python 3.11 with NumPy 2.x.
+        run: pip install --no-cache-dir "MetaTrader5==5.0.45" "numpy<2" pyyaml tzdata
 
       - name: Should we run today?
         id: check

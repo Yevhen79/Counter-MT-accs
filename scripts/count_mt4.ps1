@@ -156,7 +156,19 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
         $elapsed += 3
     }
 
+    # If portable mode runs into UAC virtualization the EA might write
+    # to %LOCALAPPDATA%\VirtualStore\... instead of the real Files dir,
+    # so look in both places.
+    $vsBase = Join-Path $env:LOCALAPPDATA "VirtualStore"
+    $vsMt4 = Join-Path $vsBase ($mt4Dir.Substring(3))
+    $vsFilesDir = Join-Path $vsMt4 "MQL4\Files"
     $countFile = Join-Path $filesDir "count.json"
+    $vsCountFile = Join-Path $vsFilesDir "count.json"
+    if (Test-Path $vsCountFile) {
+        Write-Host "Found count.json in VirtualStore at $vsCountFile (UAC redirected)"
+        $countFile = $vsCountFile
+    }
+
     if (Test-Path $countFile) {
         try {
             $obj = Get-Content -Raw -Path $countFile | ConvertFrom-Json
@@ -174,6 +186,35 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
     } else {
         Write-Warning "Timed out after ${timeout}s waiting for done.flag ($label)"
         [void]$results.Add(@{ label = $label; error = "timeout" })
+
+        # Dump terminal logs for diagnosis. MT4 writes them to
+        # <install>\logs\YYYYMMDD.log and <install>\MQL4\Logs\YYYYMMDD.log
+        # (and VirtualStore-redirected copies). Tail the most recent file
+        # from each location.
+        foreach ($logRoot in @(
+            (Join-Path $mt4Dir "logs"),
+            (Join-Path $mt4Dir "MQL4\Logs"),
+            (Join-Path $vsMt4 "logs"),
+            (Join-Path $vsMt4 "MQL4\Logs")
+        )) {
+            if (Test-Path $logRoot) {
+                $latest = Get-ChildItem -Path $logRoot -Filter "*.log" -ErrorAction SilentlyContinue |
+                          Sort-Object LastWriteTime -Descending | Select-Object -First 1
+                if ($latest) {
+                    Write-Host "--- $($latest.FullName) (tail) ---"
+                    try { Get-Content -Path $latest.FullName -Tail 60 | Write-Host } catch { Write-Host "(read failed: $_)" }
+                    Write-Host "--- end ---"
+                }
+            }
+        }
+        # Also dump the actual Files dir listing to see what *did* land there.
+        foreach ($d in @($filesDir, $vsFilesDir)) {
+            if (Test-Path $d) {
+                Write-Host "Listing $d :"
+                Get-ChildItem -Path $d -Force | Select-Object Name, Length, LastWriteTime |
+                    Format-Table | Out-String | Write-Host
+            }
+        }
     }
 
     # Kill the terminal (and any lingering instances).
