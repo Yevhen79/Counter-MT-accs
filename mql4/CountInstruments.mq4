@@ -10,17 +10,35 @@
 //+------------------------------------------------------------------+
 #property strict
 
-void OnInit() { /* placed at attach; OnTick does the work after first tick */ }
+// We don't rely on ticks: if the terminal is not connected yet (or is on a
+// dead symbol), OnTick never fires and the host script times out waiting
+// for done.flag. Use OnTimer to poll every 2 seconds — once the symbols
+// list is populated, do the count and write the result file.
 
-void OnTick() {
-   static bool done = false;
-   if (done) return;
-   done = true;
+int OnInit() {
+   EventSetTimer(2);
+   Print("CountInstruments: OnInit, timer armed");
+   return INIT_SUCCEEDED;
+}
 
-   int total = SymbolsTotal(false); // false = all available symbols
+void OnDeinit(const int reason) {
+   EventKillTimer();
+}
+
+void OnTimer() {
+   static int retries = 60; // 60 * 2s = 2 min max
+   static bool wrote = false;
+   if (wrote) return;
+
+   int total = SymbolsTotal(false); // false = every available symbol
+   if (total == 0 && retries > 0) {
+      retries--;
+      Print("CountInstruments: SymbolsTotal=0, waiting (", retries, " retries left)");
+      return;
+   }
+
    int allowed = 0;
    int checked = 0;
-
    for (int i = 0; i < total; i++) {
       string name = SymbolName(i, false);
       if (StringLen(name) == 0) continue;
@@ -47,4 +65,7 @@ void OnTick() {
    } else {
       Print("CountInstruments: FileOpen(done.flag) failed, error=", GetLastError());
    }
+
+   wrote = true;
+   EventKillTimer();
 }

@@ -34,7 +34,12 @@ concurrency:
 
 jobs:
   count:
-    runs-on: windows-latest
+    # Pin to windows-2022 — windows-latest has been migrating to
+    # windows-2025-vs2026 which apparently breaks MetaTrader5 Python IPC
+    # (every initialize attempt times out with -10005 IPC timeout while
+    # terminal64.exe itself is up and consuming ~150 MB). 2022 is the
+    # known-good baseline for the MT5 Python package.
+    runs-on: windows-2022
     timeout-minutes: 30
 
     steps:
@@ -47,7 +52,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install Python dependencies
-        run: pip install --no-cache-dir MetaTrader5 pyyaml tzdata
+        # MetaTrader5 5.0.45 is the last build known to consistently work
+        # against MetaQuotes' generic MT5 terminal on GitHub Actions.
+        # Latest (5.0.5735) ships but its IPC pairing was failing on us.
+        run: pip install --no-cache-dir "MetaTrader5==5.0.45" pyyaml tzdata
 
       - name: Should we run today?
         id: check
