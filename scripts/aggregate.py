@@ -95,18 +95,26 @@ def main() -> int:
                 writer.writerow({k: r.get(k, "") for k in fieldnames})
         print(f"[aggregate] wrote {path}")
 
-    # Mirror the raw per-platform results next to history.csv so they get
-    # committed too. Lets us read per-account error messages via the GitHub
-    # API after the run without needing to download the upload-artifact zip.
+    # Mirror per-platform raw results AND captured stdout logs next to
+    # history.csv so they get committed too. Lets us read per-account error
+    # messages plus full script output via the GitHub API, no auth-gated
+    # Actions log download required.
     DEBUG_DIR.mkdir(parents=True, exist_ok=True)
-    for src in ARTIFACT_FILES:
+    debug_sources = [
+        *ARTIFACT_FILES,
+        Path("artifacts/count_mt5_log.txt"),
+        Path("artifacts/install_mt4_log.txt"),
+        Path("artifacts/count_mt4_log.txt"),
+    ]
+    for src in debug_sources:
         dst = DEBUG_DIR / src.name
         if src.exists():
             shutil.copy(src, dst)
             print(f"[aggregate] copied {src} -> {dst}")
         else:
-            dst.write_text("[]\n", encoding="utf-8")
-            print(f"[aggregate] {src} missing — wrote empty list to {dst}")
+            placeholder = "[]\n" if src.suffix == ".json" else f"(no {src.name} produced)\n"
+            dst.write_text(placeholder, encoding="utf-8")
+            print(f"[aggregate] {src} missing — wrote placeholder to {dst}")
 
     return 0
 

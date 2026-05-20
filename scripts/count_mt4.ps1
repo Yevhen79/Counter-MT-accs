@@ -69,11 +69,22 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
     # Stage EA source and compile to .ex4.
     Copy-Item "mql4\CountInstruments.mq4" -Destination (Join-Path $expertsDir "CountInstruments.mq4") -Force
     $metaeditor = Join-Path $mt4Dir "metaeditor.exe"
+    $compileLog = Join-Path $expertsDir "CountInstruments.log"
+    Remove-Item $compileLog -ErrorAction SilentlyContinue
     if (Test-Path $metaeditor) {
-        Write-Host "Compiling EA..."
-        & $metaeditor "/compile:$expertsDir\CountInstruments.mq4" "/log" | Out-Null
+        Write-Host "Compiling EA via $metaeditor (log -> $compileLog)..."
+        $out = & $metaeditor "/compile:$expertsDir\CountInstruments.mq4" "/log:$compileLog" 2>&1
+        Write-Host "metaeditor stdout/err: $out"
+        Write-Host "metaeditor exit code: $LASTEXITCODE"
+        if (Test-Path $compileLog) {
+            Write-Host "--- $compileLog ---"
+            try { Get-Content -Raw -Path $compileLog -Encoding Unicode | Write-Host } catch {}
+            try { Get-Content -Raw -Path $compileLog | Write-Host } catch {}
+            Write-Host "---"
+        }
     } else {
-        Write-Warning "metaeditor.exe not found at $metaeditor"
+        Write-Warning "metaeditor.exe not found at $metaeditor — listing MT4 install dir for diagnosis:"
+        Get-ChildItem -Path $mt4Dir -Force | Select-Object Name, Length, LastWriteTime | Format-Table | Out-String | Write-Host
     }
     if (-not (Test-Path (Join-Path $expertsDir "CountInstruments.ex4"))) {
         Write-Warning "EA compile failed (no .ex4 produced) for $label"
