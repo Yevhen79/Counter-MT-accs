@@ -40,7 +40,7 @@ jobs:
     # terminal64.exe itself is up and consuming ~150 MB). 2022 is the
     # known-good baseline for the MT5 Python package.
     runs-on: windows-2022
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     steps:
       - name: Checkout

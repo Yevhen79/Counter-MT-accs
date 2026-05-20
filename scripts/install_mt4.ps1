@@ -154,7 +154,10 @@ function Try-SilentInstall($installerPath, $flagString, $timeoutSec = 90) {
 
 $installed = $null
 foreach ($flag in $flagsToTry) {
-    Try-SilentInstall $installer $flag 90
+    # 30 s per flag — the FC installer ignores every silent flag we know
+    # and opens a GUI; my kill picks it up after the timeout. The actual
+    # silent install (if any) completes in under 15 s.
+    Try-SilentInstall $installer $flag 30
 
     foreach ($c in $candidates) {
         if (Test-Path $c) {
