@@ -1,10 +1,10 @@
 [
   {
-    "label": "MT4 Market",
-    "error": "compile_failed"
+    "error": "compile_failed",
+    "label": "MT4 Market"
   },
   {
-    "label": "MT4 Instant",
-    "error": "compile_failed"
+    "error": "compile_failed",
+    "label": "MT4 Instant"
   }
 ]

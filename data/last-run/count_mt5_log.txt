@@ -1,0 +1,8 @@
+[mt5] warmup attempt: A: explicit path
+[mt5]   FAILED after 133.6s: (-10005, 'IPC timeout')
+[mt5] B: pre-launching terminal via subprocess and sleeping 20s...
+[mt5] warmup attempt: B: connect to running terminal
+[mt5]   FAILED after 130.1s: (-10005, 'IPC timeout')
+[mt5] warmup attempt: C: portable mode
+[mt5]   FAILED after 131.3s: (-10005, 'IPC timeout')
+[mt5] terminal warmup exhausted all strategies; last_error=(1, 'Success')

@@ -1,0 +1,15 @@
+Fetching: https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe
+Downloaded 5,220,640 bytes from https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe
+Response is a PE binary — using it as the installer.
+Attempting silent install with flags: '/S' (timeout 90s)
+[33;1mWARNING:   Installer did not exit within 90s — killing process tree.[0m
+Attempting silent install with flags: '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-' (timeout 90s)
+[33;1mWARNING:   Installer did not exit within 90s — killing process tree.[0m
+Attempting silent install with flags: '/silent' (timeout 90s)
+[33;1mWARNING:   Installer did not exit within 90s — killing process tree.[0m
+Attempting silent install with flags: '/quiet' (timeout 90s)
+[33;1mWARNING:   Installer did not exit within 90s — killing process tree.[0m
+Attempting silent install with flags: '/auto' (timeout 90s)
+  Installer exited with code 1 after 15s.
+No known install location matched — searching Program Files...
+Discovered MT4 at: C:\Program Files (x86)\ForexClub MT4\terminal.exe
