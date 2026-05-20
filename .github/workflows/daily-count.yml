@@ -16,6 +16,14 @@ on:
         description: "Run even if today's row already exists"
         type: boolean
         default: false
+  push:
+    branches:
+      - claude/trading-tools-report-MCrOV
+    paths:
+      - ".github/workflows/daily-count.yml"
+      - "scripts/**"
+      - "mql4/**"
+      - "config.yaml"
 
 permissions:
   contents: write
@@ -45,10 +53,13 @@ jobs:
         id: check
         shell: pwsh
         env:
-          FORCE: ${{ github.event.inputs.force }}
+          # Push-triggered runs (i.e. me iterating on the code) always force.
+          # Manual dispatch honors the user's "force" input. Cron does not.
+          FORCE: ${{ github.event.inputs.force == 'true' || github.event_name == 'push' }}
         run: |
           Write-Host "Python: $(python --version)"
-          Write-Host "Working dir: $(Get-Location)"
+          Write-Host "Event: ${{ github.event_name }}"
+          Write-Host "FORCE: $env:FORCE"
           python scripts/should_run.py
           if ($LASTEXITCODE -ne 0) {
             Write-Error "should_run.py exited $LASTEXITCODE"
