@@ -20,7 +20,7 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 89 msec elapsed
+Result: 0 errors, 0 warnings, 83 msec elapsed
 
 --- end compile log ---
 Launching terminal.exe ...

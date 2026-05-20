@@ -1,62 +1,21 @@
-[mt5] --- diagnostic dump (before any attempt) ---
-[mt5]   INFO: No tasks are running which match the specified criteria.
-[mt5]   appdata: Common
-[mt5]   appdata: Community
-[mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
-[mt5] --- end dump ---
-[mt5] warmup attempt: A: explicit path
-[mt5]   FAILED after 135.3s: (-10005, 'IPC timeout')
-[mt5] --- diagnostic dump (after A) ---
-[mt5]   "terminal64.exe","6312","Console","2","153,224 K"
-[mt5]   appdata: Common
-[mt5]   appdata: Community
-[mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
-[mt5] --- end dump ---
-[mt5] B: pre-launching terminal via subprocess and sleeping 30s...
-[mt5] --- diagnostic dump (after B's pre-launch) ---
-[mt5]   "terminal64.exe","6140","Console","2","167,816 K"
-[mt5]   appdata: Common
-[mt5]   appdata: Community
-[mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
-[mt5] --- end dump ---
-[mt5] warmup attempt: B: connect to running terminal
-[mt5]   FAILED after 130.6s: (-10005, 'IPC timeout')
-[mt5] --- diagnostic dump (after B) ---
-[mt5]   "terminal64.exe","6140","Console","2","103,924 K"
-[mt5]   appdata: Common
-[mt5]   appdata: Community
-[mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
-[mt5] --- end dump ---
-[mt5] warmup attempt: C: portable mode
-[mt5]   FAILED after 131.2s: (-10005, 'IPC timeout')
-[mt5] --- diagnostic dump (after C) ---
-[mt5]   "terminal64.exe","4432","Console","2","129,140 K"
-[mt5]   appdata: Common
-[mt5]   appdata: Community
-[mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
-[mt5] --- end dump ---
-[mt5] wrote C:\Program Files\MetaTrader 5\config\start.ini for login=550459323 server='ForexClub-MT5 Real Server'
-[mt5] D: launching with /portable /config:start.ini /skipupdate, sleeping 35s...
-[mt5] --- diagnostic dump (after D's pre-launch) ---
-[mt5]   "terminal64.exe","1212","Console","2","166,988 K"
-[mt5]   appdata: Common
-[mt5]   appdata: Community
-[mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
-[mt5] --- end dump ---
-[mt5] warmup attempt: D: connect after config-based login
-[mt5]   FAILED after 130.6s: (-10005, 'IPC timeout')
-[mt5] --- diagnostic dump (after D) ---
-[mt5]   "terminal64.exe","1212","Console","2","117,644 K"
-[mt5]   appdata: Common
-[mt5]   appdata: Community
-[mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
-[mt5] --- end dump ---
-[mt5] warmup attempt: E: auto-discovery (no path)
-[mt5]   FAILED after 131.0s: (-10005, 'IPC timeout')
-[mt5] --- diagnostic dump (after E) ---
-[mt5]   "terminal64.exe","5864","Console","2","132,864 K"
-[mt5]   appdata: Common
-[mt5]   appdata: Community
-[mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
-[mt5] --- end dump ---
-[mt5] terminal warmup exhausted all strategies; last_error=(1, 'Success')
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "D:\a\Counter-MT-accs\Counter-MT-accs\scripts\count_mt5.py", line 25, in <module>
+    import MetaTrader5 as mt5
+  File "C:\hostedtoolcache\windows\Python\3.11.9\x64\Lib\site-packages\MetaTrader5\__init__.py", line 258, in <module>
+    from ._core import *
+AttributeError: _ARRAY_API not found
+Traceback (most recent call last):
+  File "D:\a\Counter-MT-accs\Counter-MT-accs\scripts\count_mt5.py", line 25, in <module>
+    import MetaTrader5 as mt5
+  File "C:\hostedtoolcache\windows\Python\3.11.9\x64\Lib\site-packages\MetaTrader5\__init__.py", line 258, in <module>
+    from ._core import *
+ImportError: numpy.core.multiarray failed to import
