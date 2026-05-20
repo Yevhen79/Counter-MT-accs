@@ -1,10 +1,12 @@
 [
   {
-    "label": "MT5 Market",
-    "error": "terminal_warmup_failed: (1, 'Success')"
+    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB",
+    "error": "no_symbol_worked",
+    "label": "MT5 Market"
   },
   {
-    "label": "MT5 Instant",
-    "error": "terminal_warmup_failed: (1, 'Success')"
+    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB",
+    "error": "no_symbol_worked",
+    "label": "MT5 Instant"
   }
 ]

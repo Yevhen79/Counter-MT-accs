@@ -1,10 +1,12 @@
 [
   {
     "label": "MT4 Market",
-    "error": "timeout"
+    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB",
+    "error": "no_symbol_worked"
   },
   {
     "label": "MT4 Instant",
-    "error": "timeout"
+    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB",
+    "error": "no_symbol_worked"
   }
 ]
