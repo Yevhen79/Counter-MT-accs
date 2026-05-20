@@ -7,14 +7,14 @@
 [mt5] warmup attempt: A: explicit path
 [mt5]   FAILED after 133.9s: (-10005, 'IPC timeout')
 [mt5] --- diagnostic dump (after A) ---
-[mt5]   "terminal64.exe","196","Console","2","126,188 K"
+[mt5]   "terminal64.exe","2940","Console","2","140,936 K"
 [mt5]   appdata: Common
 [mt5]   appdata: Community
 [mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
 [mt5] --- end dump ---
 [mt5] B: pre-launching terminal via subprocess and sleeping 30s...
 [mt5] --- diagnostic dump (after B's pre-launch) ---
-[mt5]   "terminal64.exe","8004","Console","2","162,280 K"
+[mt5]   "terminal64.exe","3464","Console","2","162,004 K"
 [mt5]   appdata: Common
 [mt5]   appdata: Community
 [mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
@@ -22,15 +22,15 @@
 [mt5] warmup attempt: B: connect to running terminal
 [mt5]   FAILED after 131.4s: (-10005, 'IPC timeout')
 [mt5] --- diagnostic dump (after B) ---
-[mt5]   "terminal64.exe","8004","Console","2","106,564 K"
+[mt5]   "terminal64.exe","3464","Console","2","103,016 K"
 [mt5]   appdata: Common
 [mt5]   appdata: Community
 [mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
 [mt5] --- end dump ---
 [mt5] warmup attempt: C: portable mode
-[mt5]   FAILED after 132.0s: (-10005, 'IPC timeout')
+[mt5]   FAILED after 131.9s: (-10005, 'IPC timeout')
 [mt5] --- diagnostic dump (after C) ---
-[mt5]   "terminal64.exe","8856","Console","2","122,856 K"
+[mt5]   "terminal64.exe","3836","Console","2","122,424 K"
 [mt5]   appdata: Common
 [mt5]   appdata: Community
 [mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
@@ -38,7 +38,7 @@
 [mt5] wrote C:\Program Files\MetaTrader 5\config\start.ini for login=550459323 server='ForexClub-MT5 Real Server'
 [mt5] D: launching with /portable /config:start.ini /skipupdate, sleeping 35s...
 [mt5] --- diagnostic dump (after D's pre-launch) ---
-[mt5]   "terminal64.exe","2364","Console","2","161,052 K"
+[mt5]   "terminal64.exe","2444","Console","2","161,268 K"
 [mt5]   appdata: Common
 [mt5]   appdata: Community
 [mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
@@ -46,7 +46,7 @@
 [mt5] warmup attempt: D: connect after config-based login
 [mt5]   FAILED after 131.4s: (-10005, 'IPC timeout')
 [mt5] --- diagnostic dump (after D) ---
-[mt5]   "terminal64.exe","2364","Console","2","91,100 K"
+[mt5]   "terminal64.exe","2444","Console","2","88,780 K"
 [mt5]   appdata: Common
 [mt5]   appdata: Community
 [mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
@@ -54,7 +54,7 @@
 [mt5] warmup attempt: E: auto-discovery (no path)
 [mt5]   FAILED after 131.9s: (-10005, 'IPC timeout')
 [mt5] --- diagnostic dump (after E) ---
-[mt5]   "terminal64.exe","1496","Console","2","124,452 K"
+[mt5]   "terminal64.exe","7052","Console","2","124,924 K"
 [mt5]   appdata: Common
 [mt5]   appdata: Community
 [mt5]   appdata: D0E8209F77C8CF37AD8BF550E51FF075
