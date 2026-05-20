@@ -66,11 +66,17 @@ jobs:
             -UseBasicParsing
           Write-Host "Installing MT5 silently..."
           Start-Process -FilePath "$env:RUNNER_TEMP\mt5setup.exe" -ArgumentList "/auto" -Wait
+          # The /auto installer auto-launches terminal64.exe with a
+          # first-run broker-selection wizard. The wizard is modal, which
+          # later blocks mt5.initialize() with -10005 IPC timeout. Kill it.
+          Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Get-Process metatester64 -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Start-Sleep -Seconds 3
           if (-not (Test-Path "C:\Program Files\MetaTrader 5\terminal64.exe")) {
             Write-Error "MT5 install failed: terminal64.exe not found."
             exit 1
           }
-          Write-Host "MT5 installed."
+          Write-Host "MT5 installed at C:\Program Files\MetaTrader 5\ and any running terminal killed."
 
       - name: Count MT5 instruments
         if: steps.check.outputs.should_run == 'true'

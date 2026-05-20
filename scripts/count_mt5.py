@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -32,6 +33,78 @@ LOGIN_TIMEOUT_MS = 120_000
 
 def err_dict(label: str, stage: str) -> dict:
     return {"label": label, "error": f"{stage}: {mt5.last_error()}"}
+
+
+def kill_terminal() -> None:
+    """Best-effort: kill any running terminal64.exe so the next initialize starts clean."""
+    try:
+        subprocess.run(
+            ["taskkill", "/F", "/IM", "terminal64.exe"],
+            capture_output=True, timeout=10, check=False,
+        )
+    except Exception as e:
+        print(f"[mt5] taskkill raised: {e!r}")
+    time.sleep(2)
+
+
+def try_init(label: str, **kwargs) -> bool:
+    """Wrap mt5.initialize with logging. kwargs are passed through."""
+    print(f"[mt5] warmup attempt: {label}")
+    t0 = time.time()
+    ok = mt5.initialize(**kwargs)
+    dt = time.time() - t0
+    if ok:
+        print(f"[mt5]   OK after {dt:.1f}s")
+        ti = mt5.terminal_info()
+        if ti is not None:
+            print(f"[mt5]   terminal_info: build={ti.build} connected={ti.connected} "
+                  f"path={ti.path} data_path={ti.data_path}")
+        return True
+    err = mt5.last_error()
+    print(f"[mt5]   FAILED after {dt:.1f}s: {err}")
+    try:
+        mt5.shutdown()
+    except Exception:
+        pass
+    return False
+
+
+def warm_terminal() -> bool:
+    """Try increasingly aggressive strategies to bring terminal64.exe up to IPC.
+
+    -10005 IPC timeout on first init usually means terminal64.exe is sitting
+    behind a modal first-run dialog or a stale instance is holding the named
+    pipe. Each attempt clears any running terminal first.
+    """
+    # A: clean kill + explicit path
+    kill_terminal()
+    if try_init("A: explicit path",
+                path=TERMINAL_PATH, timeout=INIT_TIMEOUT_MS):
+        return True
+
+    # B: pre-launch terminal manually, give it 20s to settle, then connect
+    kill_terminal()
+    print("[mt5] B: pre-launching terminal via subprocess and sleeping 20s...")
+    try:
+        subprocess.Popen(
+            [TERMINAL_PATH],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            creationflags=getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0),
+        )
+    except Exception as e:
+        print(f"[mt5]   Popen raised: {e!r}")
+    time.sleep(20)
+    if try_init("B: connect to running terminal",
+                path=TERMINAL_PATH, timeout=INIT_TIMEOUT_MS):
+        return True
+
+    # C: portable mode (uses install dir as data dir; needs admin which we have)
+    kill_terminal()
+    if try_init("C: portable mode",
+                path=TERMINAL_PATH, portable=True, timeout=INIT_TIMEOUT_MS):
+        return True
+
+    return False
 
 
 def count_account(label: str, login: int, password: str, server: str) -> dict:
@@ -70,24 +143,13 @@ def main() -> int:
         ARTIFACT.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
         return 0
 
-    # Warm the terminal up without logging in. Gives it the full timeout to
-    # complete its first-run setup before we ask it to authenticate.
-    print(f"[mt5] launching {TERMINAL_PATH} (timeout {INIT_TIMEOUT_MS/1000:.0f}s)...")
-    t0 = time.time()
-    if not mt5.initialize(path=TERMINAL_PATH, timeout=INIT_TIMEOUT_MS):
+    if not warm_terminal():
         err = mt5.last_error()
-        print(f"[mt5] terminal initialize failed: {err}")
-        mt5.shutdown()
-        results = [{"label": a["label"], "error": f"terminal_init_failed: {err}"} for a in mt5_accounts]
+        print(f"[mt5] terminal warmup exhausted all strategies; last_error={err}")
+        results = [{"label": a["label"], "error": f"terminal_warmup_failed: {err}"} for a in mt5_accounts]
         ARTIFACT.parent.mkdir(parents=True, exist_ok=True)
         ARTIFACT.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
         return 0
-    print(f"[mt5] terminal up after {time.time()-t0:.1f}s")
-
-    term_info = mt5.terminal_info()
-    if term_info is not None:
-        print(f"[mt5] terminal_info: build={term_info.build} community={term_info.community_connection} "
-              f"connected={term_info.connected} data_path={term_info.data_path}")
 
     results = []
     for acc in mt5_accounts:
