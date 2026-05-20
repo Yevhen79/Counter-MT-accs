@@ -126,15 +126,21 @@ jobs:
           }
           "MT5_DIR=$mt5dir"          | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
           "MT5_TERMINAL=$terminal"   | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-          Write-Host "MT5 installed: $terminal"
+          Write-Host "MT5 installed: $terminal (dir=$mt5dir)"
 
           # Exclude MT5 dir from Defender realtime scanning — Defender's
           # on-access scans on the IPC backing store and the constant log
           # writes were a suspected cause of the IPC handshake timeout.
+          # Use the ACTUAL install dir (last run /DIR was ignored and it
+          # landed at Program Files anyway).
           try {
             Add-MpPreference -ExclusionPath $mt5dir -ErrorAction SilentlyContinue
+            $appdataMq = Join-Path $env:APPDATA "MetaQuotes"
+            if (Test-Path $appdataMq) {
+              Add-MpPreference -ExclusionPath $appdataMq -ErrorAction SilentlyContinue
+            }
             Set-MpPreference -DisableRealtimeMonitoring $true -ErrorAction SilentlyContinue
-            Write-Host "Defender realtime monitoring disabled and $mt5dir excluded."
+            Write-Host "Defender realtime monitoring disabled, $mt5dir and $appdataMq excluded."
           } catch {
             Write-Warning "Could not adjust Defender preferences: $_"
           }

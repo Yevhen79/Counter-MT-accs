@@ -123,9 +123,12 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
     }
 
     # Write start.ini. ANSI encoding matters: MT4 expects 1-byte chars.
+    # Include both Login= and Account= keys — different MT4 builds key the
+    # primary account number under different names.
     $iniLines = @(
         "[Common]",
         "Login=$login",
+        "Account=$login",
         "Password=$password",
         "Server=$server",
         "EnableExperts=true",
@@ -143,18 +146,33 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
     $iniPath = Join-Path $configDir "start.ini"
     [System.IO.File]::WriteAllLines($iniPath, $iniLines, [System.Text.Encoding]::ASCII)
 
-    # Diagnostic: dump <install>\config so we can see what srv files
-    # are bundled — if our broker server isn't there, login can't resolve.
+    # Diagnostic: dump our start.ini back so we can confirm the content
+    # actually written (any encoding/transformation surprises).
+    Write-Host "--- start.ini (just written) ---"
+    Get-Content -Raw -Path $iniPath | Write-Host
+    Write-Host "--- end start.ini ---"
+
+    # And dump <install>\config contents (the bundled .srv files and other ini).
     Write-Host "--- $configDir contents ---"
     Get-ChildItem -Path $configDir -Force -ErrorAction SilentlyContinue |
         Select-Object Name, Length, LastWriteTime |
         Format-Table | Out-String | Write-Host
     Write-Host "--- end config dir ---"
 
-    # Launch terminal.
+    # Launch terminal. Pass login info both via /config:start.ini and via
+    # command-line flags (some MT4 builds honor /login:N /password:X /server:Y
+    # — and command-line wins over the config block).
     $terminal = Join-Path $mt4Dir "terminal.exe"
-    Write-Host "Launching terminal.exe ..."
-    $proc = Start-Process -FilePath $terminal -ArgumentList "/portable","/config:start.ini","/skipupdate" -PassThru
+    $tArgs = @(
+        "/portable",
+        "/config:start.ini",
+        "/skipupdate",
+        "/login:$login",
+        "/server:$server",
+        "/password:$password"
+    )
+    Write-Host "Launching terminal.exe $($tArgs -join ' ')"
+    $proc = Start-Process -FilePath $terminal -ArgumentList $tArgs -PassThru
 
     # Poll for the done flag.
     $timeout = 180
