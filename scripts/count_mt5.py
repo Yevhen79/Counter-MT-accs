@@ -47,6 +47,53 @@ def kill_terminal() -> None:
     time.sleep(2)
 
 
+def diagnostic_dump(tag: str) -> None:
+    """Dump process state + a tiny directory listing to help diagnose."""
+    print(f"[mt5] --- diagnostic dump ({tag}) ---")
+    try:
+        out = subprocess.run(
+            ["tasklist", "/FI", "IMAGENAME eq terminal64.exe", "/FO", "CSV", "/NH"],
+            capture_output=True, text=True, timeout=10,
+        )
+        lines = (out.stdout or "").strip().splitlines() or ["(none)"]
+        for ln in lines[:5]:
+            print(f"[mt5]   {ln}")
+    except Exception as e:
+        print(f"[mt5]   tasklist failed: {e!r}")
+    try:
+        appdata = Path(os.environ.get("APPDATA", "")) / "MetaQuotes" / "Terminal"
+        if appdata.exists():
+            for child in list(appdata.iterdir())[:5]:
+                print(f"[mt5]   appdata: {child.name}")
+        else:
+            print(f"[mt5]   no appdata at {appdata}")
+    except Exception as e:
+        print(f"[mt5]   appdata dump failed: {e!r}")
+    print(f"[mt5] --- end dump ---")
+
+
+def write_mt5_start_ini(account: dict) -> Path:
+    """Write a start.ini under the MT5 install dir so the terminal logs
+    into the given account on launch and skips its broker-selection wizard."""
+    password = os.environ.get(account["password_secret"], "")
+    config_dir = Path(TERMINAL_PATH).parent / "config"
+    config_dir.mkdir(parents=True, exist_ok=True)
+    ini = config_dir / "start.ini"
+    ini.write_text(
+        "[Common]\n"
+        f"Login={account['login']}\n"
+        f"Password={password}\n"
+        f"Server={account['server']}\n"
+        "ProxyEnable=false\n"
+        "NewsEnable=false\n"
+        "CertInstall=false\n"
+        "EnableExperts=false\n",
+        encoding="utf-8",
+    )
+    print(f"[mt5] wrote {ini} for login={account['login']} server={account['server']!r}")
+    return ini
+
+
 def try_init(label: str, **kwargs) -> bool:
     """Wrap mt5.initialize with logging. kwargs are passed through."""
     print(f"[mt5] warmup attempt: {label}")
@@ -69,40 +116,73 @@ def try_init(label: str, **kwargs) -> bool:
     return False
 
 
-def warm_terminal() -> bool:
+def warm_terminal(mt5_accounts: list) -> bool:
     """Try increasingly aggressive strategies to bring terminal64.exe up to IPC.
 
     -10005 IPC timeout on first init usually means terminal64.exe is sitting
     behind a modal first-run dialog or a stale instance is holding the named
     pipe. Each attempt clears any running terminal first.
     """
+    diagnostic_dump("before any attempt")
+
     # A: clean kill + explicit path
     kill_terminal()
     if try_init("A: explicit path",
                 path=TERMINAL_PATH, timeout=INIT_TIMEOUT_MS):
         return True
+    diagnostic_dump("after A")
 
-    # B: pre-launch terminal manually, give it 20s to settle, then connect
+    # B: pre-launch terminal manually, give it 30s to settle, then connect
     kill_terminal()
-    print("[mt5] B: pre-launching terminal via subprocess and sleeping 20s...")
+    print("[mt5] B: pre-launching terminal via subprocess and sleeping 30s...")
     try:
         subprocess.Popen(
-            [TERMINAL_PATH],
+            [TERMINAL_PATH, "/portable", "/skipupdate"],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
             creationflags=getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0),
         )
     except Exception as e:
         print(f"[mt5]   Popen raised: {e!r}")
-    time.sleep(20)
+    time.sleep(30)
+    diagnostic_dump("after B's pre-launch")
     if try_init("B: connect to running terminal",
-                path=TERMINAL_PATH, timeout=INIT_TIMEOUT_MS):
+                path=TERMINAL_PATH, portable=True, timeout=INIT_TIMEOUT_MS):
         return True
+    diagnostic_dump("after B")
 
     # C: portable mode (uses install dir as data dir; needs admin which we have)
     kill_terminal()
     if try_init("C: portable mode",
                 path=TERMINAL_PATH, portable=True, timeout=INIT_TIMEOUT_MS):
         return True
+    diagnostic_dump("after C")
+
+    # D: pre-write start.ini with first account, /portable /config:start.ini, sleep, connect
+    if mt5_accounts:
+        kill_terminal()
+        write_mt5_start_ini(mt5_accounts[0])
+        print("[mt5] D: launching with /portable /config:start.ini /skipupdate, sleeping 35s...")
+        try:
+            subprocess.Popen(
+                [TERMINAL_PATH, "/portable", "/config:start.ini", "/skipupdate"],
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                creationflags=getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0),
+            )
+        except Exception as e:
+            print(f"[mt5]   Popen raised: {e!r}")
+        time.sleep(35)
+        diagnostic_dump("after D's pre-launch")
+        if try_init("D: connect after config-based login",
+                    path=TERMINAL_PATH, portable=True, timeout=INIT_TIMEOUT_MS):
+            return True
+        diagnostic_dump("after D")
+
+    # E: dirt-simple — no path, no portable, let MetaTrader5 auto-discover
+    kill_terminal()
+    if try_init("E: auto-discovery (no path)",
+                timeout=INIT_TIMEOUT_MS):
+        return True
+    diagnostic_dump("after E")
 
     return False
 
@@ -143,7 +223,7 @@ def main() -> int:
         ARTIFACT.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
         return 0
 
-    if not warm_terminal():
+    if not warm_terminal(mt5_accounts):
         err = mt5.last_error()
         print(f"[mt5] terminal warmup exhausted all strategies; last_error={err}")
         results = [{"label": a["label"], "error": f"terminal_warmup_failed: {err}"} for a in mt5_accounts]

@@ -67,20 +67,50 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
     Remove-Item (Join-Path $filesDir "done.flag")  -ErrorAction SilentlyContinue
 
     # Stage EA source and compile to .ex4.
+    # The MT4 install dir contains a space ("Program Files (x86)") and the
+    # broker name. metaeditor.exe's /compile: argument does not handle
+    # internal spaces well, so cd into the Experts folder and pass a
+    # quote-less relative path instead.
     Copy-Item "mql4\CountInstruments.mq4" -Destination (Join-Path $expertsDir "CountInstruments.mq4") -Force
     $metaeditor = Join-Path $mt4Dir "metaeditor.exe"
     $compileLog = Join-Path $expertsDir "CountInstruments.log"
     Remove-Item $compileLog -ErrorAction SilentlyContinue
     if (Test-Path $metaeditor) {
-        Write-Host "Compiling EA via $metaeditor (log -> $compileLog)..."
-        $out = & $metaeditor "/compile:$expertsDir\CountInstruments.mq4" "/log:$compileLog" 2>&1
-        Write-Host "metaeditor stdout/err: $out"
-        Write-Host "metaeditor exit code: $LASTEXITCODE"
+        Push-Location $expertsDir
+        try {
+            Write-Host "Compiling EA via $metaeditor in $($PWD.Path) ..."
+            $proc = Start-Process -FilePath $metaeditor `
+                                  -ArgumentList "/compile:CountInstruments.mq4","/log:CountInstruments.log" `
+                                  -WorkingDirectory $expertsDir `
+                                  -PassThru -NoNewWindow
+            $waited = 0
+            while (-not $proc.HasExited -and $waited -lt 60) {
+                Start-Sleep -Seconds 2
+                $waited += 2
+            }
+            if (-not $proc.HasExited) {
+                Write-Warning "metaeditor.exe did not exit within 60s — killing."
+                Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
+            } else {
+                Write-Host "metaeditor exit code: $($proc.ExitCode)"
+            }
+        } finally {
+            Pop-Location
+        }
         if (Test-Path $compileLog) {
-            Write-Host "--- $compileLog ---"
-            try { Get-Content -Raw -Path $compileLog -Encoding Unicode | Write-Host } catch {}
-            try { Get-Content -Raw -Path $compileLog | Write-Host } catch {}
-            Write-Host "---"
+            Write-Host "--- compile log ($compileLog) ---"
+            foreach ($enc in @([Text.Encoding]::Unicode, [Text.Encoding]::UTF8, [Text.Encoding]::Default)) {
+                try {
+                    $txt = [IO.File]::ReadAllText($compileLog, $enc)
+                    if ($txt -and ($txt -notmatch '^(\x00|\xFE|\xFF)')) {
+                        Write-Host $txt
+                        break
+                    }
+                } catch {}
+            }
+            Write-Host "--- end compile log ---"
+        } else {
+            Write-Host "(no compile log produced at $compileLog)"
         }
     } else {
         Write-Warning "metaeditor.exe not found at $metaeditor — listing MT4 install dir for diagnosis:"
