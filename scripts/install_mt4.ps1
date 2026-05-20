@@ -100,9 +100,17 @@ if (Is-PE $probe) {
     }
 }
 
-# Try common silent-install flags. NSIS uses /S; Inno Setup uses /VERYSILENT;
-# MSI uses /quiet; MetaQuotes' own bundle uses /auto.
-$flagsToTry = @("/auto", "/S", "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART", "/silent", "/quiet")
+# Try common silent-install flags. NSIS uses /S (most-likely match for the
+# Libertex installer); Inno Setup uses /VERYSILENT; MSI uses /quiet. Each
+# attempt is bounded — a non-silent install would otherwise pop a wizard
+# and hang the runner for the full 30 min timeout.
+$flagsToTry = @(
+    "/S",
+    "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-",
+    "/silent",
+    "/quiet",
+    "/auto"
+)
 
 $candidates = @(
     "C:\Program Files (x86)\Libertex MetaTrader 4\terminal.exe",
@@ -115,11 +123,43 @@ $candidates = @(
     "C:\Program Files\MetaTrader 4\terminal.exe"
 )
 
+function Stop-InstallerProcesses($installerPath) {
+    # Kill the installer plus any child processes it spawned (NSIS extracts
+    # a temp installer that can sit waiting for a button click).
+    $name = [System.IO.Path]::GetFileNameWithoutExtension($installerPath)
+    Get-Process -ErrorAction SilentlyContinue | Where-Object {
+        $_.Name -match "(?i)(setup|install|wizard|fcmt4|libertex|forexclub)" -or
+        $_.Name -eq $name
+    } | ForEach-Object {
+        try { Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue } catch {}
+    }
+}
+
+function Try-SilentInstall($installerPath, $flagString, $timeoutSec = 90) {
+    Write-Host "Attempting silent install with flags: '$flagString' (timeout ${timeoutSec}s)"
+    $args = if ([string]::IsNullOrWhiteSpace($flagString)) { @() } else { $flagString.Split(' ') }
+    $proc = Start-Process -FilePath $installerPath -ArgumentList $args -PassThru -ErrorAction SilentlyContinue
+    if (-not $proc) {
+        Write-Warning "Start-Process returned null for '$flagString'"
+        return
+    }
+    $waited = 0
+    while (-not $proc.HasExited -and $waited -lt $timeoutSec) {
+        Start-Sleep -Seconds 3
+        $waited += 3
+    }
+    if (-not $proc.HasExited) {
+        Write-Warning "  Installer did not exit within ${timeoutSec}s — killing process tree."
+        Stop-InstallerProcesses $installerPath
+        Start-Sleep -Seconds 3
+    } else {
+        Write-Host "  Installer exited with code $($proc.ExitCode) after ${waited}s."
+    }
+}
+
 $installed = $null
 foreach ($flag in $flagsToTry) {
-    Write-Host "Trying silent install with flags: $flag"
-    Start-Process -FilePath $installer -ArgumentList $flag -PassThru -Wait -ErrorAction SilentlyContinue | Out-Null
-    Start-Sleep -Seconds 5
+    Try-SilentInstall $installer $flag 90
 
     foreach ($c in $candidates) {
         if (Test-Path $c) {
@@ -132,13 +172,12 @@ foreach ($flag in $flagsToTry) {
 }
 
 if (-not $installed) {
-    # Final fallback: search Program Files for any terminal.exe whose parent
-    # dir name hints at MT4.
+    # Search Program Files for any terminal.exe whose parent dir hints at MT4.
     Write-Host "No known install location matched — searching Program Files..."
     $hits = @()
     foreach ($root in @("C:\Program Files", "C:\Program Files (x86)")) {
         if (Test-Path $root) {
-            $hits += Get-ChildItem -Path $root -Filter "terminal.exe" -Recurse -ErrorAction SilentlyContinue |
+            $hits += Get-ChildItem -Path $root -Filter "terminal.exe" -Recurse -Depth 3 -ErrorAction SilentlyContinue |
                 Where-Object {
                     $parent = Split-Path $_.DirectoryName -Leaf
                     $parent -match "(?i)(MT4|MetaTrader\s*4|Libertex|ForexClub)" -and
@@ -149,6 +188,24 @@ if (-not $installed) {
     if ($hits.Count -gt 0) {
         $installed = $hits[0].FullName
         Write-Host "Discovered MT4 at: $installed"
+    }
+}
+
+if (-not $installed) {
+    # The broker installer refused to install silently. Fall back to
+    # MetaQuotes' generic MT4 (always supports /auto). The Libertex server
+    # name is still resolvable via MetaQuotes' global server registry.
+    Write-Host "Broker installer did not produce a silent install. Falling back to MetaQuotes generic MT4..."
+    $genericUrl = "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/mt4setup.exe"
+    if (Fetch-Installer $genericUrl $installer) {
+        Try-SilentInstall $installer "/auto" 180
+        foreach ($c in $candidates) {
+            if (Test-Path $c) {
+                Write-Host "Generic MT4 installed at: $c"
+                $installed = $c
+                break
+            }
+        }
     }
 }
 
