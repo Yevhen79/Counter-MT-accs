@@ -122,136 +122,153 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
         continue
     }
 
-    # Write start.ini. ANSI encoding matters: MT4 expects 1-byte chars.
-    # Include both Login= and Account= keys — different MT4 builds key the
-    # primary account number under different names.
-    $iniLines = @(
-        "[Common]",
-        "Login=$login",
-        "Account=$login",
-        "Password=$password",
-        "Server=$server",
-        "EnableExperts=true",
-        "EnableDDE=false",
-        "ProxyEnable=false",
-        "[Experts]",
-        "AllowLiveTrading=true",
-        "AllowDllImport=false",
-        "Enabled=true",
-        "[StartUp]",
-        "Expert=CountInstruments",
-        "Symbol=EURUSD",
-        "Period=H1"
-    )
-    $iniPath = Join-Path $configDir "start.ini"
-    [System.IO.File]::WriteAllLines($iniPath, $iniLines, [System.Text.Encoding]::ASCII)
+    # Try multiple symbol candidates — Symbol=EURUSD might not exist on the
+    # broker, in which case the chart never opens and the EA never attaches.
+    $symbolCandidates = @("EURUSD", "EURUSDx", "EURUSDi", "EURUSDsp", "EURUSDc",
+                          "USDRUB", "USDRUR", "EUR/USD", "GBPUSD", "BTCUSD")
 
-    # Diagnostic: dump our start.ini back so we can confirm the content
-    # actually written (any encoding/transformation surprises) — with the
-    # password redacted because this log gets committed to the (public)
-    # repo as data/last-run/count_mt4_log.txt and GitHub's secret masking
-    # does NOT apply to file content, only to live job-step output.
-    Write-Host "--- start.ini (just written, password redacted) ---"
-    (Get-Content -Raw -Path $iniPath) -replace '(?im)^(Password=).+$','$1***REDACTED***' | Write-Host
-    Write-Host "--- end start.ini ---"
-
-    # And dump <install>\config contents (the bundled .srv files and other ini).
-    Write-Host "--- $configDir contents ---"
-    Get-ChildItem -Path $configDir -Force -ErrorAction SilentlyContinue |
-        Select-Object Name, Length, LastWriteTime |
-        Format-Table | Out-String | Write-Host
-    Write-Host "--- end config dir ---"
-
-    # Launch terminal. Pass login info both via /config:start.ini and via
-    # command-line flags (some MT4 builds honor /login:N /password:X /server:Y
-    # — and command-line wins over the config block).
-    $terminal = Join-Path $mt4Dir "terminal.exe"
-    $tArgs = @(
-        "/portable",
-        "/config:start.ini",
-        "/skipupdate",
-        "/login:$login",
-        "/server:$server",
-        "/password:$password"
-    )
-    # Redact /password:X in the log line — see start.ini dump comment above.
-    $safeArgs = ($tArgs -join ' ') -replace '(/password:)[^\s]+','$1***REDACTED***'
-    Write-Host "Launching terminal.exe $safeArgs"
-    $proc = Start-Process -FilePath $terminal -ArgumentList $tArgs -PassThru
-
-    # Poll for the done flag.
-    $timeout = 180
-    $elapsed = 0
-    while (-not (Test-Path (Join-Path $filesDir "done.flag")) -and $elapsed -lt $timeout) {
-        Start-Sleep -Seconds 3
-        $elapsed += 3
-    }
-
-    # If portable mode runs into UAC virtualization the EA might write
-    # to %LOCALAPPDATA%\VirtualStore\... instead of the real Files dir,
-    # so look in both places.
     $vsBase = Join-Path $env:LOCALAPPDATA "VirtualStore"
     $vsMt4 = Join-Path $vsBase ($mt4Dir.Substring(3))
     $vsFilesDir = Join-Path $vsMt4 "MQL4\Files"
-    $countFile = Join-Path $filesDir "count.json"
-    $vsCountFile = Join-Path $vsFilesDir "count.json"
-    if (Test-Path $vsCountFile) {
-        Write-Host "Found count.json in VirtualStore at $vsCountFile (UAC redirected)"
-        $countFile = $vsCountFile
-    }
 
-    if (Test-Path $countFile) {
-        try {
-            $obj = Get-Content -Raw -Path $countFile | ConvertFrom-Json
-            Write-Host "${label}: full=$($obj.full) total=$($obj.total)"
-            [void]$results.Add(@{
-                label = $label
-                full  = [int]$obj.full
-                total = [int]$obj.total
-                server = $server
-            })
-        } catch {
-            Write-Warning "Failed to parse count.json: $_"
-            [void]$results.Add(@{ label = $label; error = "parse_failed" })
+    $success = $false
+    foreach ($symbol in $symbolCandidates) {
+        if ($success) { break }
+        Write-Host ""
+        Write-Host "Attempt with Symbol=$symbol"
+
+        # Clean stale outputs each attempt.
+        Remove-Item (Join-Path $filesDir "count.json") -ErrorAction SilentlyContinue
+        Remove-Item (Join-Path $filesDir "done.flag")  -ErrorAction SilentlyContinue
+        if (Test-Path $vsFilesDir) {
+            Remove-Item (Join-Path $vsFilesDir "count.json") -ErrorAction SilentlyContinue
+            Remove-Item (Join-Path $vsFilesDir "done.flag")  -ErrorAction SilentlyContinue
         }
-    } else {
-        Write-Warning "Timed out after ${timeout}s waiting for done.flag ($label)"
-        [void]$results.Add(@{ label = $label; error = "timeout" })
 
-        # Dump terminal logs for diagnosis. MT4 writes them to
-        # <install>\logs\YYYYMMDD.log and <install>\MQL4\Logs\YYYYMMDD.log
-        # (and VirtualStore-redirected copies). Tail the most recent file
-        # from each location.
-        foreach ($logRoot in @(
-            (Join-Path $mt4Dir "logs"),
-            (Join-Path $mt4Dir "MQL4\Logs"),
-            (Join-Path $vsMt4 "logs"),
-            (Join-Path $vsMt4 "MQL4\Logs")
-        )) {
-            if (Test-Path $logRoot) {
-                $latest = Get-ChildItem -Path $logRoot -Filter "*.log" -ErrorAction SilentlyContinue |
-                          Sort-Object LastWriteTime -Descending | Select-Object -First 1
-                if ($latest) {
-                    Write-Host "--- $($latest.FullName) (tail) ---"
-                    try { Get-Content -Path $latest.FullName -Tail 60 | Write-Host } catch { Write-Host "(read failed: $_)" }
-                    Write-Host "--- end ---"
+        # Write start.ini. ANSI encoding matters: MT4 expects 1-byte chars.
+        # Include both Login= and Account= — builds differ on key name.
+        $iniLines = @(
+            "[Common]",
+            "Login=$login",
+            "Account=$login",
+            "Password=$password",
+            "Server=$server",
+            "EnableExperts=true",
+            "EnableDDE=false",
+            "ProxyEnable=false",
+            "[Experts]",
+            "AllowLiveTrading=true",
+            "AllowDllImport=false",
+            "Enabled=true",
+            "[StartUp]",
+            "Expert=CountInstruments",
+            "Symbol=$symbol",
+            "Period=H1"
+        )
+        $iniPath = Join-Path $configDir "start.ini"
+        [System.IO.File]::WriteAllLines($iniPath, $iniLines, [System.Text.Encoding]::ASCII)
+
+        Write-Host "wrote start.ini (login=$login, server='$server', symbol=$symbol)"
+
+        # Launch terminal. /login /server /password are undocumented but some
+        # MT4 builds honor them — and command-line wins over the config block.
+        $terminal = Join-Path $mt4Dir "terminal.exe"
+        $tArgs = @(
+            "/portable",
+            "/config:start.ini",
+            "/skipupdate",
+            "/login:$login",
+            "/server:$server",
+            "/password:$password"
+        )
+        $safeArgs = ($tArgs -join ' ') -replace '(/password:)[^\s]+','$1***REDACTED***'
+        Write-Host "Launching terminal.exe $safeArgs"
+        $proc = Start-Process -FilePath $terminal -ArgumentList $tArgs -PassThru
+
+        # Poll for done flag (240s gives plenty of time for login + symbol load).
+        $timeout = 240
+        $elapsed = 0
+        while ($elapsed -lt $timeout) {
+            if ((Test-Path (Join-Path $filesDir "done.flag")) -or
+                (Test-Path (Join-Path $vsFilesDir "done.flag"))) {
+                break
+            }
+            Start-Sleep -Seconds 3
+            $elapsed += 3
+        }
+
+        $countFile = Join-Path $filesDir "count.json"
+        $vsCountFile = Join-Path $vsFilesDir "count.json"
+        if (Test-Path $vsCountFile) {
+            Write-Host "Found count.json in VirtualStore at $vsCountFile"
+            $countFile = $vsCountFile
+        }
+
+        if (Test-Path $countFile) {
+            try {
+                $obj = Get-Content -Raw -Path $countFile | ConvertFrom-Json
+                Write-Host "${label}: full=$($obj.full) total=$($obj.total) (symbol=$symbol)"
+                [void]$results.Add(@{
+                    label = $label
+                    full  = [int]$obj.full
+                    total = [int]$obj.total
+                    server = $server
+                    symbol = $symbol
+                })
+                $success = $true
+            } catch {
+                Write-Warning "Failed to parse count.json: $_"
+            }
+        } else {
+            Write-Warning "Timed out (${timeout}s) on Symbol=$symbol"
+
+            # Dump terminal logs for diagnosis. MT4 writes them to
+            # <install>\logs\YYYYMMDD.log and <install>\MQL4\Logs\YYYYMMDD.log
+            # (and VirtualStore-redirected copies if portable mode hits UAC).
+            # Only do the heavy dump on the LAST symbol attempt to keep the
+            # log size manageable.
+            $isLastAttempt = ($symbol -eq $symbolCandidates[-1])
+            if ($isLastAttempt) {
+                foreach ($logRoot in @(
+                    (Join-Path $mt4Dir "logs"),
+                    (Join-Path $mt4Dir "MQL4\Logs"),
+                    (Join-Path $vsMt4 "logs"),
+                    (Join-Path $vsMt4 "MQL4\Logs")
+                )) {
+                    if (Test-Path $logRoot) {
+                        $latest = Get-ChildItem -Path $logRoot -Filter "*.log" -ErrorAction SilentlyContinue |
+                                  Sort-Object LastWriteTime -Descending | Select-Object -First 1
+                        if ($latest) {
+                            Write-Host "--- $($latest.FullName) (tail) ---"
+                            try { Get-Content -Path $latest.FullName -Tail 80 | Write-Host } catch { Write-Host "(read failed: $_)" }
+                            Write-Host "--- end ---"
+                        }
+                    }
+                }
+                # Also dump the actual Files dir listing.
+                foreach ($d in @($filesDir, $vsFilesDir)) {
+                    if (Test-Path $d) {
+                        Write-Host "Listing $d :"
+                        Get-ChildItem -Path $d -Force | Select-Object Name, Length, LastWriteTime |
+                            Format-Table | Out-String | Write-Host
+                    }
                 }
             }
         }
-        # Also dump the actual Files dir listing to see what *did* land there.
-        foreach ($d in @($filesDir, $vsFilesDir)) {
-            if (Test-Path $d) {
-                Write-Host "Listing $d :"
-                Get-ChildItem -Path $d -Force | Select-Object Name, Length, LastWriteTime |
-                    Format-Table | Out-String | Write-Host
-            }
-        }
-    }
 
-    # Kill the terminal (and any lingering instances).
-    try { Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue } catch {}
-    Get-Process terminal -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
-    Start-Sleep -Seconds 3
+        # Kill the terminal each attempt so the next one starts fresh.
+        try { Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue } catch {}
+        Get-Process terminal -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+        Start-Sleep -Seconds 3
+    }   # foreach ($symbol)
+
+    if (-not $success) {
+        [void]$results.Add(@{
+            label = $label
+            error = "no_symbol_worked"
+            tried = ($symbolCandidates -join ",")
+        })
+    }
 }
 
 $results | ConvertTo-Json -Depth 5 | Out-File -FilePath "artifacts/mt4_results.json" -Encoding utf8

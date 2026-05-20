@@ -52,12 +52,12 @@ jobs:
           python-version: "3.11"
 
       - name: Install Python dependencies
-        # MetaTrader5 5.0.45 is the last build known to consistently work
-        # against MetaQuotes' generic MT5 terminal on GitHub Actions; it was
-        # built against NumPy 1.x though, so pin numpy<2 to avoid the
-        # "numpy.core.multiarray failed to import" runtime ImportError that
-        # blocks even the import statement on Python 3.11 with NumPy 2.x.
-        run: pip install --no-cache-dir "MetaTrader5==5.0.45" "numpy<2" pyyaml tzdata
+        # We no longer use the MetaTrader5 Python module — its IPC pairing
+        # was timing out under every warmup strategy. MT5 now goes through
+        # the same headless terminal + MQL5 EA path as MT4. Python only
+        # needs pyyaml (for aggregate.py and the config.yaml -> config.json
+        # converter) and tzdata (for zoneinfo("Europe/Kyiv") on Windows).
+        run: pip install --no-cache-dir pyyaml tzdata
 
       - name: Should we run today?
         id: check
@@ -154,7 +154,7 @@ jobs:
           MT5_INSTANT_PASSWORD: ${{ secrets.MT5_INSTANT_PASSWORD }}
         run: |
           if (-not (Test-Path artifacts)) { New-Item -ItemType Directory -Path artifacts -Force | Out-Null }
-          python scripts/count_mt5.py 2>&1 | Tee-Object -FilePath artifacts/count_mt5_log.txt
+          pwsh scripts/count_mt5.ps1 2>&1 | Tee-Object -FilePath artifacts/count_mt5_log.txt
 
       - name: Install MetaTrader 4
         if: steps.check.outputs.should_run == 'true'
