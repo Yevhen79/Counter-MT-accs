@@ -1,10 +1,10 @@
 [
   {
-    "error": "timeout",
-    "label": "MT4 Market"
+    "label": "MT4 Market",
+    "error": "timeout"
   },
   {
-    "error": "timeout",
-    "label": "MT4 Instant"
+    "label": "MT4 Instant",
+    "error": "timeout"
   }
 ]
