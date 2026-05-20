@@ -36,8 +36,7 @@ accounts:
     password_secret: MT5_INSTANT_PASSWORD
 
 # URL of the broker's MT4 installer.
-# We use the broker's branded installer (not generic MT4) so the ForexClub
-# server list is pre-bundled. Get this from forexclub.com / libertex.com download page,
-# right-click the "Download MT4" link, copy URL, paste here.
-# Until this is set, the MT4 part of the workflow will be skipped gracefully.
-mt4_installer_url: ""
+# Can be either a direct .exe URL or the broker's download page — the install
+# script auto-detects (it looks at the response: PE binary => save as installer,
+# HTML => scrape the first .exe link from the page and follow it).
+mt4_installer_url: "https://libertex.org/platforms/metatrader4#download-link?icid=download_mt4"
