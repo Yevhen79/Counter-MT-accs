@@ -42,7 +42,7 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 424 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 448 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
@@ -50,131 +50,125 @@ wrote start.ini (login=550459323, server='ForexClub-MT5 Real Server', symbol=EUR
 Launching terminal64.exe ...
 [33;1mWARNING: Timed out (90s) on Symbol=EURUSD[0m
 --- C:\Program Files\MetaTrader 5\logs\metaeditor.log (tail 50) ---
-0	2026.05.20 15:55:16.920	Compile	C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\NRTR Channel.mq5 - 0 errors, 0 warnings, 324 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:16.920	Compiler	compiled NRTR Channel.mq5
-0	2026.05.20 15:55:17.232	Compile	C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Parabolic Channel.mq5 - 0 errors, 0 warnings, 310 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:17.232	Compiler	compiled Parabolic Channel.mq5
-0	2026.05.20 15:55:17.564	Compile	C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Pivot Channel.mq5 - 0 errors, 0 warnings, 321 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:17.564	Compiler	compiled Pivot Channel.mq5
-0	2026.05.20 15:55:17.873	Compile	C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Woodie Channel.mq5 - 0 errors, 0 warnings, 315 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:17.889	Compiler	compiled Woodie Channel.mq5
-0	2026.05.20 15:55:18.218	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\AccountInfo\AccountInfoSample.mq5 - 0 errors, 0 warnings, 330 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:18.218	Compiler	compiled AccountInfoSample.mq5
-0	2026.05.20 15:55:18.530	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\ArrayDouble\ArrayDoubleSample.mq5 - 0 errors, 0 warnings, 317 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:18.546	Compiler	compiled ArrayDoubleSample.mq5
-0	2026.05.20 15:55:18.953	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\CanvasSample.mq5 - 0 errors, 0 warnings, 412 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:18.953	Compiler	compiled CanvasSample.mq5
-0	2026.05.20 15:55:19.454	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\HistogramChartSample.mq5 - 0 errors, 0 warnings, 495 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:19.454	Compiler	compiled HistogramChartSample.mq5
-0	2026.05.20 15:55:19.954	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\LineChartSample.mq5 - 0 errors, 0 warnings, 496 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:19.954	Compiler	compiled LineChartSample.mq5
-0	2026.05.20 15:55:20.549	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\PieChartSample.mq5 - 0 errors, 0 warnings, 588 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:20.549	Compiler	compiled PieChartSample.mq5
-0	2026.05.20 15:55:21.080	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\ObjectChart\ObjChartSample.mq5 - 0 errors, 0 warnings, 516 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:21.080	Compiler	compiled ObjChartSample.mq5
-0	2026.05.20 15:55:21.424	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\ObjectSphere\SphereSample.mq5 - 0 errors, 0 warnings, 338 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:21.424	Compiler	compiled SphereSample.mq5
-0	2026.05.20 15:55:21.753	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\BitonicSort.mq5 - 0 errors, 0 warnings, 323 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:21.753	Compiler	compiled BitonicSort.mq5
-0	2026.05.20 15:55:22.113	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\FFT.mq5 - 0 errors, 0 warnings, 358 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:22.113	Compiler	compiled FFT.mq5
-0	2026.05.20 15:55:22.441	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\MatrixMult.mq5 - 0 errors, 0 warnings, 326 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:22.441	Compiler	compiled MatrixMult.mq5
-0	2026.05.20 15:55:23.207	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\Wavelet.mq5 - 0 errors, 0 warnings, 750 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:23.207	Compiler	compiled Wavelet.mq5
-0	2026.05.20 15:55:23.536	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\BitonicSort.mq5 - 0 errors, 0 warnings, 322 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:23.536	Compiler	compiled BitonicSort.mq5
-0	2026.05.20 15:55:23.895	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\FFT.mq5 - 0 errors, 0 warnings, 359 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:23.895	Compiler	compiled FFT.mq5
-0	2026.05.20 15:55:24.225	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\MatrixMult.mq5 - 0 errors, 0 warnings, 329 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:24.225	Compiler	compiled MatrixMult.mq5
-0	2026.05.20 15:55:25.006	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\Wavelet.mq5 - 0 errors, 0 warnings, 769 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:25.006	Compiler	compiled Wavelet.mq5
-0	2026.05.20 15:55:25.428	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Seascape\Seascape.mqproj - 0 errors, 0 warnings, 427 ms elapsed, cpu='X64 Regular'
-0	2026.05.20 15:55:25.444	Compiler	compiled Seascape.mqproj
-0	2026.05.20 15:55:25.788	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OrderInfo\OrderInfoSample.mq5 - 0 errors, 0 warnings, 352 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:25.788	Compiler	compiled OrderInfoSample.mq5
-0	2026.05.20 15:55:26.132	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\PositionInfo\PositionInfoSample.mq5 - 0 errors, 0 warnings, 335 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:26.132	Compiler	compiled PositionInfoSample.mq5
-0	2026.05.20 15:55:26.569	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Remnant 3D\Remnant 3D.mqproj - 0 errors, 0 warnings, 422 ms elapsed, cpu='X64 Regular'
-0	2026.05.20 15:55:26.570	Compiler	compiled Remnant 3D.mqproj
-0	2026.05.20 15:55:26.929	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\SymbolInfo\SymbolInfoSample.mq5 - 0 errors, 0 warnings, 365 ms elapsed without optimizations, cpu='X64 Regular'
-0	2026.05.20 15:55:26.929	Compiler	compiled SymbolInfoSample.mq5
+0	2026.05.21 12:46:25.026	Compile	C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\NRTR Channel.mq5 - 0 errors, 0 warnings, 289 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:25.041	Compiler	compiled NRTR Channel.mq5
+0	2026.05.21 12:46:25.323	Compile	C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Parabolic Channel.mq5 - 0 errors, 0 warnings, 275 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:25.323	Compiler	compiled Parabolic Channel.mq5
+0	2026.05.21 12:46:25.620	Compile	C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Pivot Channel.mq5 - 0 errors, 0 warnings, 295 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:25.620	Compiler	compiled Pivot Channel.mq5
+0	2026.05.21 12:46:25.918	Compile	C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Woodie Channel.mq5 - 0 errors, 0 warnings, 296 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:25.918	Compiler	compiled Woodie Channel.mq5
+0	2026.05.21 12:46:26.246	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\AccountInfo\AccountInfoSample.mq5 - 0 errors, 0 warnings, 313 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:26.246	Compiler	compiled AccountInfoSample.mq5
+0	2026.05.21 12:46:26.543	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\ArrayDouble\ArrayDoubleSample.mq5 - 0 errors, 0 warnings, 294 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:26.543	Compiler	compiled ArrayDoubleSample.mq5
+0	2026.05.21 12:46:26.950	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\CanvasSample.mq5 - 0 errors, 0 warnings, 398 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:26.950	Compiler	compiled CanvasSample.mq5
+0	2026.05.21 12:46:27.435	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\HistogramChartSample.mq5 - 0 errors, 0 warnings, 487 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:27.435	Compiler	compiled HistogramChartSample.mq5
+0	2026.05.21 12:46:27.935	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\LineChartSample.mq5 - 0 errors, 0 warnings, 487 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:27.935	Compiler	compiled LineChartSample.mq5
+0	2026.05.21 12:46:28.513	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\PieChartSample.mq5 - 0 errors, 0 warnings, 582 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:28.529	Compiler	compiled PieChartSample.mq5
+0	2026.05.21 12:46:29.013	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\ObjectChart\ObjChartSample.mq5 - 0 errors, 0 warnings, 490 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:29.013	Compiler	compiled ObjChartSample.mq5
+0	2026.05.21 12:46:29.342	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\ObjectSphere\SphereSample.mq5 - 0 errors, 0 warnings, 313 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:29.342	Compiler	compiled SphereSample.mq5
+0	2026.05.21 12:46:29.655	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\BitonicSort.mq5 - 0 errors, 0 warnings, 310 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:29.655	Compiler	compiled BitonicSort.mq5
+0	2026.05.21 12:46:30.014	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\FFT.mq5 - 0 errors, 0 warnings, 349 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:30.014	Compiler	compiled FFT.mq5
+0	2026.05.21 12:46:30.342	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\MatrixMult.mq5 - 0 errors, 0 warnings, 323 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:30.342	Compiler	compiled MatrixMult.mq5
+0	2026.05.21 12:46:31.125	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\Wavelet.mq5 - 0 errors, 0 warnings, 784 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:31.140	Compiler	compiled Wavelet.mq5
+0	2026.05.21 12:46:31.453	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\BitonicSort.mq5 - 0 errors, 0 warnings, 316 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:31.453	Compiler	compiled BitonicSort.mq5
+0	2026.05.21 12:46:31.797	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\FFT.mq5 - 0 errors, 0 warnings, 340 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:31.813	Compiler	compiled FFT.mq5
+0	2026.05.21 12:46:32.125	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\MatrixMult.mq5 - 0 errors, 0 warnings, 309 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:32.125	Compiler	compiled MatrixMult.mq5
+0	2026.05.21 12:46:32.907	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\Wavelet.mq5 - 0 errors, 0 warnings, 780 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:32.907	Compiler	compiled Wavelet.mq5
+0	2026.05.21 12:46:33.329	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Seascape\Seascape.mqproj - 0 errors, 0 warnings, 416 ms elapsed, cpu='X64 Regular'
+0	2026.05.21 12:46:33.329	Compiler	compiled Seascape.mqproj
+0	2026.05.21 12:46:33.673	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OrderInfo\OrderInfoSample.mq5 - 0 errors, 0 warnings, 338 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:33.673	Compiler	compiled OrderInfoSample.mq5
+0	2026.05.21 12:46:34.001	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\PositionInfo\PositionInfoSample.mq5 - 0 errors, 0 warnings, 315 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:34.001	Compiler	compiled PositionInfoSample.mq5
+0	2026.05.21 12:46:34.415	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Remnant 3D\Remnant 3D.mqproj - 0 errors, 0 warnings, 414 ms elapsed, cpu='X64 Regular'
+0	2026.05.21 12:46:34.424	Compiler	compiled Remnant 3D.mqproj
+0	2026.05.21 12:46:34.783	Compile	C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\SymbolInfo\SymbolInfoSample.mq5 - 0 errors, 0 warnings, 360 ms elapsed without optimizations, cpu='X64 Regular'
+0	2026.05.21 12:46:34.783	Compiler	compiled SymbolInfoSample.mq5
 --- end ---
 Trying with Symbol=EURUSDx ...
 wrote start.ini (login=550459323, server='ForexClub-MT5 Real Server', symbol=EURUSDx)
 Launching terminal64.exe ...
 [33;1mWARNING: Timed out (90s) on Symbol=EURUSDx[0m
---- C:\Program Files\MetaTrader 5\logs\20260520.log (tail 50) ---
-EL	0	15:54:33.180	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
-PJ	0	15:54:33.180	Terminal	453 files updated
-IK	2	15:54:33.188	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	15:54:33.232	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	15:54:33.232	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	15:54:33.232	Terminal	C:\Program Files\MetaTrader 5
-MO	0	15:54:33.232	Compiler	full recompilation has been started
-NF	0	15:55:26.963	Compiler	full recompilation has been finished:  131 file(s) compiled
-KP	0	15:55:33.370	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
-KR	0	15:55:33.834	LiveUpdate	'mt5onnx64' downloaded and updated (14688 kb)
-GI	0	15:55:33.835	LiveUpdate	downloaded successfully
-MM	2	15:56:05.769	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-KH	0	15:56:05.793	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CD	0	15:56:05.794	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RI	0	15:56:05.794	Terminal	C:\Program Files\MetaTrader 5
+--- C:\Program Files\MetaTrader 5\logs\20260521.log (tail 50) ---
+LL	0	12:45:42.829	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
+IJ	0	12:45:42.829	Terminal	453 files updated
+NK	2	12:45:42.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+IK	0	12:45:42.874	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+DN	0	12:45:42.874	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+KE	0	12:45:42.874	Terminal	C:\Program Files\MetaTrader 5
+HM	0	12:45:42.874	Compiler	full recompilation has been started
+LD	0	12:46:34.817	Compiler	full recompilation has been finished:  131 file(s) compiled
+QR	0	12:46:44.247	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
+IK	2	12:47:15.527	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+PK	0	12:47:15.550	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+MN	0	12:47:15.550	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+FE	0	12:47:15.550	Terminal	C:\Program Files\MetaTrader 5
 --- end ---
 Trying with Symbol=GBPUSD ...
 wrote start.ini (login=550459323, server='ForexClub-MT5 Real Server', symbol=GBPUSD)
 Launching terminal64.exe ...
 [33;1mWARNING: Timed out (90s) on Symbol=GBPUSD[0m
---- C:\Program Files\MetaTrader 5\logs\20260520.log (tail 50) ---
-EL	0	15:54:33.180	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
-PJ	0	15:54:33.180	Terminal	453 files updated
-IK	2	15:54:33.188	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	15:54:33.232	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	15:54:33.232	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	15:54:33.232	Terminal	C:\Program Files\MetaTrader 5
-MO	0	15:54:33.232	Compiler	full recompilation has been started
-NF	0	15:55:26.963	Compiler	full recompilation has been finished:  131 file(s) compiled
-KP	0	15:55:33.370	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
-KR	0	15:55:33.834	LiveUpdate	'mt5onnx64' downloaded and updated (14688 kb)
-GI	0	15:55:33.835	LiveUpdate	downloaded successfully
-MM	2	15:56:05.769	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-KH	0	15:56:05.793	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CD	0	15:56:05.794	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RI	0	15:56:05.794	Terminal	C:\Program Files\MetaTrader 5
-NQ	2	15:57:38.936	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-LM	0	15:57:38.959	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-II	0	15:57:38.959	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-LN	0	15:57:38.959	Terminal	C:\Program Files\MetaTrader 5
+--- C:\Program Files\MetaTrader 5\logs\20260521.log (tail 50) ---
+LL	0	12:45:42.829	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
+IJ	0	12:45:42.829	Terminal	453 files updated
+NK	2	12:45:42.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+IK	0	12:45:42.874	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+DN	0	12:45:42.874	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+KE	0	12:45:42.874	Terminal	C:\Program Files\MetaTrader 5
+HM	0	12:45:42.874	Compiler	full recompilation has been started
+LD	0	12:46:34.817	Compiler	full recompilation has been finished:  131 file(s) compiled
+QR	0	12:46:44.247	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
+IK	2	12:47:15.527	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+PK	0	12:47:15.550	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+MN	0	12:47:15.550	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+FE	0	12:47:15.550	Terminal	C:\Program Files\MetaTrader 5
+GM	2	12:48:48.683	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+CI	0	12:48:48.705	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+JI	0	12:48:48.705	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+QD	0	12:48:48.705	Terminal	C:\Program Files\MetaTrader 5
 --- end ---
 Trying with Symbol=USDRUB ...
 wrote start.ini (login=550459323, server='ForexClub-MT5 Real Server', symbol=USDRUB)
 Launching terminal64.exe ...
 [33;1mWARNING: Timed out (90s) on Symbol=USDRUB[0m
---- C:\Program Files\MetaTrader 5\logs\20260520.log (tail 50) ---
-EL	0	15:54:33.180	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
-PJ	0	15:54:33.180	Terminal	453 files updated
-IK	2	15:54:33.188	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	15:54:33.232	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	15:54:33.232	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	15:54:33.232	Terminal	C:\Program Files\MetaTrader 5
-MO	0	15:54:33.232	Compiler	full recompilation has been started
-NF	0	15:55:26.963	Compiler	full recompilation has been finished:  131 file(s) compiled
-KP	0	15:55:33.370	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
-KR	0	15:55:33.834	LiveUpdate	'mt5onnx64' downloaded and updated (14688 kb)
-GI	0	15:55:33.835	LiveUpdate	downloaded successfully
-MM	2	15:56:05.769	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-KH	0	15:56:05.793	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CD	0	15:56:05.794	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RI	0	15:56:05.794	Terminal	C:\Program Files\MetaTrader 5
-NQ	2	15:57:38.936	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-LM	0	15:57:38.959	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-II	0	15:57:38.959	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-LN	0	15:57:38.959	Terminal	C:\Program Files\MetaTrader 5
-QD	2	15:59:12.122	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-ER	0	15:59:12.147	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-EM	0	15:59:12.148	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-PS	0	15:59:12.148	Terminal	C:\Program Files\MetaTrader 5
+--- C:\Program Files\MetaTrader 5\logs\20260521.log (tail 50) ---
+LL	0	12:45:42.829	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
+IJ	0	12:45:42.829	Terminal	453 files updated
+NK	2	12:45:42.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+IK	0	12:45:42.874	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+DN	0	12:45:42.874	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+KE	0	12:45:42.874	Terminal	C:\Program Files\MetaTrader 5
+HM	0	12:45:42.874	Compiler	full recompilation has been started
+LD	0	12:46:34.817	Compiler	full recompilation has been finished:  131 file(s) compiled
+QR	0	12:46:44.247	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
+IK	2	12:47:15.527	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+PK	0	12:47:15.550	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+MN	0	12:47:15.550	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+FE	0	12:47:15.550	Terminal	C:\Program Files\MetaTrader 5
+GM	2	12:48:48.683	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+CI	0	12:48:48.705	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+JI	0	12:48:48.705	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+QD	0	12:48:48.705	Terminal	C:\Program Files\MetaTrader 5
+MN	2	12:50:21.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+KH	0	12:50:21.859	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+HK	0	12:50:21.860	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+OJ	0	12:50:21.860	Terminal	C:\Program Files\MetaTrader 5
 --- end ---
 
 === MT5 Instant (login=555105689, server='ForexClub-MT5 Instant Real Server') ===
@@ -219,164 +213,156 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 424 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 411 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
 wrote start.ini (login=555105689, server='ForexClub-MT5 Instant Real Server', symbol=EURUSD)
 Launching terminal64.exe ...
 [33;1mWARNING: Timed out (90s) on Symbol=EURUSD[0m
---- C:\Program Files\MetaTrader 5\logs\20260520.log (tail 50) ---
-EL	0	15:54:33.180	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
-PJ	0	15:54:33.180	Terminal	453 files updated
-IK	2	15:54:33.188	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	15:54:33.232	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	15:54:33.232	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	15:54:33.232	Terminal	C:\Program Files\MetaTrader 5
-MO	0	15:54:33.232	Compiler	full recompilation has been started
-NF	0	15:55:26.963	Compiler	full recompilation has been finished:  131 file(s) compiled
-KP	0	15:55:33.370	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
-KR	0	15:55:33.834	LiveUpdate	'mt5onnx64' downloaded and updated (14688 kb)
-GI	0	15:55:33.835	LiveUpdate	downloaded successfully
-MM	2	15:56:05.769	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-KH	0	15:56:05.793	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CD	0	15:56:05.794	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RI	0	15:56:05.794	Terminal	C:\Program Files\MetaTrader 5
-NQ	2	15:57:38.936	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-LM	0	15:57:38.959	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-II	0	15:57:38.959	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-LN	0	15:57:38.959	Terminal	C:\Program Files\MetaTrader 5
-QD	2	15:59:12.122	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-ER	0	15:59:12.147	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-EM	0	15:59:12.148	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-PS	0	15:59:12.148	Terminal	C:\Program Files\MetaTrader 5
-KH	2	16:00:47.299	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-GF	0	16:00:47.324	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-MN	0	16:00:47.325	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-HG	0	16:00:47.325	Terminal	C:\Program Files\MetaTrader 5
+--- C:\Program Files\MetaTrader 5\logs\20260521.log (tail 50) ---
+LL	0	12:45:42.829	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
+IJ	0	12:45:42.829	Terminal	453 files updated
+NK	2	12:45:42.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+IK	0	12:45:42.874	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+DN	0	12:45:42.874	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+KE	0	12:45:42.874	Terminal	C:\Program Files\MetaTrader 5
+HM	0	12:45:42.874	Compiler	full recompilation has been started
+LD	0	12:46:34.817	Compiler	full recompilation has been finished:  131 file(s) compiled
+QR	0	12:46:44.247	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
+IK	2	12:47:15.527	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+PK	0	12:47:15.550	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+MN	0	12:47:15.550	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+FE	0	12:47:15.550	Terminal	C:\Program Files\MetaTrader 5
+GM	2	12:48:48.683	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+CI	0	12:48:48.705	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+JI	0	12:48:48.705	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+QD	0	12:48:48.705	Terminal	C:\Program Files\MetaTrader 5
+MN	2	12:50:21.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+KH	0	12:50:21.859	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+HK	0	12:50:21.860	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+OJ	0	12:50:21.860	Terminal	C:\Program Files\MetaTrader 5
+JP	2	12:51:57.019	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+EN	0	12:51:57.042	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+HJ	0	12:51:57.042	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+OI	0	12:51:57.042	Terminal	C:\Program Files\MetaTrader 5
 --- end ---
 Trying with Symbol=EURUSDx ...
 wrote start.ini (login=555105689, server='ForexClub-MT5 Instant Real Server', symbol=EURUSDx)
 Launching terminal64.exe ...
 [33;1mWARNING: Timed out (90s) on Symbol=EURUSDx[0m
---- C:\Program Files\MetaTrader 5\logs\20260520.log (tail 50) ---
-EL	0	15:54:33.180	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
-PJ	0	15:54:33.180	Terminal	453 files updated
-IK	2	15:54:33.188	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	15:54:33.232	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	15:54:33.232	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	15:54:33.232	Terminal	C:\Program Files\MetaTrader 5
-MO	0	15:54:33.232	Compiler	full recompilation has been started
-NF	0	15:55:26.963	Compiler	full recompilation has been finished:  131 file(s) compiled
-KP	0	15:55:33.370	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
-KR	0	15:55:33.834	LiveUpdate	'mt5onnx64' downloaded and updated (14688 kb)
-GI	0	15:55:33.835	LiveUpdate	downloaded successfully
-MM	2	15:56:05.769	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-KH	0	15:56:05.793	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CD	0	15:56:05.794	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RI	0	15:56:05.794	Terminal	C:\Program Files\MetaTrader 5
-NQ	2	15:57:38.936	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-LM	0	15:57:38.959	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-II	0	15:57:38.959	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-LN	0	15:57:38.959	Terminal	C:\Program Files\MetaTrader 5
-QD	2	15:59:12.122	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-ER	0	15:59:12.147	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-EM	0	15:59:12.148	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-PS	0	15:59:12.148	Terminal	C:\Program Files\MetaTrader 5
-KH	2	16:00:47.299	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-GF	0	16:00:47.324	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-MN	0	16:00:47.325	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-HG	0	16:00:47.325	Terminal	C:\Program Files\MetaTrader 5
-EK	2	16:02:20.490	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	16:02:20.513	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	16:02:20.513	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	16:02:20.513	Terminal	C:\Program Files\MetaTrader 5
+--- C:\Program Files\MetaTrader 5\logs\20260521.log (tail 50) ---
+LL	0	12:45:42.829	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
+IJ	0	12:45:42.829	Terminal	453 files updated
+NK	2	12:45:42.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+IK	0	12:45:42.874	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+DN	0	12:45:42.874	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+KE	0	12:45:42.874	Terminal	C:\Program Files\MetaTrader 5
+HM	0	12:45:42.874	Compiler	full recompilation has been started
+LD	0	12:46:34.817	Compiler	full recompilation has been finished:  131 file(s) compiled
+QR	0	12:46:44.247	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
+IK	2	12:47:15.527	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+PK	0	12:47:15.550	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+MN	0	12:47:15.550	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+FE	0	12:47:15.550	Terminal	C:\Program Files\MetaTrader 5
+GM	2	12:48:48.683	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+CI	0	12:48:48.705	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+JI	0	12:48:48.705	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+QD	0	12:48:48.705	Terminal	C:\Program Files\MetaTrader 5
+MN	2	12:50:21.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+KH	0	12:50:21.859	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+HK	0	12:50:21.860	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+OJ	0	12:50:21.860	Terminal	C:\Program Files\MetaTrader 5
+JP	2	12:51:57.019	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+EN	0	12:51:57.042	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+HJ	0	12:51:57.042	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+OI	0	12:51:57.042	Terminal	C:\Program Files\MetaTrader 5
+LQ	2	12:53:30.148	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+KM	0	12:53:30.171	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+RD	0	12:53:30.171	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+IO	0	12:53:30.171	Terminal	C:\Program Files\MetaTrader 5
 --- end ---
 Trying with Symbol=GBPUSD ...
 wrote start.ini (login=555105689, server='ForexClub-MT5 Instant Real Server', symbol=GBPUSD)
 Launching terminal64.exe ...
 [33;1mWARNING: Timed out (90s) on Symbol=GBPUSD[0m
---- C:\Program Files\MetaTrader 5\logs\20260520.log (tail 50) ---
-EL	0	15:54:33.180	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
-PJ	0	15:54:33.180	Terminal	453 files updated
-IK	2	15:54:33.188	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	15:54:33.232	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	15:54:33.232	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	15:54:33.232	Terminal	C:\Program Files\MetaTrader 5
-MO	0	15:54:33.232	Compiler	full recompilation has been started
-NF	0	15:55:26.963	Compiler	full recompilation has been finished:  131 file(s) compiled
-KP	0	15:55:33.370	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
-KR	0	15:55:33.834	LiveUpdate	'mt5onnx64' downloaded and updated (14688 kb)
-GI	0	15:55:33.835	LiveUpdate	downloaded successfully
-MM	2	15:56:05.769	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-KH	0	15:56:05.793	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CD	0	15:56:05.794	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RI	0	15:56:05.794	Terminal	C:\Program Files\MetaTrader 5
-NQ	2	15:57:38.936	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-LM	0	15:57:38.959	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-II	0	15:57:38.959	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-LN	0	15:57:38.959	Terminal	C:\Program Files\MetaTrader 5
-QD	2	15:59:12.122	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-ER	0	15:59:12.147	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-EM	0	15:59:12.148	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-PS	0	15:59:12.148	Terminal	C:\Program Files\MetaTrader 5
-KH	2	16:00:47.299	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-GF	0	16:00:47.324	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-MN	0	16:00:47.325	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-HG	0	16:00:47.325	Terminal	C:\Program Files\MetaTrader 5
-EK	2	16:02:20.490	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	16:02:20.513	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	16:02:20.513	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	16:02:20.513	Terminal	C:\Program Files\MetaTrader 5
-IN	2	16:03:53.666	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-PH	0	16:03:53.688	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-EG	0	16:03:53.688	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-PI	0	16:03:53.688	Terminal	C:\Program Files\MetaTrader 5
+--- C:\Program Files\MetaTrader 5\logs\20260521.log (tail 50) ---
+LL	0	12:45:42.829	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
+IJ	0	12:45:42.829	Terminal	453 files updated
+NK	2	12:45:42.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+IK	0	12:45:42.874	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+DN	0	12:45:42.874	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+KE	0	12:45:42.874	Terminal	C:\Program Files\MetaTrader 5
+HM	0	12:45:42.874	Compiler	full recompilation has been started
+LD	0	12:46:34.817	Compiler	full recompilation has been finished:  131 file(s) compiled
+QR	0	12:46:44.247	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
+IK	2	12:47:15.527	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+PK	0	12:47:15.550	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+MN	0	12:47:15.550	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+FE	0	12:47:15.550	Terminal	C:\Program Files\MetaTrader 5
+GM	2	12:48:48.683	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+CI	0	12:48:48.705	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+JI	0	12:48:48.705	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+QD	0	12:48:48.705	Terminal	C:\Program Files\MetaTrader 5
+MN	2	12:50:21.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+KH	0	12:50:21.859	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+HK	0	12:50:21.860	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+OJ	0	12:50:21.860	Terminal	C:\Program Files\MetaTrader 5
+JP	2	12:51:57.019	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+EN	0	12:51:57.042	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+HJ	0	12:51:57.042	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+OI	0	12:51:57.042	Terminal	C:\Program Files\MetaTrader 5
+LQ	2	12:53:30.148	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+KM	0	12:53:30.171	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+RD	0	12:53:30.171	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+IO	0	12:53:30.171	Terminal	C:\Program Files\MetaTrader 5
+DS	2	12:55:03.308	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+CS	0	12:55:03.331	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+JG	0	12:55:03.331	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+QN	0	12:55:03.331	Terminal	C:\Program Files\MetaTrader 5
 --- end ---
 Trying with Symbol=USDRUB ...
 wrote start.ini (login=555105689, server='ForexClub-MT5 Instant Real Server', symbol=USDRUB)
 Launching terminal64.exe ...
 [33;1mWARNING: Timed out (90s) on Symbol=USDRUB[0m
---- C:\Program Files\MetaTrader 5\logs\20260520.log (tail 50) ---
-EL	0	15:54:33.180	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
-PJ	0	15:54:33.180	Terminal	453 files updated
-IK	2	15:54:33.188	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	15:54:33.232	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	15:54:33.232	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	15:54:33.232	Terminal	C:\Program Files\MetaTrader 5
-MO	0	15:54:33.232	Compiler	full recompilation has been started
-NF	0	15:55:26.963	Compiler	full recompilation has been finished:  131 file(s) compiled
-KP	0	15:55:33.370	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
-KR	0	15:55:33.834	LiveUpdate	'mt5onnx64' downloaded and updated (14688 kb)
-GI	0	15:55:33.835	LiveUpdate	downloaded successfully
-MM	2	15:56:05.769	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-KH	0	15:56:05.793	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CD	0	15:56:05.794	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RI	0	15:56:05.794	Terminal	C:\Program Files\MetaTrader 5
-NQ	2	15:57:38.936	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-LM	0	15:57:38.959	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-II	0	15:57:38.959	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-LN	0	15:57:38.959	Terminal	C:\Program Files\MetaTrader 5
-QD	2	15:59:12.122	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-ER	0	15:59:12.147	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-EM	0	15:59:12.148	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-PS	0	15:59:12.148	Terminal	C:\Program Files\MetaTrader 5
-KH	2	16:00:47.299	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-GF	0	16:00:47.324	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-MN	0	16:00:47.325	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-HG	0	16:00:47.325	Terminal	C:\Program Files\MetaTrader 5
-EK	2	16:02:20.490	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-RK	0	16:02:20.513	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-CR	0	16:02:20.513	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-RD	0	16:02:20.513	Terminal	C:\Program Files\MetaTrader 5
-IN	2	16:03:53.666	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-PH	0	16:03:53.688	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-EG	0	16:03:53.688	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-PI	0	16:03:53.688	Terminal	C:\Program Files\MetaTrader 5
-CR	2	16:05:26.785	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
-OL	0	16:05:26.810	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
-FH	0	16:05:26.810	Terminal	Windows Server 2022 build 20348, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
-OM	0	16:05:26.810	Terminal	C:\Program Files\MetaTrader 5
+--- C:\Program Files\MetaTrader 5\logs\20260521.log (tail 50) ---
+LL	0	12:45:42.829	Terminal	updating C:\Program Files\MetaTrader 5\MQL5 folder
+IJ	0	12:45:42.829	Terminal	453 files updated
+NK	2	12:45:42.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+IK	0	12:45:42.874	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+DN	0	12:45:42.874	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+KE	0	12:45:42.874	Terminal	C:\Program Files\MetaTrader 5
+HM	0	12:45:42.874	Compiler	full recompilation has been started
+LD	0	12:46:34.817	Compiler	full recompilation has been finished:  131 file(s) compiled
+QR	0	12:46:44.247	LiveUpdate	new version build 5833 (IDE: 5833, Tester: 5833) is available
+IK	2	12:47:15.527	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+PK	0	12:47:15.550	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+MN	0	12:47:15.550	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+FE	0	12:47:15.550	Terminal	C:\Program Files\MetaTrader 5
+GM	2	12:48:48.683	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+CI	0	12:48:48.705	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+JI	0	12:48:48.705	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+QD	0	12:48:48.705	Terminal	C:\Program Files\MetaTrader 5
+MN	2	12:50:21.836	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+KH	0	12:50:21.859	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+HK	0	12:50:21.860	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+OJ	0	12:50:21.860	Terminal	C:\Program Files\MetaTrader 5
+JP	2	12:51:57.019	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+EN	0	12:51:57.042	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+HJ	0	12:51:57.042	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+OI	0	12:51:57.042	Terminal	C:\Program Files\MetaTrader 5
+LQ	2	12:53:30.148	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+KM	0	12:53:30.171	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+RD	0	12:53:30.171	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+IO	0	12:53:30.171	Terminal	C:\Program Files\MetaTrader 5
+DS	2	12:55:03.308	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+CS	0	12:55:03.331	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+JG	0	12:55:03.331	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+QN	0	12:55:03.331	Terminal	C:\Program Files\MetaTrader 5
+FD	2	12:56:36.466	Terminal	cannot load config "D:\a\Counter-MT-accs\Counter-MT-accs\start.ini" at start
+DR	0	12:56:36.490	Terminal	MetaTrader 5 x64 build 5836 started for MetaQuotes Ltd.
+IQ	0	12:56:36.490	Terminal	Windows Server 2022 build 20348, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 86 / 255 Gb disk, UAC, admin, GMT+0
+RL	0	12:56:36.490	Terminal	C:\Program Files\MetaTrader 5
 --- end ---
 
 Wrote artifacts/mt5_results.json

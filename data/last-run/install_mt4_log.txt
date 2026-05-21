@@ -10,6 +10,6 @@ Attempting silent install with flags: '/silent' (timeout 30s)
 Attempting silent install with flags: '/quiet' (timeout 30s)
 [33;1mWARNING:   Installer did not exit within 30s — killing process tree.[0m
 Attempting silent install with flags: '/auto' (timeout 30s)
-  Installer exited with code 1 after 18s.
+  Installer exited with code 1 after 15s.
 No known install location matched — searching Program Files...
 Discovered MT4 at: C:\Program Files (x86)\ForexClub MT4\terminal.exe
