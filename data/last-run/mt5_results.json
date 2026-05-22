@@ -1,12 +1,12 @@
 [
   {
-    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB",
     "label": "MT5 Market",
-    "error": "no_symbol_worked"
+    "error": "no_symbol_worked",
+    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB"
   },
   {
-    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB",
     "label": "MT5 Instant",
-    "error": "no_symbol_worked"
+    "error": "no_symbol_worked",
+    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB"
   }
 ]

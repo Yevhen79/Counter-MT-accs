@@ -7,7 +7,7 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 81 msec elapsed
+Result: 0 errors, 0 warnings, 83 msec elapsed
 
 --- end compile log ---
 
@@ -30,55 +30,55 @@ Attempt with Symbol=USDRUB
 wrote start.ini (login=730232800, server='ForexClub-MT4 Market Real 2 Server', symbol=USDRUB)
 Launching terminal.exe /portable /config:start.ini /skipupdate /login:730232800 /server:ForexClub-MT4 Market Real 2 Server /password:***REDACTED***
 [33;1mWARNING: Timed out (90s) on Symbol=USDRUB[0m
---- C:\Program Files (x86)\ForexClub MT4\logs\20260521.log (tail) ---
-0	13:00:47.786	Migration: data to 'C:\Program Files (x86)\ForexClub MT4' migration started
-0	13:00:47.786	Migration: data migration finished, no virtual folder
-0	13:00:47.801	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder started
-0	13:00:48.036	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder finished
-0	13:00:48.083	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:00:48.083	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13995 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:00:48.083	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:00:48.161	Sources recompilation started
-0	13:00:52.028	Sources recompilation finished (28 compiled in 3875 msec)
-0	13:02:21.000	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:02:21.000	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13983 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:02:21.000	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:03:54.199	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:03:54.199	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13987 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:03:54.199	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:05:27.498	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:05:27.498	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13998 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:05:27.498	Data Folder: C:\Program Files (x86)\ForexClub MT4
+--- C:\Program Files (x86)\ForexClub MT4\logs\20260522.log (tail) ---
+0	12:35:08.169	Migration: data to 'C:\Program Files (x86)\ForexClub MT4' migration started
+0	12:35:08.169	Migration: data migration finished, no virtual folder
+0	12:35:08.169	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder started
+0	12:35:08.348	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder finished
+0	12:35:08.395	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:35:08.395	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13987 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:35:08.395	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:35:08.474	Sources recompilation started
+0	12:35:12.496	Sources recompilation finished (28 compiled in 4015 msec)
+0	12:36:41.384	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:36:41.384	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13977 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:36:41.384	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:38:14.576	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:38:14.576	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13982 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:38:14.576	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:39:47.892	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:39:47.892	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13995 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:39:47.892	Data Folder: C:\Program Files (x86)\ForexClub MT4
 --- end ---
---- C:\Program Files (x86)\ForexClub MT4\MQL4\Logs\20260521.log (tail) ---
-0	13:00:48.161	Compiling 'MACD Sample'
-0	13:00:48.161	Compiling 'Moving Average'
-0	13:00:48.583	Compiling 'Accelerator'
-0	13:00:48.583	Compiling 'Accumulation'
-0	13:00:48.583	Compiling 'Alligator'
-0	13:00:48.583	Compiling 'ATR'
-0	13:00:48.583	Compiling 'Awesome'
-0	13:00:48.583	Compiling 'Bands'
-0	13:00:48.583	Compiling 'Bears'
-0	13:00:48.583	Compiling 'Bulls'
-0	13:00:48.583	Compiling 'CCI'
-0	13:00:48.583	Compiling 'Custom Moving Averages'
-0	13:00:48.583	Compiling 'Heiken Ashi'
-0	13:00:48.583	Compiling 'Ichimoku'
-0	13:00:48.583	Compiling 'iExposure'
-0	13:00:48.583	Compiling 'MACD'
-0	13:00:48.583	Compiling 'Momentum'
-0	13:00:48.583	Compiling 'OsMA'
-0	13:00:48.583	Compiling 'Parabolic'
-0	13:00:48.583	Compiling 'RSI'
-0	13:00:48.583	Compiling 'Stochastic'
-0	13:00:48.583	Compiling 'ZigZag'
-0	13:00:48.583	Compiling 'SimplePanel'
-0	13:00:51.105	Compiling 'PeriodConverter'
-0	13:00:51.105	Compiling 'DLLSampleTester'
-0	13:00:51.105	Compiling 'PipeClient'
-0	13:00:51.105	Compiling 'PipeClientPure'
-0	13:00:51.747	Compiling 'stdlib'
+--- C:\Program Files (x86)\ForexClub MT4\MQL4\Logs\20260522.log (tail) ---
+0	12:35:08.474	Compiling 'MACD Sample'
+0	12:35:08.474	Compiling 'Moving Average'
+0	12:35:08.974	Compiling 'Accelerator'
+0	12:35:08.974	Compiling 'Accumulation'
+0	12:35:08.974	Compiling 'Alligator'
+0	12:35:08.974	Compiling 'ATR'
+0	12:35:08.974	Compiling 'Awesome'
+0	12:35:08.974	Compiling 'Bands'
+0	12:35:08.974	Compiling 'Bears'
+0	12:35:08.974	Compiling 'Bulls'
+0	12:35:08.974	Compiling 'CCI'
+0	12:35:08.974	Compiling 'Custom Moving Averages'
+0	12:35:08.974	Compiling 'Heiken Ashi'
+0	12:35:08.974	Compiling 'Ichimoku'
+0	12:35:08.974	Compiling 'iExposure'
+0	12:35:08.974	Compiling 'MACD'
+0	12:35:08.974	Compiling 'Momentum'
+0	12:35:08.974	Compiling 'OsMA'
+0	12:35:08.974	Compiling 'Parabolic'
+0	12:35:08.974	Compiling 'RSI'
+0	12:35:08.974	Compiling 'Stochastic'
+0	12:35:08.974	Compiling 'ZigZag'
+0	12:35:08.974	Compiling 'SimplePanel'
+0	12:35:11.509	Compiling 'PeriodConverter'
+0	12:35:11.509	Compiling 'DLLSampleTester'
+0	12:35:11.509	Compiling 'PipeClient'
+0	12:35:11.509	Compiling 'PipeClientPure'
+0	12:35:12.199	Compiling 'stdlib'
 --- end ---
 Listing C:\Program Files (x86)\ForexClub MT4\MQL4\Files :
 
@@ -90,7 +90,7 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 77 msec elapsed
+Result: 0 errors, 0 warnings, 83 msec elapsed
 
 --- end compile log ---
 
@@ -113,67 +113,67 @@ Attempt with Symbol=USDRUB
 wrote start.ini (login=710268540, server='ForexClub-MT4 Real 2 Server', symbol=USDRUB)
 Launching terminal.exe /portable /config:start.ini /skipupdate /login:710268540 /server:ForexClub-MT4 Real 2 Server /password:***REDACTED***
 [33;1mWARNING: Timed out (90s) on Symbol=USDRUB[0m
---- C:\Program Files (x86)\ForexClub MT4\logs\20260521.log (tail) ---
-0	13:00:47.786	Migration: data to 'C:\Program Files (x86)\ForexClub MT4' migration started
-0	13:00:47.786	Migration: data migration finished, no virtual folder
-0	13:00:47.801	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder started
-0	13:00:48.036	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder finished
-0	13:00:48.083	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:00:48.083	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13995 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:00:48.083	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:00:48.161	Sources recompilation started
-0	13:00:52.028	Sources recompilation finished (28 compiled in 3875 msec)
-0	13:02:21.000	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:02:21.000	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13983 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:02:21.000	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:03:54.199	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:03:54.199	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13987 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:03:54.199	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:05:27.498	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:05:27.498	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13998 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:05:27.498	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:07:02.788	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:07:02.788	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13997 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:07:02.788	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:08:36.049	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:08:36.049	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 14000 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:08:36.049	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:10:09.287	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:10:09.287	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 14001 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:10:09.287	Data Folder: C:\Program Files (x86)\ForexClub MT4
-0	13:11:42.603	FC MT4 build 1473 started (Forex Club International LLC)
-0	13:11:42.603	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 14004 / 16378 Mb, Disk: 86 / 255 Gb, GMT+0
-0	13:11:42.603	Data Folder: C:\Program Files (x86)\ForexClub MT4
+--- C:\Program Files (x86)\ForexClub MT4\logs\20260522.log (tail) ---
+0	12:35:08.169	Migration: data to 'C:\Program Files (x86)\ForexClub MT4' migration started
+0	12:35:08.169	Migration: data migration finished, no virtual folder
+0	12:35:08.169	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder started
+0	12:35:08.348	LiveUpdate: update C:\Program Files (x86)\ForexClub MT4\MQL4 folder finished
+0	12:35:08.395	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:35:08.395	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13987 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:35:08.395	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:35:08.474	Sources recompilation started
+0	12:35:12.496	Sources recompilation finished (28 compiled in 4015 msec)
+0	12:36:41.384	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:36:41.384	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13977 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:36:41.384	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:38:14.576	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:38:14.576	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13982 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:38:14.576	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:39:47.892	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:39:47.892	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13995 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:39:47.892	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:41:23.131	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:41:23.131	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13990 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:41:23.131	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:42:56.389	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:42:56.389	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13991 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:42:56.389	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:44:29.645	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:44:29.645	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13997 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:44:29.645	Data Folder: C:\Program Files (x86)\ForexClub MT4
+0	12:46:02.905	FC MT4 build 1473 started (Forex Club International LLC)
+0	12:46:02.905	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13989 / 16382 Mb, Disk: 85 / 255 Gb, GMT+0
+0	12:46:02.905	Data Folder: C:\Program Files (x86)\ForexClub MT4
 --- end ---
---- C:\Program Files (x86)\ForexClub MT4\MQL4\Logs\20260521.log (tail) ---
-0	13:00:48.161	Compiling 'MACD Sample'
-0	13:00:48.161	Compiling 'Moving Average'
-0	13:00:48.583	Compiling 'Accelerator'
-0	13:00:48.583	Compiling 'Accumulation'
-0	13:00:48.583	Compiling 'Alligator'
-0	13:00:48.583	Compiling 'ATR'
-0	13:00:48.583	Compiling 'Awesome'
-0	13:00:48.583	Compiling 'Bands'
-0	13:00:48.583	Compiling 'Bears'
-0	13:00:48.583	Compiling 'Bulls'
-0	13:00:48.583	Compiling 'CCI'
-0	13:00:48.583	Compiling 'Custom Moving Averages'
-0	13:00:48.583	Compiling 'Heiken Ashi'
-0	13:00:48.583	Compiling 'Ichimoku'
-0	13:00:48.583	Compiling 'iExposure'
-0	13:00:48.583	Compiling 'MACD'
-0	13:00:48.583	Compiling 'Momentum'
-0	13:00:48.583	Compiling 'OsMA'
-0	13:00:48.583	Compiling 'Parabolic'
-0	13:00:48.583	Compiling 'RSI'
-0	13:00:48.583	Compiling 'Stochastic'
-0	13:00:48.583	Compiling 'ZigZag'
-0	13:00:48.583	Compiling 'SimplePanel'
-0	13:00:51.105	Compiling 'PeriodConverter'
-0	13:00:51.105	Compiling 'DLLSampleTester'
-0	13:00:51.105	Compiling 'PipeClient'
-0	13:00:51.105	Compiling 'PipeClientPure'
-0	13:00:51.747	Compiling 'stdlib'
+--- C:\Program Files (x86)\ForexClub MT4\MQL4\Logs\20260522.log (tail) ---
+0	12:35:08.474	Compiling 'MACD Sample'
+0	12:35:08.474	Compiling 'Moving Average'
+0	12:35:08.974	Compiling 'Accelerator'
+0	12:35:08.974	Compiling 'Accumulation'
+0	12:35:08.974	Compiling 'Alligator'
+0	12:35:08.974	Compiling 'ATR'
+0	12:35:08.974	Compiling 'Awesome'
+0	12:35:08.974	Compiling 'Bands'
+0	12:35:08.974	Compiling 'Bears'
+0	12:35:08.974	Compiling 'Bulls'
+0	12:35:08.974	Compiling 'CCI'
+0	12:35:08.974	Compiling 'Custom Moving Averages'
+0	12:35:08.974	Compiling 'Heiken Ashi'
+0	12:35:08.974	Compiling 'Ichimoku'
+0	12:35:08.974	Compiling 'iExposure'
+0	12:35:08.974	Compiling 'MACD'
+0	12:35:08.974	Compiling 'Momentum'
+0	12:35:08.974	Compiling 'OsMA'
+0	12:35:08.974	Compiling 'Parabolic'
+0	12:35:08.974	Compiling 'RSI'
+0	12:35:08.974	Compiling 'Stochastic'
+0	12:35:08.974	Compiling 'ZigZag'
+0	12:35:08.974	Compiling 'SimplePanel'
+0	12:35:11.509	Compiling 'PeriodConverter'
+0	12:35:11.509	Compiling 'DLLSampleTester'
+0	12:35:11.509	Compiling 'PipeClient'
+0	12:35:11.509	Compiling 'PipeClientPure'
+0	12:35:12.199	Compiling 'stdlib'
 --- end ---
 Listing C:\Program Files (x86)\ForexClub MT4\MQL4\Files :
 
