@@ -42,7 +42,7 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 665 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 629 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
@@ -94,7 +94,7 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 687 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 831 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
@@ -103,7 +103,7 @@ Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_s
 MT5 Instant: full(all)=275 total(all)=300 full(marketwatch)=11 total(marketwatch)=11 account=555105689 (expected 555105689, match=True)
 saved symbol list -> artifacts/mt5_symbols_MT5_Instant.csv
 
-=== Libertex MT5 Market (login=560033688, server='LibertexCom-MT5 Real Server') ===
+=== MT5 Market (Cyprus) (login=560033688, server='LibertexCom-MT5 Real Server') ===
 Using MT5 install: C:\Program Files\Libertex MT5 Terminal
 Compiling EA via C:\Program Files\Libertex MT5 Terminal\metaeditor64.exe in C:\Program Files\Libertex MT5 Terminal\MQL5\Experts ...
 metaeditor64 exit code: 1
@@ -146,13 +146,13 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 873 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 847 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=560033688, server='LibertexCom-MT5 Real Server', symbol=EURUSD)
 Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
-Libertex MT5 Market: full(all)=275 total(all)=300 full(marketwatch)=20 total(marketwatch)=20 account=560033688 (expected 560033688, match=True)
-saved symbol list -> artifacts/mt5_symbols_Libertex_MT5_Market.csv
+MT5 Market (Cyprus): full(all)=275 total(all)=300 full(marketwatch)=20 total(marketwatch)=20 account=560033688 (expected 560033688, match=True)
+saved symbol list -> artifacts/mt5_symbols_MT5_Market_(Cyprus).csv
 
 Wrote artifacts/mt5_results.json

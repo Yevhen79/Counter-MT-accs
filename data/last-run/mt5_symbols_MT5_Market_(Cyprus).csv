@@ -1,0 +1,301 @@
+symbol,trade_mode,in_market_watch,category
+AUDCAD,FULL,0,FX Crosses
+AUDCHF,FULL,0,FX Crosses
+AUDJPY,FULL,0,FX Crosses
+AUDNZD,FULL,0,FX Crosses
+CADCHF,FULL,0,FX Crosses
+CADJPY,FULL,1,FX Crosses
+CHFJPY,FULL,0,FX Crosses
+EURAUD,FULL,0,FX Crosses
+EURCAD,FULL,0,FX Crosses
+EURCHF,FULL,0,FX Crosses
+EURGBP,FULL,1,FX Crosses
+EURJPY,FULL,1,FX Crosses
+EURNZD,FULL,0,FX Crosses
+EURPLN,FULL,0,FX Crosses
+GBPAUD,FULL,0,FX Crosses
+GBPCAD,FULL,1,FX Crosses
+GBPCHF,FULL,0,FX Crosses
+GBPJPY,FULL,1,FX Crosses
+GBPNZD,FULL,0,FX Crosses
+NZDCAD,FULL,0,FX Crosses
+NZDCHF,FULL,0,FX Crosses
+NZDJPY,FULL,0,FX Crosses
+AUDUSD,FULL,1,FX Majors
+EURUSD,FULL,1,FX Majors
+GBPUSD,FULL,1,FX Majors
+NZDUSD,FULL,0,FX Majors
+USDCAD,FULL,1,FX Majors
+USDCHF,FULL,0,FX Majors
+USDJPY,FULL,1,FX Majors
+CHFSGD,FULL,0,FX Exotics
+EURMXN,FULL,0,FX Exotics
+EURNOK,FULL,0,FX Exotics
+EURSEK,FULL,0,FX Exotics
+EURSGD,FULL,0,FX Exotics
+GBPSEK,FULL,0,FX Exotics
+NOKJPY,FULL,0,FX Exotics
+SGDJPY,FULL,0,FX Exotics
+USDCLP,FULL,0,FX Exotics
+USDDKK,FULL,0,FX Exotics
+USDMXN,FULL,0,FX Exotics
+USDNOK,FULL,0,FX Exotics
+USDSEK,FULL,0,FX Exotics
+USDSGD,FULL,0,FX Exotics
+USDHKD,DISABLED,0,Indicates
+USDILS,DISABLED,0,Indicates
+USDSAR,DISABLED,0,Indicates
+XAGUSD,FULL,0,Spot Metals
+XAUUSD,FULL,1,Spot Metals
+Alcoa,FULL,0,Stocks Materials
+Adobe,FULL,0,Stocks Technologies
+Amazon,FULL,0,Stocks Technologies
+Apple,FULL,0,Stocks Technologies
+American_Express,FULL,0,Stocks Finance
+Boeing,CLOSEONLY,0,Stocks Industrials
+Alibaba,FULL,0,Stocks Consumer Services
+Banco_Santander,FULL,0,Stocks Finance
+Bank_of_America,FULL,0,Stocks Finance
+Bayer,FULL,0,Stocks Healthcare
+Baidu,FULL,0,Stocks Technologies
+BMW,FULL,0,Stocks Automobile industries
+Citigroup,FULL,0,Stocks Finance
+Caterpillar,FULL,0,Stocks Industrials
+AT&T,FULL,0,Stocks Telecommunications
+Cisco,FULL,0,Stocks Technologies
+Daimler,FULL,0,Stocks Automobile industries
+Deutsche_Bank,FULL,0,Stocks Finance
+Disney,FULL,0,Stocks Consumer Services
+eBay,FULL,0,Stocks Consumer Services
+Estee_Lauder,FULL,0,Stocks Luxury
+ENI,FULL,0,Stocks Energy
+Ethan_Allen,FULL,0,Stocks Luxury
+Ferrari,FULL,0,Stocks Automobile industries
+Ford,FULL,0,Stocks Automobile industries
+DG,FULL,0,Stocks Technologies
+Dropbox,FULL,0,Stocks Technologies
+Exxon,FULL,0,Stocks Energy
+General_Electrics,CLOSEONLY,0,Stocks Industrials
+GTLB,FULL,0,Stocks Technologies
+Google,CLOSEONLY,0,Stocks Technologies
+Goldman_Sachs,FULL,0,Stocks Finance
+Home_Depot,FULL,0,Stocks Consumer Services
+Harley_Davidson,FULL,0,Stocks Automobile industries
+Hewlett_Packard,FULL,0,Stocks Technologies
+IBM,FULL,0,Stocks Technologies
+IDCB,FULL,0,Stocks Finance
+Adidas,FULL,0,Stocks Consumer Goods
+Coca-Cola,CLOSEONLY,0,Stocks Consumer Goods
+IndiTex,FULL,0,Stocks Consumer Goods
+Intel,FULL,0,Stocks Technologies
+Johnson&Johnson,FULL,0,Stocks Healthcare
+JPMorgan,FULL,0,Stocks Finance
+Michael_Kors,FULL,0,Stocks Luxury
+Nordstrom,FULL,0,Stocks Luxury
+Lenovo,FULL,0,Stocks Technologies
+Mastercard,FULL,0,Stocks Finance
+McDonald,CLOSEONLY,0,Stocks Consumer Services
+META,FULL,0,Stocks Technologies
+MNTV,FULL,0,Stocks Technologies
+Microsoft,CLOSEONLY,0,Stocks Technologies
+Nintendo_US,FULL,0,Stocks Consumer Services
+Nike,FULL,0,Stocks Consumer Goods
+Netflix,FULL,0,Stocks Technologies
+Oracle,FULL,0,Stocks Technologies
+PINS,FULL,0,Stocks Technologies
+SAP,FULL,0,Stocks Technologies
+SIE,FULL,0,Stocks Technologies
+SK,DISABLED,0,Stocks Technologies
+Salesforce,FULL,0,Stocks Technologies
+Snap,FULL,0,Stocks Technologies
+Spotify,CLOSEONLY,0,Stocks Technologies
+Tencent,FULL,0,Stocks Technologies
+Yandex,DISABLED,0,Stocks Technologies
+nVidia,FULL,0,Stocks Technologies
+Petrobras,FULL,0,Stocks Energy
+Pfizer,FULL,0,Stocks Healthcare
+Philip_Morris,FULL,0,Stocks Consumer Goods
+Procter&Gamble,FULL,0,Stocks Consumer Goods
+PVH,FULL,0,Stocks Luxury
+Ralph_Lauren,FULL,0,Stocks Luxury
+Starbucks,FULL,0,Stocks Consumer Services
+SQM,FULL,0,Stocks Materials
+Tesla,FULL,0,Stocks Automobile industries
+Toyota,FULL,0,Stocks Automobile industries
+TripAdvisor,FULL,0,Stocks Consumer Services
+Travelers,FULL,0,Stocks Finance
+UnitedHealth,FULL,0,Stocks Healthcare
+Visa,CLOSEONLY,0,Stocks Finance
+Vale,FULL,0,Stocks Materials
+VF,FULL,0,Stocks Luxury
+Volkswagen,FULL,0,Stocks Automobile industries
+Verizon,CLOSEONLY,0,Stocks Telecommunications
+Vodafone,FULL,0,Stocks Telecommunications
+Wells_Fargo,FULL,0,Stocks Finance
+Williams_Sonoma,FULL,0,Stocks Luxury
+ADAUSD,FULL,0,Crypto
+APEUSD,FULL,0,Crypto
+ATMUSD,FULL,0,Crypto
+BCHBTC,FULL,0,Crypto
+BCHUSD,FULL,0,Crypto
+BSVUSD,FULL,0,Crypto
+BTCEUR,FULL,0,Crypto
+BTCUSD,FULL,1,Crypto
+BTGBTC,FULL,0,Crypto
+BTGETH,FULL,0,Crypto
+BTGUSD,FULL,0,Crypto
+CMPUSD,FULL,0,Crypto
+DOGUSD,FULL,0,Crypto
+DOTUSD,FULL,0,Crypto
+DSHBTC,FULL,0,Crypto
+DSHETH,FULL,0,Crypto
+DSHUSD,FULL,0,Crypto
+EOSETH,FULL,0,Crypto
+EOSUSD,FULL,0,Crypto
+ETCETH,FULL,0,Crypto
+ETCUSD,FULL,0,Crypto
+ETHBTC,FULL,0,Crypto
+ETHUSD,FULL,0,Crypto
+FLWUSD,CLOSEONLY,0,Crypto
+FTMUSD,CLOSEONLY,0,Crypto
+GMTUSD,FULL,0,Crypto
+ICPUSD,FULL,0,Crypto
+IOTETH,FULL,0,Crypto
+IOTUSD,FULL,0,Crypto
+LNKUSD,FULL,0,Crypto
+LTCBTC,FULL,1,Crypto
+LTCETH,FULL,0,Crypto
+LTCUSD,FULL,0,Crypto
+MKRUSD,FULL,0,Crypto
+MTCUSD,FULL,0,Crypto
+NEOBTC,FULL,0,Crypto
+NEOETH,FULL,0,Crypto
+NEOUSD,FULL,0,Crypto
+OMGETH,FULL,0,Crypto
+OMGUSD,FULL,0,Crypto
+ONTUSD,FULL,0,Crypto
+QTMETH,FULL,0,Crypto
+QTMUSD,FULL,0,Crypto
+SBAUSD,FULL,0,Crypto
+SNDUSD,CLOSEONLY,0,Crypto
+SNXUSD,FULL,0,Crypto
+SOLUSD,FULL,0,Crypto
+TRXUSD,FULL,0,Crypto
+TWTUSD,CLOSEONLY,0,Crypto
+UNIUSD,FULL,0,Crypto
+VETUSD,FULL,0,Crypto
+XEMUSD,FULL,0,Crypto
+XLMUSD,FULL,0,Crypto
+XMRBTC,FULL,0,Crypto
+XMRETH,FULL,0,Crypto
+XMRUSD,FULL,0,Crypto
+XRPUSD,FULL,0,Crypto
+ES,FULL,1,Indices US
+ESCash,FULL,0,Indices US
+NQ,FULL,1,Indices US
+NQCash,FULL,0,Indices US
+TF,DISABLED,0,Indices US
+VIX,FULL,0,Indices US
+YM,FULL,1,Indices US
+FCE,FULL,0,Indices Europe
+FDAX,FULL,1,Indices Europe
+FESX,FULL,1,Indices Europe
+FTI,FULL,0,Indices Europe
+IBX,FULL,0,Indices Europe
+MIB,FULL,0,Indices Europe
+Z,FULL,0,Indices Europe
+HSI,FULL,0,Indices Asia
+XU,FULL,0,Indices Asia
+COCOA,DISABLED,0,Agriculture
+COFFEE,FULL,0,Agriculture
+CORN,FULL,0,Agriculture
+SOYBEAN,FULL,0,Agriculture
+SUGAR,FULL,0,Agriculture
+WHEAT,FULL,0,Agriculture
+BRN,FULL,1,Energy
+BRNCash,FULL,0,Energy
+CL,FULL,0,Energy
+HO,FULL,0,Energy
+NG,FULL,0,Energy
+QS,FULL,0,Energy
+WT,FULL,0,Energy
+HG,FULL,0,Metals
+PA,FULL,0,Metals
+PL,FULL,0,Metals
+XTZUSD,FULL,0,Crypto
+ZECBTC,FULL,0,Crypto
+ZECETH,FULL,0,Crypto
+ZECUSD,FULL,0,Crypto
+USDTRY,FULL,0,FX Exotics
+USDZAR,FULL,0,FX Exotics
+USDCNH,FULL,0,FX Exotics
+EURTRY,FULL,0,FX Exotics
+EURCNH,FULL,0,FX Exotics
+SPY,FULL,0,ETF
+IJH,FULL,0,ETF
+FXI,FULL,0,ETF
+EWG,FULL,0,ETF
+VGK,FULL,0,ETF
+ILF,FULL,0,ETF
+EWW,FULL,0,ETF
+EWZ,FULL,0,ETF
+AGG,FULL,0,ETF
+EWU,FULL,0,ETF
+USDX,DISABLED,0,FX USD Index
+TA35,CLOSEONLY,0,Indices Near East
+JUVE,FULL,0,Stocks Sport
+LYFT,FULL,0,Stocks Consumer Services
+EDF,FULL,0,Stocks Energy
+ENEL,FULL,0,Stocks Energy
+REP,FULL,0,Stocks Energy
+BAS,FULL,0,Stocks Industrials
+UBER,FULL,1,Stocks Consumer Services
+RNO,FULL,0,Stocks Automobile industries
+ATVI,FULL,0,Stocks Consumer Services
+LTM,FULL,0,Stocks Consumer Services
+ENIC,FULL,0,Stocks Energy
+BNP,FULL,0,Stocks Finance
+AIR,FULL,0,Stocks Industrials
+IS,FULL,0,Indices South America
+MRNA,FULL,0,Stocks Healthcare
+GILD,FULL,0,Stocks Healthcare
+FDAXCash,FULL,0,Indices Europe
+YMCash,FULL,0,Indices US
+LUV,FULL,0,Stocks Consumer Services
+TUI,FULL,0,Stocks Consumer Services
+SAVE,FULL,0,Stocks Consumer Services
+RCL,FULL,0,Stocks Consumer Services
+NCLH,FULL,0,Stocks Consumer Services
+AF,FULL,0,Stocks Consumer Services
+RYAAY,FULL,0,Stocks Consumer Services
+CCL,FULL,0,Stocks Consumer Services
+WYNN,FULL,0,Stocks Consumer Services
+USDPLN,FULL,0,FX Crosses
+ZCash,FULL,0,Indices Europe
+GBTC,FULL,0,Stocks Finance
+MARA,FULL,0,Stocks Finance
+COIN,FULL,0,Stocks Finance
+GME,FULL,0,Stocks Consumer Goods
+AMC,FULL,0,Stocks Consumer Services
+SPCE,FULL,0,Stocks Consumer Goods
+HOOD,FULL,0,Stocks Finance
+ZRXUSD,FULL,0,Crypto
+NIY,CLOSEONLY,0,Indices Asia
+NIYCash,FULL,0,Indices Asia
+MidDE50Cash,FULL,0,Indices Europe
+NOR25Cash,FULL,0,Indices Europe
+SE30Cash,FULL,0,Indices Europe
+SWI20Cash,FULL,0,Indices Europe
+TecDE30Cash,FULL,0,Indices Europe
+CA60Cash,FULL,0,Indices North America
+AUS200Cash,FULL,0,Indices Other
+SA40Cash,FULL,0,Indices Other
+EC,FULL,0,Stocks Energy
+BBVA,FULL,0,Stocks Finance
+CIB,FULL,0,Stocks Finance
+MELI,FULL,0,Stocks Finance
+CX,FULL,0,Stocks Industrials
+AMX,FULL,0,Stocks Telecommunications
+XAUEUR,CLOSEONLY,0,Spot Metals
+P911,CLOSEONLY,0,Stocks Automobile industries
+TTE,FULL,0,Stocks Energy
