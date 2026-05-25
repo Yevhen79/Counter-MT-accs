@@ -42,13 +42,13 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 420 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 427 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=550459323, server='ForexClub-MT5 Real Server', symbol=EURUSD)
 Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
-MT5 Market: full=10147 total=10157
+MT5 Market: full=10147 total=10157 account=550459323 (expected 550459323, match=True)
 
 === MT5 Instant (login=555105689, server='ForexClub-MT5 Instant Real Server') ===
 Compiling EA via C:\Program Files\MetaTrader 5\metaeditor64.exe in C:\Program Files\MetaTrader 5\MQL5\Experts ...
@@ -92,12 +92,12 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 465 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 577 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=555105689, server='ForexClub-MT5 Instant Real Server', symbol=EURUSD)
 Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
-MT5 Instant: full=10147 total=10157
+MT5 Instant: full=10147 total=10157 account=555105689 (expected 555105689, match=True)
 
 Wrote artifacts/mt5_results.json

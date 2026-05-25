@@ -1,16 +1,18 @@
 [
   {
-    "full": 10147,
-    "label": "MT5 Market",
     "total": 10157,
+    "server": "ForexClub-MT5 Real Server",
+    "full": 10147,
+    "account": "550459323",
     "symbol": "EURUSD",
-    "server": "ForexClub-MT5 Real Server"
+    "label": "MT5 Market"
   },
   {
-    "full": 10147,
-    "label": "MT5 Instant",
     "total": 10157,
+    "server": "ForexClub-MT5 Instant Real Server",
+    "full": 10147,
+    "account": "555105689",
     "symbol": "EURUSD",
-    "server": "ForexClub-MT5 Instant Real Server"
+    "label": "MT5 Instant"
   }
 ]
