@@ -177,19 +177,16 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
 
         Write-Host "wrote $iniPath (login=$login, server='$server', symbol=$symbol)"
 
-        # Launch terminal. /login /server /password are undocumented but some
-        # MT4 builds honor them — and command-line wins over the config block.
+        # Launch terminal with ONLY /portable /config /skipupdate — exactly
+        # like the working MT5 invocation. Do NOT pass /login /server
+        # /password: the server name contains spaces, so the unquoted
+        # /server:ForexClub-MT4 Market Real 2 Server splits into bogus
+        # positional args that corrupt the launch and make the terminal
+        # ignore the config block. Login comes purely from the [Common]
+        # section of the config file.
         $terminal = Join-Path $mt4Dir "terminal.exe"
-        $tArgs = @(
-            "/portable",
-            "/config:$iniPath",
-            "/skipupdate",
-            "/login:$login",
-            "/server:$server",
-            "/password:$password"
-        )
-        $safeArgs = ($tArgs -join ' ') -replace '(/password:)[^\s]+','$1***REDACTED***'
-        Write-Host "Launching terminal.exe $safeArgs"
+        $tArgs = @("/portable", "/config:$iniPath", "/skipupdate")
+        Write-Host "Launching terminal.exe $($tArgs -join ' ')"
         $proc = Start-Process -FilePath $terminal -ArgumentList $tArgs -PassThru
 
         # Poll for done flag. 90s is enough if [StartUp] is honored
