@@ -1,0 +1,232 @@
+name: Daily Instrument Count
+
+# Runs on schedule and on manual dispatch. Cron is UTC; Kyiv is UTC+2 (winter)
+# or UTC+3 (summer). To land on 13:00 Kyiv year-round we trigger at both
+# 10:00 UTC and 11:00 UTC and let scripts/should_run.py skip the second
+# trigger of the day idempotently. Mon-Fri only (FX markets are closed
+# Sat/Sun anyway, and MODE_TRADEALLOWED would falsely report 0 on weekends).
+
+on:
+  schedule:
+    - cron: "0 10 * * 1-5"   # 13:00 Kyiv during EEST (summer)
+    - cron: "0 11 * * 1-5"   # 13:00 Kyiv during EET (winter)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even if today's row already exists"
+        type: boolean
+        default: false
+  push:
+    branches:
+      - claude/trading-tools-report-MCrOV
+    paths:
+      - ".github/workflows/daily-count.yml"
+      - "scripts/**"
+      - "mql4/**"
+      - "config.yaml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-count
+  cancel-in-progress: false
+
+jobs:
+  count:
+    # Pin to windows-2022 — windows-latest has been migrating to
+    # windows-2025-vs2026 which apparently breaks MetaTrader5 Python IPC
+    # (every initialize attempt times out with -10005 IPC timeout while
+    # terminal64.exe itself is up and consuming ~150 MB). 2022 is the
+    # known-good baseline for the MT5 Python package.
+    runs-on: windows-2022
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        # We no longer use the MetaTrader5 Python module — its IPC pairing
+        # was timing out under every warmup strategy. MT5 now goes through
+        # the same headless terminal + MQL5 EA path as MT4. Python only
+        # needs pyyaml (for aggregate.py and the config.yaml -> config.json
+        # converter) and tzdata (for zoneinfo("Europe/Kyiv") on Windows).
+        run: pip install --no-cache-dir pyyaml tzdata
+
+      - name: Should we run today?
+        id: check
+        shell: pwsh
+        env:
+          # Push-triggered runs (i.e. me iterating on the code) always force.
+          # Manual dispatch honors the user's "force" input. Cron does not.
+          FORCE: ${{ github.event.inputs.force == 'true' || github.event_name == 'push' }}
+        run: |
+          Write-Host "Python: $(python --version)"
+          Write-Host "Event: ${{ github.event_name }}"
+          Write-Host "FORCE: $env:FORCE"
+          python scripts/should_run.py
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "should_run.py exited $LASTEXITCODE"
+            exit $LASTEXITCODE
+          }
+
+      - name: Convert config.yaml to JSON for PowerShell consumers
+        if: steps.check.outputs.should_run == 'true'
+        shell: pwsh
+        run: |
+          python -c "import yaml, json, sys; json.dump(yaml.safe_load(open('config.yaml', encoding='utf-8')), sys.stdout, ensure_ascii=False)" | Out-File -FilePath config.json -Encoding utf8
+          if (-not (Test-Path config.json)) {
+            Write-Error "Failed to produce config.json"
+            exit 1
+          }
+          Write-Host "config.json:"
+          Get-Content config.json -Raw | Write-Host
+
+      - name: Install MetaTrader 5
+        if: steps.check.outputs.should_run == 'true'
+        shell: pwsh
+        run: |
+          # Install MT5 to C:\mt5 (no spaces, no Program Files write-quirks)
+          # because the Python module's IPC pairing has been failing against
+          # the default Program Files install. /DIR=path is the Inno Setup
+          # override flag MetaQuotes' installer accepts.
+          $mt5dir = "C:\mt5"
+          Write-Host "Downloading MT5 installer..."
+          Invoke-WebRequest `
+            -Uri "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" `
+            -OutFile "$env:RUNNER_TEMP\mt5setup.exe" `
+            -UseBasicParsing
+          Write-Host "Installing MT5 silently to $mt5dir ..."
+          Start-Process -FilePath "$env:RUNNER_TEMP\mt5setup.exe" `
+                        -ArgumentList "/auto", "/DIR=$mt5dir" -Wait
+          # The /auto installer auto-launches terminal64.exe with a
+          # first-run broker-selection wizard. The wizard is modal, which
+          # later blocks mt5.initialize() with -10005 IPC timeout. Kill it.
+          Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Get-Process metatester64 -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Start-Sleep -Seconds 3
+          $terminal = Join-Path $mt5dir "terminal64.exe"
+          if (-not (Test-Path $terminal)) {
+            # Fallback: maybe /DIR was ignored and it landed at Program Files anyway.
+            $alt = "C:\Program Files\MetaTrader 5\terminal64.exe"
+            if (Test-Path $alt) {
+              $terminal = $alt
+              $mt5dir = Split-Path $alt -Parent
+              Write-Host "MT5 install ignored /DIR — found at $alt"
+            } else {
+              Write-Error "MT5 install failed: terminal64.exe found at neither $terminal nor $alt"
+              exit 1
+            }
+          }
+          "MT5_DIR=$mt5dir"          | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "MT5_TERMINAL=$terminal"   | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          Write-Host "MT5 installed: $terminal (dir=$mt5dir)"
+
+          # Exclude MT5 dir from Defender realtime scanning — Defender's
+          # on-access scans on the IPC backing store and the constant log
+          # writes were a suspected cause of the IPC handshake timeout.
+          # Use the ACTUAL install dir (last run /DIR was ignored and it
+          # landed at Program Files anyway).
+          try {
+            Add-MpPreference -ExclusionPath $mt5dir -ErrorAction SilentlyContinue
+            $appdataMq = Join-Path $env:APPDATA "MetaQuotes"
+            if (Test-Path $appdataMq) {
+              Add-MpPreference -ExclusionPath $appdataMq -ErrorAction SilentlyContinue
+            }
+            Set-MpPreference -DisableRealtimeMonitoring $true -ErrorAction SilentlyContinue
+            Write-Host "Defender realtime monitoring disabled, $mt5dir and $appdataMq excluded."
+          } catch {
+            Write-Warning "Could not adjust Defender preferences: $_"
+          }
+
+      - name: Count MT5 instruments
+        if: steps.check.outputs.should_run == 'true'
+        continue-on-error: true
+        shell: pwsh
+        env:
+          MT5_MARKET_PASSWORD:  ${{ secrets.MT5_MARKET_PASSWORD }}
+          MT5_INSTANT_PASSWORD: ${{ secrets.MT5_INSTANT_PASSWORD }}
+        run: |
+          if (-not (Test-Path artifacts)) { New-Item -ItemType Directory -Path artifacts -Force | Out-Null }
+          pwsh scripts/count_mt5.ps1 2>&1 | Tee-Object -FilePath artifacts/count_mt5_log.txt
+
+      - name: Install MetaTrader 4
+        if: steps.check.outputs.should_run == 'true'
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          if (-not (Test-Path artifacts)) { New-Item -ItemType Directory -Path artifacts -Force | Out-Null }
+          pwsh scripts/install_mt4.ps1 2>&1 | Tee-Object -FilePath artifacts/install_mt4_log.txt
+
+      - name: Count MT4 instruments
+        if: steps.check.outputs.should_run == 'true'
+        continue-on-error: true
+        shell: pwsh
+        env:
+          MT4_MARKET_PASSWORD:  ${{ secrets.MT4_MARKET_PASSWORD }}
+          MT4_INSTANT_PASSWORD: ${{ secrets.MT4_INSTANT_PASSWORD }}
+        run: |
+          if (-not (Test-Path artifacts)) { New-Item -ItemType Directory -Path artifacts -Force | Out-Null }
+          pwsh scripts/count_mt4.ps1 2>&1 | Tee-Object -FilePath artifacts/count_mt4_log.txt
+
+      - name: Upload raw artifacts
+        if: steps.check.outputs.should_run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-counts-${{ steps.check.outputs.today }}
+          path: artifacts/
+          if-no-files-found: ignore
+
+      - name: Aggregate into history.csv
+        if: steps.check.outputs.should_run == 'true'
+        run: python scripts/aggregate.py
+
+      - name: Commit and push
+        if: steps.check.outputs.should_run == 'true'
+        shell: pwsh
+        run: |
+          git config user.name  "trading-counter-bot"
+          git config user.email "trading-counter-bot@users.noreply.github.com"
+
+          # Stage only the files we actually want to publish, so any
+          # leftover working-tree noise (generated config.json, EA temp
+          # files dropped under MQL4\, etc.) does not block the rebase.
+          git add data docs
+
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host "No changes to commit."
+            exit 0
+          }
+          git commit -m "Daily count ${{ steps.check.outputs.today }}"
+
+          # Push with retry; on non-fast-forward, fetch + rebase the bot
+          # commit on top of remote before retrying. --autostash protects
+          # against any unrelated unstaged changes the runner produced.
+          $maxAttempts = 4
+          for ($i = 1; $i -le $maxAttempts; $i++) {
+            git push origin HEAD:$env:GITHUB_REF_NAME
+            if ($LASTEXITCODE -eq 0) {
+              Write-Host "Push succeeded on attempt $i."
+              break
+            }
+            if ($i -eq $maxAttempts) {
+              Write-Error "Push failed after $maxAttempts attempts."
+              exit 1
+            }
+            $sleep = [Math]::Pow(2, $i)
+            Write-Warning "Push attempt $i failed — rebasing on remote and retrying in $sleep s..."
+            git fetch origin $env:GITHUB_REF_NAME
+            git rebase --autostash origin/$env:GITHUB_REF_NAME
+            if ($LASTEXITCODE -ne 0) {
+              Write-Warning "Rebase reported conflicts — aborting and trying plain pull."
+              git rebase --abort
+            }
+            Start-Sleep -Seconds $sleep
+          }

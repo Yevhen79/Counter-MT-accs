@@ -1,0 +1,105 @@
+Using MT5 install: C:\Program Files\MetaTrader 5
+
+=== MT5 Market (login=550459323, server='ForexClub-MT5 Real Server') ===
+Compiling EA via C:\Program Files\MetaTrader 5\metaeditor64.exe in C:\Program Files\MetaTrader 5\MQL5\Experts ...
+metaeditor64 exit code: 1
+--- compile log ---
+
+
+CountInstruments.mq5 : information: compiling CountInstruments.mq5
+ : information: generating code
+ : information: generating code 3%
+ : information: generating code 6%
+ : information: generating code 9%
+ : information: generating code 12%
+ : information: generating code 15%
+ : information: generating code 18%
+ : information: generating code 21%
+ : information: generating code 24%
+ : information: generating code 27%
+ : information: generating code 30%
+ : information: generating code 33%
+ : information: generating code 36%
+ : information: generating code 39%
+ : information: generating code 42%
+ : information: generating code 45%
+ : information: generating code 48%
+ : information: generating code 51%
+ : information: generating code 54%
+ : information: generating code 57%
+ : information: generating code 60%
+ : information: generating code 63%
+ : information: generating code 66%
+ : information: generating code 69%
+ : information: generating code 72%
+ : information: generating code 75%
+ : information: generating code 78%
+ : information: generating code 81%
+ : information: generating code 84%
+ : information: generating code 87%
+ : information: generating code 90%
+ : information: generating code 93%
+ : information: generating code 95%
+ : information: generating code 100%
+ : information: code generated
+Result: 0 errors, 0 warnings, 553 ms elapsed, cpu='X64 Regular'
+
+--- end compile log ---
+Trying with Symbol=EURUSD ...
+wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=550459323, server='ForexClub-MT5 Real Server', symbol=EURUSD)
+Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
+MT5 Market: full(all)=10147 total(all)=10157 full(marketwatch)=13 total(marketwatch)=14 account=550459323 (expected 550459323, match=True)
+saved symbol list -> artifacts/mt5_symbols_MT5_Market.csv
+
+=== MT5 Instant (login=555105689, server='ForexClub-MT5 Instant Real Server') ===
+Compiling EA via C:\Program Files\MetaTrader 5\metaeditor64.exe in C:\Program Files\MetaTrader 5\MQL5\Experts ...
+metaeditor64 exit code: 1
+--- compile log ---
+
+
+CountInstruments.mq5 : information: compiling CountInstruments.mq5
+ : information: generating code
+ : information: generating code 3%
+ : information: generating code 6%
+ : information: generating code 9%
+ : information: generating code 12%
+ : information: generating code 15%
+ : information: generating code 18%
+ : information: generating code 21%
+ : information: generating code 24%
+ : information: generating code 27%
+ : information: generating code 30%
+ : information: generating code 33%
+ : information: generating code 36%
+ : information: generating code 39%
+ : information: generating code 42%
+ : information: generating code 45%
+ : information: generating code 48%
+ : information: generating code 51%
+ : information: generating code 54%
+ : information: generating code 57%
+ : information: generating code 60%
+ : information: generating code 63%
+ : information: generating code 66%
+ : information: generating code 69%
+ : information: generating code 72%
+ : information: generating code 75%
+ : information: generating code 78%
+ : information: generating code 81%
+ : information: generating code 84%
+ : information: generating code 87%
+ : information: generating code 90%
+ : information: generating code 93%
+ : information: generating code 95%
+ : information: generating code 100%
+ : information: code generated
+Result: 0 errors, 0 warnings, 590 ms elapsed, cpu='X64 Regular'
+
+--- end compile log ---
+Trying with Symbol=EURUSD ...
+wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=555105689, server='ForexClub-MT5 Instant Real Server', symbol=EURUSD)
+Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
+MT5 Instant: full(all)=10147 total(all)=10157 full(marketwatch)=13 total(marketwatch)=14 account=555105689 (expected 555105689, match=True)
+saved symbol list -> artifacts/mt5_symbols_MT5_Instant.csv
+
+Wrote artifacts/mt5_results.json

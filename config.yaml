@@ -1,0 +1,47 @@
+# Account configuration for ForexClub / Libertex broker.
+# Server names and login numbers are NOT secret — they live in this file.
+# Passwords MUST be added to GitHub Secrets with the names listed below.
+#
+# How to add a secret:
+#   Repo Settings -> Secrets and variables -> Actions -> New repository secret
+#   Use the exact value from "password_secret" as the secret name.
+
+accounts:
+  - key: mt4_market
+    label: "MT4 Market"
+    platform: mt4
+    login: 730232800
+    server: "ForexClub-MT4 Market Real 2 Server"
+    password_secret: MT4_MARKET_PASSWORD
+
+  - key: mt4_instant
+    label: "MT4 Instant"
+    platform: mt4
+    login: 710268540
+    server: "ForexClub-MT4 Real 2 Server"
+    password_secret: MT4_INSTANT_PASSWORD
+
+  - key: mt5_market
+    label: "MT5 Market"
+    platform: mt5
+    login: 550459323
+    server: "ForexClub-MT5 Real Server"
+    password_secret: MT5_MARKET_PASSWORD
+
+  - key: mt5_instant
+    label: "MT5 Instant"
+    platform: mt5
+    login: 555105689
+    server: "ForexClub-MT5 Instant Real Server"
+    password_secret: MT5_INSTANT_PASSWORD
+
+# URL of the broker's MT4 installer. Direct .exe URL is preferred — the
+# script auto-detects, but a direct binary URL avoids the HTML scrape step.
+# Tried URLs (broker-branded NSIS installers, all use the same engine):
+#   https://download.libertex.org/en/Meta/fcmt4setup_eng.exe   # English
+#   https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe   # Russian
+# All known versions ignore /S /VERYSILENT /silent /quiet /auto and pop a
+# GUI, so the install script eventually falls back to MetaQuotes' generic
+# MT4 (which honors /auto). The broker server name still resolves via
+# MetaQuotes' global server registry.
+mt4_installer_url: "https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe"

@@ -1,0 +1,25 @@
+# Build artifacts that only exist on the Windows runner
+artifacts/
+mt5setup.exe
+mt4setup.exe
+config.json
+
+# Terminal login configs written at runtime — contain account passwords,
+# must never be committed.
+mt4_start.ini
+mt5_start.ini
+start.ini
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

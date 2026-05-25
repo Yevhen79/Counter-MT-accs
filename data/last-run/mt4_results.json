@@ -1,0 +1,22 @@
+[
+  {
+    "server": "ForexClub-MT4 Market Real 2 Server",
+    "total": 280,
+    "total_marketwatch": 6,
+    "account": "730232800",
+    "symbol": "EURUSD",
+    "label": "MT4 Market",
+    "full_marketwatch": 6,
+    "full": 155
+  },
+  {
+    "server": "ForexClub-MT4 Real 2 Server",
+    "total": 288,
+    "total_marketwatch": 6,
+    "account": "710268540",
+    "symbol": "EURUSD",
+    "label": "MT4 Instant",
+    "full_marketwatch": 6,
+    "full": 163
+  }
+]
