@@ -103,8 +103,17 @@ foreach ($url in $installers.Keys) {
     $before = Get-TerminalExes $t.platform
 
     $file = Join-Path $env:RUNNER_TEMP ("setup_{0}.exe" -f $i)
-    if (-not (Download-Installer $url $file)) {
-        Write-Warning "  could not download a valid installer for $url — skipping."
+
+    # If the installer is committed under installers/<filename> (e.g. for a
+    # host behind a Cloudflare JS challenge that Invoke-WebRequest cannot
+    # pass), use it directly and skip the download.
+    $fname = [System.IO.Path]::GetFileName(([uri]$url).AbsolutePath)
+    $localFile = Join-Path (Get-Location).Path ("installers/" + $fname)
+    if ((Test-Path $localFile) -and (Is-PE $localFile)) {
+        Write-Host "  using committed installer: $localFile"
+        Copy-Item $localFile $file -Force
+    } elseif (-not (Download-Installer $url $file)) {
+        Write-Warning "  could not download a valid installer for $url, and no committed installers/$fname — skipping."
         $results += [pscustomobject]@{ url = $url; platform = $t.platform; dir_hint = $t.dir_hint; dir = $null }
         continue
     }
