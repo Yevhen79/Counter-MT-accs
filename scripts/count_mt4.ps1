@@ -166,17 +166,22 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
             "Symbol=$symbol",
             "Period=H1"
         )
-        $iniPath = Join-Path $configDir "start.ini"
+        # Write start.ini in the CURRENT working directory (repo checkout,
+        # no spaces in its path). MT4/MT5 resolve /config:<name> relative
+        # to the launch CWD, not the data folder — writing under
+        # <install>\config left the terminal unable to find it. Pass the
+        # absolute path to /config:.
+        $iniPath = Join-Path (Get-Location).Path "mt4_start.ini"
         [System.IO.File]::WriteAllLines($iniPath, $iniLines, [System.Text.Encoding]::ASCII)
 
-        Write-Host "wrote start.ini (login=$login, server='$server', symbol=$symbol)"
+        Write-Host "wrote $iniPath (login=$login, server='$server', symbol=$symbol)"
 
         # Launch terminal. /login /server /password are undocumented but some
         # MT4 builds honor them — and command-line wins over the config block.
         $terminal = Join-Path $mt4Dir "terminal.exe"
         $tArgs = @(
             "/portable",
-            "/config:start.ini",
+            "/config:$iniPath",
             "/skipupdate",
             "/login:$login",
             "/server:$server",

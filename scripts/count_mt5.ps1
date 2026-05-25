@@ -148,15 +148,22 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt5" }) {
             "Symbol=$symbol",
             "Period=H1"
         )
-        $iniPath = Join-Path $configDir "start.ini"
+        # Write start.ini in the CURRENT working directory (the repo
+        # checkout, which has no spaces in its path). MT5 build 5836
+        # resolves /config:<name> relative to the launch CWD, NOT the
+        # data folder — the previous run logged
+        # "cannot load config D:\a\...\start.ini at start" because the
+        # file lived under <install>\config and was never found. Pass the
+        # absolute path to /config: to be unambiguous.
+        $iniPath = Join-Path (Get-Location).Path "mt5_start.ini"
         [System.IO.File]::WriteAllLines($iniPath, $iniLines, [System.Text.Encoding]::ASCII)
 
         # Don't print the raw start.ini — it contains the password.
-        Write-Host "wrote start.ini (login=$login, server='$server', symbol=$symbol)"
+        Write-Host "wrote $iniPath (login=$login, server='$server', symbol=$symbol)"
 
-        Write-Host "Launching terminal64.exe ..."
+        Write-Host "Launching terminal64.exe with /config:$iniPath ..."
         $tProc = Start-Process -FilePath $terminal `
-                               -ArgumentList "/portable","/config:start.ini","/skipupdate" `
+                               -ArgumentList "/portable","/config:$iniPath","/skipupdate" `
                                -PassThru
 
         $timeout = 90
