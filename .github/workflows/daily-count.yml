@@ -23,7 +23,9 @@ on:
       - ".github/workflows/daily-count.yml"
       - "scripts/**"
       - "mql4/**"
+      - "mql5/**"
       - "config.yaml"
+      - "installers/**"
 
 permissions:
   contents: write
