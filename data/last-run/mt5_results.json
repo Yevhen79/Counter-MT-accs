@@ -1,30 +1,38 @@
 [
   {
     "full": 275,
-    "account": "550459323",
+    "label": "MT5 Market",
     "server": "ForexClub-MT5 Real Server",
-    "closeonly": 17,
     "total_marketwatch": 11,
+    "symbol": "EURUSD",
     "disabled": 8,
     "full_marketwatch": 11,
-    "symbol": "EURUSD",
+    "closeonly": 17,
     "total": 300,
-    "label": "MT5 Market"
+    "account": "550459323"
   },
   {
     "full": 275,
-    "account": "555105689",
+    "label": "MT5 Instant",
     "server": "ForexClub-MT5 Instant Real Server",
-    "closeonly": 17,
     "total_marketwatch": 11,
+    "symbol": "EURUSD",
     "disabled": 8,
     "full_marketwatch": 11,
-    "symbol": "EURUSD",
+    "closeonly": 17,
     "total": 300,
-    "label": "MT5 Instant"
+    "account": "555105689"
   },
   {
-    "error": "terminal_not_installed",
-    "label": "Libertex MT5 Market"
+    "full": 275,
+    "label": "Libertex MT5 Market",
+    "server": "LibertexCom-MT5 Real Server",
+    "total_marketwatch": 20,
+    "symbol": "EURUSD",
+    "disabled": 8,
+    "full_marketwatch": 20,
+    "closeonly": 17,
+    "total": 300,
+    "account": "560033688"
   }
 ]
