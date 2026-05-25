@@ -42,7 +42,7 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 641 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 745 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
@@ -94,7 +94,7 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 753 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 718 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...

@@ -45,11 +45,11 @@
       "label": "Libertex MT4 Market",
       "platform": "mt4",
       "account": "950131906",
-      "total": null,
-      "full": null,
-      "closeonly": null,
-      "disabled": null,
-      "error": "no_password_secret"
+      "total": 280,
+      "full": 248,
+      "closeonly": 14,
+      "disabled": 18,
+      "error": null
     },
     {
       "label": "Libertex MT5 Market",

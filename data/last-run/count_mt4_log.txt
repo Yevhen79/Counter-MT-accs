@@ -7,7 +7,7 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 89 msec elapsed
+Result: 0 errors, 0 warnings, 99 msec elapsed
 
 --- end compile log ---
 
@@ -25,7 +25,7 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 77 msec elapsed
+Result: 0 errors, 0 warnings, 92 msec elapsed
 
 --- end compile log ---
 
@@ -37,6 +37,20 @@ saved symbol list -> artifacts/mt4_symbols_MT4_Instant.csv
 
 === Libertex MT4 Market (login=950131906, server='LibertexCom-MT4 Market Real Server') ===
 Using MT4 install: C:\Program Files (x86)\Libertex MT4
-[33;1mWARNING: No password in env var LIBERTEX_MT4_MARKET_PASSWORD — skipping Libertex MT4 Market.[0m
+Compiling EA via C:\Program Files (x86)\Libertex MT4\metaeditor.exe in C:\Program Files (x86)\Libertex MT4\MQL4\Experts ...
+metaeditor exit code: 1
+--- compile log (C:\Program Files (x86)\Libertex MT4\MQL4\Experts\CountInstruments.log) ---
+
+
+CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
+Result: 0 errors, 0 warnings, 92 msec elapsed
+
+--- end compile log ---
+
+Attempt with Symbol=EURUSD
+wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=950131906, server='LibertexCom-MT4 Market Real Server', symbol=EURUSD)
+Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
+Libertex MT4 Market: full(all)=248 total(all)=280 full(marketwatch)=4 total(marketwatch)=4 account=950131906 (expected 950131906, match=True, symbol=EURUSD)
+saved symbol list -> artifacts/mt4_symbols_Libertex_MT4_Market.csv
 
 Wrote artifacts/mt4_results.json
