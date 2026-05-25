@@ -40,6 +40,26 @@
       "closeonly": 17,
       "disabled": 8,
       "error": null
+    },
+    {
+      "label": "Libertex MT4 Market",
+      "platform": "mt4",
+      "account": "950131906",
+      "total": null,
+      "full": null,
+      "closeonly": null,
+      "disabled": null,
+      "error": "no_password_secret"
+    },
+    {
+      "label": "Libertex MT5 Market",
+      "platform": "mt5",
+      "account": "560033688",
+      "total": null,
+      "full": null,
+      "closeonly": null,
+      "disabled": null,
+      "error": "terminal_not_installed"
     }
   ]
 }

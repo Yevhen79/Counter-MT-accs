@@ -1,13 +1,13 @@
-Using MT4 install: C:\Program Files (x86)\ForexClub MT4
 
 === MT4 Market (login=730232800, server='ForexClub-MT4 Market Real 2 Server') ===
+Using MT4 install: C:\Program Files (x86)\ForexClub MT4
 Compiling EA via C:\Program Files (x86)\ForexClub MT4\metaeditor.exe in C:\Program Files (x86)\ForexClub MT4\MQL4\Experts ...
 metaeditor exit code: 1
 --- compile log (C:\Program Files (x86)\ForexClub MT4\MQL4\Experts\CountInstruments.log) ---
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 92 msec elapsed
+Result: 0 errors, 0 warnings, 94 msec elapsed
 
 --- end compile log ---
 
@@ -18,13 +18,14 @@ MT4 Market: full(all)=248 total(all)=280 full(marketwatch)=6 total(marketwatch)=
 saved symbol list -> artifacts/mt4_symbols_MT4_Market.csv
 
 === MT4 Instant (login=710268540, server='ForexClub-MT4 Real 2 Server') ===
+Using MT4 install: C:\Program Files (x86)\ForexClub MT4
 Compiling EA via C:\Program Files (x86)\ForexClub MT4\metaeditor.exe in C:\Program Files (x86)\ForexClub MT4\MQL4\Experts ...
 metaeditor exit code: 1
 --- compile log (C:\Program Files (x86)\ForexClub MT4\MQL4\Experts\CountInstruments.log) ---
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 86 msec elapsed
+Result: 0 errors, 0 warnings, 78 msec elapsed
 
 --- end compile log ---
 
@@ -33,5 +34,9 @@ wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=710268540, serve
 Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
 MT4 Instant: full(all)=256 total(all)=288 full(marketwatch)=6 total(marketwatch)=6 account=710268540 (expected 710268540, match=True, symbol=EURUSD)
 saved symbol list -> artifacts/mt4_symbols_MT4_Instant.csv
+
+=== Libertex MT4 Market (login=950131906, server='LibertexCom-MT4 Market Real Server') ===
+Using MT4 install: C:\Program Files (x86)\Libertex MT4
+[33;1mWARNING: No password in env var LIBERTEX_MT4_MARKET_PASSWORD — skipping Libertex MT4 Market.[0m
 
 Wrote artifacts/mt4_results.json

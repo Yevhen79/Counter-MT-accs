@@ -1,6 +1,6 @@
-Using MT5 install: C:\Program Files\ForexClub MT5
 
 === MT5 Market (login=550459323, server='ForexClub-MT5 Real Server') ===
+Using MT5 install: C:\Program Files\ForexClub MT5
 Compiling EA via C:\Program Files\ForexClub MT5\metaeditor64.exe in C:\Program Files\ForexClub MT5\MQL5\Experts ...
 metaeditor64 exit code: 1
 --- compile log ---
@@ -42,7 +42,7 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 682 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 635 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
@@ -52,6 +52,7 @@ MT5 Market: full(all)=275 total(all)=300 full(marketwatch)=11 total(marketwatch)
 saved symbol list -> artifacts/mt5_symbols_MT5_Market.csv
 
 === MT5 Instant (login=555105689, server='ForexClub-MT5 Instant Real Server') ===
+Using MT5 install: C:\Program Files\ForexClub MT5
 Compiling EA via C:\Program Files\ForexClub MT5\metaeditor64.exe in C:\Program Files\ForexClub MT5\MQL5\Experts ...
 metaeditor64 exit code: 1
 --- compile log ---
@@ -93,7 +94,7 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 835 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 833 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
@@ -101,5 +102,8 @@ wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=555105689, serve
 Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
 MT5 Instant: full(all)=275 total(all)=300 full(marketwatch)=11 total(marketwatch)=11 account=555105689 (expected 555105689, match=True)
 saved symbol list -> artifacts/mt5_symbols_MT5_Instant.csv
+
+=== Libertex MT5 Market (login=560033688, server='LibertexCom-MT5 Real Server') ===
+[33;1mWARNING: No installed terminal for https://download.libertex.com/software/metatrader5/libertexcom5setup.exe — skipping Libertex MT5 Market.[0m
 
 Wrote artifacts/mt5_results.json

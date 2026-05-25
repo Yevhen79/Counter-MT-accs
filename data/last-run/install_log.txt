@@ -1,0 +1,47 @@
+
+=== Installing terminal 1/4: https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe (platform=mt4, hint=ForexClub) ===
+  downloaded 5,220,640 bytes
+  flag '/auto' (timeout 30s)
+  installed at: C:\Program Files (x86)\ForexClub MT4
+
+=== Installing terminal 2/4: https://download.libertex.org/metatrader/fcmt5setup.exe (platform=mt5, hint=ForexClub) ===
+  downloaded 5,760,624 bytes
+  flag '/auto' (timeout 30s)
+  installed at: C:\Program Files\ForexClub MT5
+
+=== Installing terminal 3/4: https://download.libertex.com/software/metatrader/libertexcom4setup.exe (platform=mt4, hint=Libertex) ===
+  downloaded 5,163,832 bytes
+  flag '/auto' (timeout 30s)
+  installed at: C:\Program Files (x86)\Libertex MT4
+
+=== Installing terminal 4/4: https://download.libertex.com/software/metatrader5/libertexcom5setup.exe (platform=mt5, hint=Libertex) ===
+[33;1mWARNING:   download failed: Just a moment...*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;padding-left:1.5rem;max-width:60rem}@media (width Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cFPWv: 'b',cH: 'AdPSqf8AMJ_RYuHNr.BBCGPZ0BWVYU9yv3oUYUwg4g0-1779708105-1.2.1.1-F1zoOPATiqIVejDv2u.OtZdg_CgWOoptY9XnWevsnPBliVUkTKb38o6EKfFbDo1W',cITimeS: '1779708105',cN: 'dpaMIGVIESiNJdVDKV7RzM',cRay: 'a014288c4d034d21',cTplB: '0',cTplC:0,cTplO:0,cTplV:5,cType: 'interactive',cUPMDTk:"\/software\/metatrader5\/libertexcom5setup.exe?__cf_chl_tk=dx6jO_pmIKT6iEwOgntZVNudcvWN9bPhkdell4_27SY-1779708105-1.0.1.1-Td.mtv2tQUZXn3rXekapB.Ab0Rk4RwKN.W6Dxi_mEoQ",cvId: '3',cZone: 'download.libertex.com',fa:"\/software\/metatrader5\/libertexcom5setup.exe?__cf_chl_f_tk=dx6jO_pmIKT6iEwOgntZVNudcvWN9bPhkdell4_27SY-1779708105-1.0.1.1-Td.mtv2tQUZXn3rXekapB.Ab0Rk4RwKN.W6Dxi_mEoQ",md: 'Ol2XSYFVAhZKpOJYTppnxcGbZQp0fZgnCnWEZo9HofA-1779708105-1.2.1.1-6mVLLptuZo6ndFxXEbgxEKxeUqI60ZoMPwdraowKMbOaS9Em4d4ExWKsr_wJMhwETm3BOyPhMjFpVJAq0m.IQkOWjbV1avdBKGL10lLPRy25KKAG0.5gXP_A9Z8URr1dK5wTc7rIC9d_CEmuJ8JMeeYYwmC_C4Ss2I5FNIbJSE_vtzCixWpeLgKMb9R.fsAYd76eEe8nUDc0AryjnUmP_kZBNaHOzrbpfe6j.P5VPqDec73c22FnFTAApt4kaCNzZtkUdgUsglX.hwsxNMThKsli7QK_5JeamJinFqo37pQMoUguv8.g2hgR1xj0lHtpNbti7.FNOBiFHyLb..aTzGaqCfhiLDYaqc17orcjBycQA1q99i32JSYgSUZFv5JTM2Mlyi8soToLMHjx_va83dAi4WHZ9yj9nA5taiqUEFIPRQOT0SyzDGByr1Juy7LzNbI8FxIeFdR7LEuXVPNfA_Qu82.LHsmRL0t8AtUMxR0k1j_vBgPqgK4UZCST10P65XhdD8xQnfKESjal7K.KOJpkDtAqhkX4_L5y_HP62ZgZHLKv3qiBzlquDoBSKU2auRYFx1kvehal1wHomDYMXiY0kZB3hsunExjxlLxoOZ3461CnpbtKmJIAHWT00vGFCeV6rOjLQ7HGWJolgXlcItIIzqOBVl5Ksq6NoRS0X09bwIUQM7NgCNMIQD5KYcr2Y6Rmlv.72Q09A8g8tLv3aP_kvj.xCQpXcJfGNXgJgsfWq_mgZUtyqJJXMkBKVkmcG8HGP4K2S7EKwAUsdAPG1UPVXXkN.H_q7SwTDpHs80dRPPutb0aA3QR_z9GZqtd0iJn9.5OETLV6xs_vvZJybUXct6EpJqmPSf9w95Cx2VEY3AspuGBjaNRZojseby25CCnOCNObCESaqpHeUh.r22WCuTE6D0YZYROaqQelwrC.YuDF9fb7lCZ6JZzxLAGQQYHwFZ1JSISYHJjD.W7B6fzzigNJsQzIc781nVeriNk',mdrd: 'B_OqwibaBGqjGgjVf5Agkzcaz2byYB9YkFwZkHRXRb8-1779708105-1.2.1.1-JeoMOch5ozX9eAE_jQRTOA5kpQhECYfnta5BwkKlVzn.jQah.fKW99M54JOwcAWclAc8wk_H5wuiz28q9njXzitR7GfrLZHp7Vpf9TuqvS8R27nI0lJzncZyY82FYIHIucm5OW2K5ugK7dpmzaxclTSfWZ4dHYFBci1UFdW73Br9rD2XFCCIDUvhCWYAon4mmo_PmzcnUIOXeda3joQC44GTbAEhyhAdqXpGrEnD3PWXLbAXOxL.zSAMNwFkUp3oxQz6EQJYBQbB_RN0zueGwvNqfRTFXMUr8wvPR8gPUzdQF4jnuKo.yVec5b49444SISJFxo_JuvSTva33QZz_YXFHKmO._rPFufGS3H5uAju9WB2CQ5KIpXuQnRYZIY4W3bTz1iOW44q2RKYIvz1xb2e1DdfsRx6UPY1VwC7EHsz8mgcoMhI.NveJ14up.PlgX4myRxzdywm4k1Aubk4q3fkzGYrdWiDjkJO1leyXNYcUBM4L2cCSoWcMUVstromF3Zp61FHP6lor5thYxtJetv7s7DQe3VDyJk4TOKA4wd6PUdRIh9M0kfIG7FvCUDXTeYmQlS4SsXNGXQ5LXlKEd6.NlkQTk.Ut.jXvwZotWdZykDYAaZt_ItZEPd5fQ6Sf4ywTlyDyYN9K9DnYZQd3L3TmtX5ExTOTVT2FVhsLk.Eac9KPBPDE94q.drGAVYoLgaxRuDjLmKvlouee81kGgtHPsS9pTF6bOehxzxBQG8xkUV_A8WveGU.c1SPB8ndIHuJzv42R9985zd5DB0CYLkUNcFFCOXQ9du7GRCRL0GGq4T24XTScYNxJfZFmX104osFABbxATIQLbEpaKa3UNnxoKkQGDzSW0iCWvOdWkjMzapqwbqWBWmD0n.u4Sab2Znssm4Qo3svvOHPdG5YFc1z5l2nOynuPbFrTdKsqQIH1ilsfVBab4rColtN1QSwDJO_rznbgQ4AgxNr_7cBRm5VHOdekUabEfb6Mh1luFeHzd7q1PvWvdAJfLoAIUcTRDS6G4ULF7yOX_PYvhZZ6EHYUhC_CBNfebbdwUnYY1jQm.k4u2ApoyFaVjLDSmKg_eCKDXjavq6J3XblNmALjnAGpqiLjn6UOESh0jSf_Wd.lbHfd0FyxxQZK7ER2JwHP55QbbL6RnjuG5hvkhHQ1wwy7HYf6UqvQCnpOIJKfqfeQQ4TbVd3j2rDpsaQy1iY8X4VX71OqxUbbqmI6pRiZ2s8NRYUdcIIOiRaiSpuTyUxhAe1aWE53JHK8YbcnFAefnENrfQ67wcisxu8B7IkmPjh86BIEdoQ7jlEnb3JQWJJK1M2Z2rDFelZ5JDxQunWqAF85tOpoCEcf1MuWWA6W7makB7c_f87ne6dZkScjMyDUkh9Kf8W4fgxUyD9.hw553CBgbQ2MrzsEh3E20WKkP5WF52ADAj9tX2YNsLaxo24ByoYiJNFzmsqlNbpwlpXq7noDZeCsp.Nui9Lwjc22RbgIKWB5hfO_kgk38i.GYQ3_DjsvEZgtnjNSEHlRhn3o9u2vvxZxkl00vZuE3f9PkAdDJcUcfsfLsAlTsX7GzEhNyeIcqDnxiXgm538lAd1t_m_4fuFoSgWzgoaEdtZ2LF11PaZI5db_FwRcr7jja.wPcoWfHvpkCvKw61Phl3_ZRb1nMgYOzWwKWykbRM34Zu5KBAA8wvcEnM1xN9Zblfp8S.Ni0tHB7OLco8eNnRgLNysH0ZI9Cag8Au488dRkuGeThdJS.cVsOSsS5Jl8Zwsc9K3kHBSdjpqFxTInEq9VF74qQdSNdO6DiJU.hWjgN3w4CHC1PlVs5PVEjTIUUiiTVCt4bEiUYqdgByVkkVMexTVF7yzYC9sAWLm99.nkaQ7bko7IOc0r.RbTtUtgkh4c1ldtNbDaWom5rCphxvvACF6740kylZ0onhYY4oZIfUwjxuLYDBQaDZG1TkdZCb4RkDZMjYZEM.nYZT5pHoN6_Jz20owSCA7mgrkeizJUYQl2CPJLob5ofb_pNEfhciO5.CMD_WhWwkddq2L4.GwCCWVUJD65J_mqO9QaU1vHQZW_DBrXqoEiwC2y7HtE2qH75NAsrWbTB6I775MMbXudx6PxOWyW05wUQ2_yq5b__jJboO4MxTgl4anqG70CWjP8Av0qq5v52NN0rawPalsBahsTp5wDAf4.G.QDjfwEl2dRkz7P2mp5p0BxKSWszSOaYTGafHEWdwKGrJgMOHRxe3GAwHK87lQlc_Bxd2oOYQw1.VtDEldq4ebSRsbmGiquG3b0XCiTjRe2.E4oFo5G9NpC46pj6UNx8xHleW7pw_CMiZGS1GQyP1ebf6rUBHjtcP.NbY8nnKsi3nLH7Au4Z.CHO2OacwH3fZnOR3Melv.fLD1hhsjN1ktfQ4VlBXegIJVTfB6mgnTTRLLY6rEoO0S1RgyOXLdvQ8pU7aDMaWupjZ5PbRU2YDRKTZ17K2XLiJu2GxDYiWKbA8V_3bYKYWRMvqlcSXzcT52CSwFf4NRlGRlBv.APzWhYzcsrypLxRojKws4fbZVWfr3wlZGdhDGcqwbsQiZz.Pr1FlV77PpxTy3u3tbDlvSk6JS06uSg7Uy2NJspQ4D.AdwV..FHODiQqUyB.jWJZOCen4q_STfT9Yx4tLS4Npq0a6oSjSYuv8Hb1P6xhLYvaF1rhOQAl0NCV9dPHXbPu5FoaE8SJ5xb3_20Kphj5zUyzS_MhMwUHagg9xM0__CzvFhzwKDXkjVfwqB84zNx4NMk9Plk0Ae3poe8ERUhH15mzTf1QXq53f01xO3NaQnmIgyrmK1hyaUNp5.XNXlGgz5GUU3ZYNXOOmRihOnVOF_VpqU34z1YmPmkQILPr6YD_ysmvc.s.yF7BFdx1p4EWCYwYx56_SSfe1fafA2j87UWiUBLNCfWsh_x6dIcvJayG3ZzMZsA9E19PEhkmRpsJztY.YPf9Nn7X4sNdncdga77UdTWt4_7JLjf.QFzwLi2zjskqd8b',};var a = document.createElement('script');a.nonce = 'dpaMIGVIESiNJdVDKV7RzM';a.src = '/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1?ray=a014288c4d034d21';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null,"\/software\/metatrader5\/libertexcom5setup.exe?__cf_chl_rt_tk=dx6jO_pmIKT6iEwOgntZVNudcvWN9bPhkdell4_27SY-1779708105-1.0.1.1-Td.mtv2tQUZXn3rXekapB.Ab0Rk4RwKN.W6Dxi_mEoQ"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());[0m
+
+Wrote terminals.json:
+[
+  {
+    "url": "https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe",
+    "platform": "mt4",
+    "dir_hint": "ForexClub",
+    "dir": "C:\\Program Files (x86)\\ForexClub MT4"
+  },
+  {
+    "url": "https://download.libertex.org/metatrader/fcmt5setup.exe",
+    "platform": "mt5",
+    "dir_hint": "ForexClub",
+    "dir": "C:\\Program Files\\ForexClub MT5"
+  },
+  {
+    "url": "https://download.libertex.com/software/metatrader/libertexcom4setup.exe",
+    "platform": "mt4",
+    "dir_hint": "Libertex",
+    "dir": "C:\\Program Files (x86)\\Libertex MT4"
+  },
+  {
+    "url": "https://download.libertex.com/software/metatrader5/libertexcom5setup.exe",
+    "platform": "mt5",
+    "dir_hint": "Libertex",
+    "dir": null
+  }
+]
+
