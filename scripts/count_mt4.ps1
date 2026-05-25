@@ -177,15 +177,15 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
 
         Write-Host "wrote $iniPath (login=$login, server='$server', symbol=$symbol)"
 
-        # Launch terminal with ONLY /portable /config /skipupdate — exactly
-        # like the working MT5 invocation. Do NOT pass /login /server
-        # /password: the server name contains spaces, so the unquoted
-        # /server:ForexClub-MT4 Market Real 2 Server splits into bogus
-        # positional args that corrupt the launch and make the terminal
-        # ignore the config block. Login comes purely from the [Common]
-        # section of the config file.
+        # MT4 takes the startup config as a POSITIONAL argument
+        # ("terminal.exe config.ini"), NOT via /config: (that's MT5 syntax).
+        # Passing /config: to MT4 was silently ignored, so the terminal
+        # launched with no account config at all — which is why it just
+        # recompiled samples and idled with no login. Pass the absolute ini
+        # path positionally; keep /portable so MQL4\Files resolves to the
+        # install dir where we poll for done.flag.
         $terminal = Join-Path $mt4Dir "terminal.exe"
-        $tArgs = @("/portable", "/config:$iniPath", "/skipupdate")
+        $tArgs = @($iniPath, "/portable", "/skipupdate")
         Write-Host "Launching terminal.exe $($tArgs -join ' ')"
         $proc = Start-Process -FilePath $terminal -ArgumentList $tArgs -PassThru
 
@@ -214,16 +214,26 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
             try {
                 $obj = Get-Content -Raw -Path $countFile | ConvertFrom-Json
                 $acctMatch = ([string]$obj.account -eq [string]$login)
-                Write-Host "${label}: full=$($obj.full) total=$($obj.total) account=$($obj.account) (expected $login, match=$acctMatch, symbol=$symbol)"
+                Write-Host "${label}: full(all)=$($obj.full) total(all)=$($obj.total) full(marketwatch)=$($obj.full_marketwatch) total(marketwatch)=$($obj.total_marketwatch) account=$($obj.account) (expected $login, match=$acctMatch, symbol=$symbol)"
                 if (-not $acctMatch) {
                     Write-Warning "Account mismatch — terminal reported $($obj.account) but expected $login. Rejecting (stale session)."
                     $acctMismatch = $true
                     break
                 } else {
+                    $symbolsCsv = Join-Path $filesDir "symbols.csv"
+                    $vsSymbolsCsv = Join-Path $vsFilesDir "symbols.csv"
+                    if (Test-Path $vsSymbolsCsv) { $symbolsCsv = $vsSymbolsCsv }
+                    if (Test-Path $symbolsCsv) {
+                        $key = ($label -replace '\s','_')
+                        Copy-Item $symbolsCsv -Destination "artifacts/mt4_symbols_$key.csv" -Force
+                        Write-Host "saved symbol list -> artifacts/mt4_symbols_$key.csv"
+                    }
                     [void]$results.Add(@{
                         label = $label
                         full  = [int]$obj.full
                         total = [int]$obj.total
+                        full_marketwatch  = [int]$obj.full_marketwatch
+                        total_marketwatch = [int]$obj.total_marketwatch
                         server = $server
                         symbol = $symbol
                         account = "$($obj.account)"

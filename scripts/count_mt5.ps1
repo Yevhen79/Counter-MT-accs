@@ -179,16 +179,25 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt5" }) {
             try {
                 $obj = Get-Content -Raw -Path $countFile | ConvertFrom-Json
                 $acctMatch = ([string]$obj.account -eq [string]$login)
-                Write-Host "${label}: full=$($obj.full) total=$($obj.total) account=$($obj.account) (expected $login, match=$acctMatch)"
+                Write-Host "${label}: full(all)=$($obj.full) total(all)=$($obj.total) full(marketwatch)=$($obj.full_marketwatch) total(marketwatch)=$($obj.total_marketwatch) account=$($obj.account) (expected $login, match=$acctMatch)"
                 if (-not $acctMatch) {
                     Write-Warning "Account mismatch — terminal reported $($obj.account) but expected $login. Possible stale/cached session; rejecting this result."
                     $acctMismatch = $true
                     break  # a different symbol won't fix a wrong login
                 } else {
+                    # Save the per-symbol list for review.
+                    $symbolsCsv = Join-Path $filesDir "symbols.csv"
+                    if (Test-Path $symbolsCsv) {
+                        $key = ($label -replace '\s','_')
+                        Copy-Item $symbolsCsv -Destination "artifacts/mt5_symbols_$key.csv" -Force
+                        Write-Host "saved symbol list -> artifacts/mt5_symbols_$key.csv"
+                    }
                     [void]$results.Add(@{
                         label = $label
                         full  = [int]$obj.full
                         total = [int]$obj.total
+                        full_marketwatch  = [int]$obj.full_marketwatch
+                        total_marketwatch = [int]$obj.total_marketwatch
                         server = $server
                         symbol = $symbol
                         account = "$($obj.account)"

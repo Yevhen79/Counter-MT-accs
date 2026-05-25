@@ -1,11 +1,26 @@
 //+------------------------------------------------------------------+
 //|                                          CountInstruments.mq5    |
-//| MT5 counterpart of mql4/CountInstruments.mq4. Counts symbols     |
-//| with SYMBOL_TRADE_MODE == SYMBOL_TRADE_MODE_FULL and writes      |
-//| count.json + done.flag to <data_dir>/MQL5/Files/.                 |
+//| Counts symbols by trade mode and dumps a per-symbol list so the  |
+//| host can see exactly what is being counted.                       |
+//|                                                                   |
+//| Writes to <data_dir>/MQL5/Files/:                                 |
+//|   count.json   - summary counts + logged-in account               |
+//|   symbols.csv  - every symbol: name,trade_mode,in_market_watch    |
+//|   done.flag    - signal for the host PowerShell                   |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.00"
+#property version "1.20"
+
+string TradeModeText(long m) {
+   switch ((int)m) {
+      case SYMBOL_TRADE_MODE_DISABLED:  return "DISABLED";
+      case SYMBOL_TRADE_MODE_LONGONLY:  return "LONGONLY";
+      case SYMBOL_TRADE_MODE_SHORTONLY: return "SHORTONLY";
+      case SYMBOL_TRADE_MODE_CLOSEONLY: return "CLOSEONLY";
+      case SYMBOL_TRADE_MODE_FULL:      return "FULL";
+   }
+   return "UNKNOWN";
+}
 
 int OnInit() {
    EventSetTimer(2);
@@ -22,43 +37,56 @@ void OnTimer() {
    static bool wrote = false;
    if (wrote) return;
 
-   int total = SymbolsTotal(false); // false = all known symbols
+   int total = SymbolsTotal(false); // all symbols in the broker tree
    if (total == 0 && retries > 0) {
       retries--;
       Print("CountInstruments: SymbolsTotal=0, waiting (", retries, " retries left)");
       return;
    }
 
-   int full = 0;
-   int checked = 0;
+   int mwTotal = SymbolsTotal(true); // Market Watch (selected) symbols only
+
+   int fullAll = 0;     // FULL across the whole tree
+   int fullMw  = 0;     // FULL among Market Watch symbols
+
+   int h = FileOpen("symbols.csv", FILE_WRITE | FILE_TXT | FILE_ANSI);
+   if (h != INVALID_HANDLE)
+      FileWriteString(h, "symbol,trade_mode,in_market_watch\r\n");
+
    for (int i = 0; i < total; i++) {
       string name = SymbolName(i, false);
       if (StringLen(name) == 0) continue;
-      checked++;
       long mode = SymbolInfoInteger(name, SYMBOL_TRADE_MODE);
-      if (mode == SYMBOL_TRADE_MODE_FULL) full++;
+      bool selected = (bool)SymbolInfoInteger(name, SYMBOL_SELECT);
+      if (mode == SYMBOL_TRADE_MODE_FULL) {
+         fullAll++;
+         if (selected) fullMw++;
+      }
+      if (h != INVALID_HANDLE)
+         FileWriteString(h, name + "," + TradeModeText(mode) + "," + (selected ? "1" : "0") + "\r\n");
    }
+   if (h != INVALID_HANDLE) FileClose(h);
 
-   // Include the actually-logged-in account so the host can verify the
-   // terminal switched accounts (and isn't showing cached symbols).
    long account = AccountInfoInteger(ACCOUNT_LOGIN);
-   string json = "{\"full\": " + IntegerToString(full)
-               + ", \"total\": " + IntegerToString(checked)
+   string json = "{\"full\": " + IntegerToString(fullAll)
+               + ", \"total\": " + IntegerToString(total)
+               + ", \"full_marketwatch\": " + IntegerToString(fullMw)
+               + ", \"total_marketwatch\": " + IntegerToString(mwTotal)
                + ", \"account\": " + IntegerToString(account) + "}";
 
-   int h = FileOpen("count.json", FILE_WRITE | FILE_TXT | FILE_ANSI);
-   if (h != INVALID_HANDLE) {
-      FileWriteString(h, json);
-      FileClose(h);
+   int hj = FileOpen("count.json", FILE_WRITE | FILE_TXT | FILE_ANSI);
+   if (hj != INVALID_HANDLE) {
+      FileWriteString(hj, json);
+      FileClose(hj);
       Print("CountInstruments: wrote ", json);
    } else {
       Print("CountInstruments: FileOpen(count.json) failed, error=", GetLastError());
    }
 
-   int hdone = FileOpen("done.flag", FILE_WRITE | FILE_TXT | FILE_ANSI);
-   if (hdone != INVALID_HANDLE) {
-      FileWriteString(hdone, "1");
-      FileClose(hdone);
+   int hd = FileOpen("done.flag", FILE_WRITE | FILE_TXT | FILE_ANSI);
+   if (hd != INVALID_HANDLE) {
+      FileWriteString(hd, "1");
+      FileClose(hd);
    } else {
       Print("CountInstruments: FileOpen(done.flag) failed, error=", GetLastError());
    }

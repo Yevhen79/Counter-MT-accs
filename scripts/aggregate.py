@@ -116,6 +116,12 @@ def main() -> int:
             dst.write_text(placeholder, encoding="utf-8")
             print(f"[aggregate] {src} missing — wrote placeholder to {dst}")
 
+    # Per-symbol breakdown lists (variable filenames mt5_symbols_*.csv etc.).
+    for src in Path("artifacts").glob("*_symbols_*.csv"):
+        dst = DEBUG_DIR / src.name
+        shutil.copy(src, dst)
+        print(f"[aggregate] copied {src} -> {dst}")
+
     return 0
 
 

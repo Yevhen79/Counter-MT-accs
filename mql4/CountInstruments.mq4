@@ -1,19 +1,16 @@
 //+------------------------------------------------------------------+
 //|                                          CountInstruments.mq4    |
-//|  Counts symbols on the current MT4 account where trading is      |
-//|  allowed (MarketInfo MODE_TRADEALLOWED == 1) and writes a small  |
-//|  JSON file the host PowerShell can pick up.                       |
+//| Counts symbols by trade-allowed flag and dumps a per-symbol list. |
 //|                                                                   |
-//|  NB: MT4's symbol API does NOT distinguish TRADE_FULL from        |
-//|  TRADE_CLOSE_ONLY the way MT5 does. MODE_TRADEALLOWED == 1 is     |
-//|  the closest available approximation.                              |
+//| Writes to <data_dir>/MQL4/Files/:                                 |
+//|   count.json   - summary counts + logged-in account               |
+//|   symbols.csv  - every symbol: name,trade_allowed,in_market_watch |
+//|   done.flag    - signal for the host PowerShell                   |
+//|                                                                   |
+//| NB: MT4 has no TRADE_FULL vs TRADE_CLOSE_ONLY distinction; the    |
+//| closest signal is MarketInfo(name, MODE_TRADEALLOWED) == 1.       |
 //+------------------------------------------------------------------+
 #property strict
-
-// We don't rely on ticks: if the terminal is not connected yet (or is on a
-// dead symbol), OnTick never fires and the host script times out waiting
-// for done.flag. Use OnTimer to poll every 2 seconds — once the symbols
-// list is populated, do the count and write the result file.
 
 int OnInit() {
    EventSetTimer(2);
@@ -26,46 +23,69 @@ void OnDeinit(const int reason) {
 }
 
 void OnTimer() {
-   static int retries = 60; // 60 * 2s = 2 min max
+   static int retries = 60;
    static bool wrote = false;
    if (wrote) return;
 
-   int total = SymbolsTotal(false); // false = every available symbol
+   int total = SymbolsTotal(false); // all available symbols
    if (total == 0 && retries > 0) {
       retries--;
       Print("CountInstruments: SymbolsTotal=0, waiting (", retries, " retries left)");
       return;
    }
 
-   int allowed = 0;
-   int checked = 0;
+   // Cache Market Watch (selected) symbol names.
+   int mwTotal = SymbolsTotal(true);
+   string mwNames[];
+   ArrayResize(mwNames, mwTotal);
+   for (int j = 0; j < mwTotal; j++) mwNames[j] = SymbolName(j, true);
+
+   int allowedAll = 0;
+   int allowedMw  = 0;
+
+   int h = FileOpen("symbols.csv", FILE_WRITE | FILE_TXT | FILE_ANSI);
+   if (h != INVALID_HANDLE)
+      FileWriteString(h, "symbol,trade_allowed,in_market_watch\r\n");
+
    for (int i = 0; i < total; i++) {
       string name = SymbolName(i, false);
       if (StringLen(name) == 0) continue;
-      checked++;
-      int v = (int)MarketInfo(name, MODE_TRADEALLOWED);
-      if (v == 1) allowed++;
-   }
+      int allowed = (int)MarketInfo(name, MODE_TRADEALLOWED);
 
-   // Include the actually-logged-in account so the host can verify login.
+      bool inMw = false;
+      for (int k = 0; k < mwTotal; k++) {
+         if (mwNames[k] == name) { inMw = true; break; }
+      }
+
+      if (allowed == 1) {
+         allowedAll++;
+         if (inMw) allowedMw++;
+      }
+      if (h != INVALID_HANDLE)
+         FileWriteString(h, name + "," + IntegerToString(allowed) + "," + (inMw ? "1" : "0") + "\r\n");
+   }
+   if (h != INVALID_HANDLE) FileClose(h);
+
    int account = (int)AccountNumber();
-   string json = "{\"full\": " + IntegerToString(allowed)
-               + ", \"total\": " + IntegerToString(checked)
+   string json = "{\"full\": " + IntegerToString(allowedAll)
+               + ", \"total\": " + IntegerToString(total)
+               + ", \"full_marketwatch\": " + IntegerToString(allowedMw)
+               + ", \"total_marketwatch\": " + IntegerToString(mwTotal)
                + ", \"account\": " + IntegerToString(account) + "}";
 
-   int h = FileOpen("count.json", FILE_WRITE | FILE_TXT | FILE_ANSI);
-   if (h != INVALID_HANDLE) {
-      FileWriteString(h, json);
-      FileClose(h);
+   int hj = FileOpen("count.json", FILE_WRITE | FILE_TXT | FILE_ANSI);
+   if (hj != INVALID_HANDLE) {
+      FileWriteString(hj, json);
+      FileClose(hj);
       Print("CountInstruments: wrote ", json);
    } else {
       Print("CountInstruments: FileOpen(count.json) failed, error=", GetLastError());
    }
 
-   int hdone = FileOpen("done.flag", FILE_WRITE | FILE_TXT | FILE_ANSI);
-   if (hdone != INVALID_HANDLE) {
-      FileWriteString(hdone, "1");
-      FileClose(hdone);
+   int hd = FileOpen("done.flag", FILE_WRITE | FILE_TXT | FILE_ANSI);
+   if (hd != INVALID_HANDLE) {
+      FileWriteString(hd, "1");
+      FileClose(hd);
    } else {
       Print("CountInstruments: FileOpen(done.flag) failed, error=", GetLastError());
    }
