@@ -100,6 +100,10 @@ foreach ($url in $installers.Keys) {
     Write-Host ""
     Write-Host "=== Installing terminal $i/$($installers.Count): $url (platform=$($t.platform), hint=$($t.dir_hint)) ==="
 
+    # Small spacing between installers to avoid bursty requests tripping
+    # the brokers' Cloudflare rate checks.
+    if ($i -gt 1) { Start-Sleep -Seconds 8 }
+
     $before = Get-TerminalExes $t.platform
 
     $file = Join-Path $env:RUNNER_TEMP ("setup_{0}.exe" -f $i)
