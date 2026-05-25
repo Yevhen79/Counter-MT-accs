@@ -122,6 +122,7 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt5" }) {
     }
 
     $success = $false
+    $acctMismatch = $false
     foreach ($symbol in $symbolCandidates) {
         if ($success) { break }
         Write-Host "Trying with Symbol=$symbol ..."
@@ -177,15 +178,23 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt5" }) {
         if (Test-Path $countFile) {
             try {
                 $obj = Get-Content -Raw -Path $countFile | ConvertFrom-Json
-                Write-Host "${label}: full=$($obj.full) total=$($obj.total)"
-                [void]$results.Add(@{
-                    label = $label
-                    full  = [int]$obj.full
-                    total = [int]$obj.total
-                    server = $server
-                    symbol = $symbol
-                })
-                $success = $true
+                $acctMatch = ([string]$obj.account -eq [string]$login)
+                Write-Host "${label}: full=$($obj.full) total=$($obj.total) account=$($obj.account) (expected $login, match=$acctMatch)"
+                if (-not $acctMatch) {
+                    Write-Warning "Account mismatch — terminal reported $($obj.account) but expected $login. Possible stale/cached session; rejecting this result."
+                    $acctMismatch = $true
+                    break  # a different symbol won't fix a wrong login
+                } else {
+                    [void]$results.Add(@{
+                        label = $label
+                        full  = [int]$obj.full
+                        total = [int]$obj.total
+                        server = $server
+                        symbol = $symbol
+                        account = "$($obj.account)"
+                    })
+                    $success = $true
+                }
             } catch {
                 Write-Warning "Failed to parse count.json: $_"
             }
@@ -207,10 +216,16 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt5" }) {
         try { Stop-Process -Id $tProc.Id -Force -ErrorAction SilentlyContinue } catch {}
         Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
         Start-Sleep -Seconds 3
+
+        if ($acctMismatch) { break }  # stop trying symbols on wrong login
     }
 
     if (-not $success) {
-        [void]$results.Add(@{ label = $label; error = "no_symbol_worked"; tried = $symbolCandidates -join ',' })
+        if ($acctMismatch) {
+            [void]$results.Add(@{ label = $label; error = "account_mismatch_stale_session" })
+        } else {
+            [void]$results.Add(@{ label = $label; error = "no_symbol_worked"; tried = $symbolCandidates -join ',' })
+        }
     }
 }
 

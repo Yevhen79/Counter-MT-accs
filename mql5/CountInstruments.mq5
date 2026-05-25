@@ -39,7 +39,12 @@ void OnTimer() {
       if (mode == SYMBOL_TRADE_MODE_FULL) full++;
    }
 
-   string json = StringFormat("{\"full\": %d, \"total\": %d}", full, checked);
+   // Include the actually-logged-in account so the host can verify the
+   // terminal switched accounts (and isn't showing cached symbols).
+   long account = AccountInfoInteger(ACCOUNT_LOGIN);
+   string json = "{\"full\": " + IntegerToString(full)
+               + ", \"total\": " + IntegerToString(checked)
+               + ", \"account\": " + IntegerToString(account) + "}";
 
    int h = FileOpen("count.json", FILE_WRITE | FILE_TXT | FILE_ANSI);
    if (h != INVALID_HANDLE) {

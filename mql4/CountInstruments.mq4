@@ -47,7 +47,11 @@ void OnTimer() {
       if (v == 1) allowed++;
    }
 
-   string json = StringFormat("{\"full\": %d, \"total\": %d}", allowed, checked);
+   // Include the actually-logged-in account so the host can verify login.
+   int account = (int)AccountNumber();
+   string json = "{\"full\": " + IntegerToString(allowed)
+               + ", \"total\": " + IntegerToString(checked)
+               + ", \"account\": " + IntegerToString(account) + "}";
 
    int h = FileOpen("count.json", FILE_WRITE | FILE_TXT | FILE_ANSI);
    if (h != INVALID_HANDLE) {
