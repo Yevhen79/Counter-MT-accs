@@ -7,78 +7,93 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 92 msec elapsed
+Result: 0 errors, 0 warnings, 99 msec elapsed
 
 --- end compile log ---
 
 Attempt with Symbol=EURUSD
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=730232800, server='ForexClub-MT4 Market Real 2 Server', symbol=EURUSD)
-Launching terminal.exe /portable /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /skipupdate
+Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
 [33;1mWARNING: Timed out (90s) on Symbol=EURUSD[0m
 
 Attempt with Symbol=EURUSDx
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=730232800, server='ForexClub-MT4 Market Real 2 Server', symbol=EURUSDx)
-Launching terminal.exe /portable /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /skipupdate
+Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
 [33;1mWARNING: Timed out (90s) on Symbol=EURUSDx[0m
 
 Attempt with Symbol=GBPUSD
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=730232800, server='ForexClub-MT4 Market Real 2 Server', symbol=GBPUSD)
-Launching terminal.exe /portable /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /skipupdate
+Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
 [33;1mWARNING: Timed out (90s) on Symbol=GBPUSD[0m
 
 Attempt with Symbol=USDRUB
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=730232800, server='ForexClub-MT4 Market Real 2 Server', symbol=USDRUB)
-Launching terminal.exe /portable /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /skipupdate
+Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
 [33;1mWARNING: Timed out (90s) on Symbol=USDRUB[0m
 --- C:\Program Files (x86)\MetaTrader 4\logs\20260525.log (tail) ---
-0	07:52:01.097	Migration: data to 'C:\Program Files (x86)\MetaTrader 4' migration started
-0	07:52:01.097	Migration: data migration finished, no virtual folder
-0	07:52:01.097	LiveUpdate: update C:\Program Files (x86)\MetaTrader 4\MQL4 folder started
-0	07:52:01.362	LiveUpdate: update C:\Program Files (x86)\MetaTrader 4\MQL4 folder finished
-0	07:52:01.440	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:52:01.440	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13790 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:52:01.440	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	07:52:01.518	Sources recompilation started
-0	07:52:05.989	Sources recompilation finished (28 compiled in 4469 msec)
-0	07:53:34.153	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:53:34.153	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13910 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:53:34.153	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	07:55:07.425	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:55:07.425	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13921 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:55:07.425	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	07:56:40.709	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:56:40.709	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13931 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:56:40.709	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:19:14.510	Migration: data to 'C:\Program Files (x86)\MetaTrader 4' migration started
+0	08:19:14.510	Migration: data migration finished, no virtual folder
+0	08:19:14.516	LiveUpdate: update C:\Program Files (x86)\MetaTrader 4\MQL4 folder started
+0	08:19:14.837	LiveUpdate: update C:\Program Files (x86)\MetaTrader 4\MQL4 folder finished
+0	08:19:14.941	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:19:14.941	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13751 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:19:14.941	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:19:15.135	Sources recompilation started
+0	08:19:21.227	Sources recompilation finished (28 compiled in 6094 msec)
+0	08:19:21.227	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:19:24.917	Expert CountInstruments EURUSD,H1: loaded successfully
+0	08:20:46.030	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:20:46.030	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13874 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:20:46.030	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:20:46.061	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:20:46.437	Expert CountInstruments EURUSDx,H1: loaded successfully
+0	08:22:19.259	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:22:19.259	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13891 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:22:19.259	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:22:19.306	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:22:19.634	Expert CountInstruments GBPUSD,H1: loaded successfully
+0	08:23:52.480	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:23:52.480	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13913 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:23:52.480	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:23:52.543	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:23:52.887	Expert CountInstruments USDRUB,H1: loaded successfully
 --- end ---
 --- C:\Program Files (x86)\MetaTrader 4\MQL4\Logs\20260525.log (tail) ---
-0	07:52:01.518	Compiling 'MACD Sample'
-0	07:52:01.518	Compiling 'Moving Average'
-0	07:52:02.097	Compiling 'Accelerator'
-0	07:52:02.097	Compiling 'Accumulation'
-0	07:52:02.097	Compiling 'Alligator'
-0	07:52:02.097	Compiling 'ATR'
-0	07:52:02.097	Compiling 'Awesome'
-0	07:52:02.097	Compiling 'Bands'
-0	07:52:02.097	Compiling 'Bears'
-0	07:52:02.097	Compiling 'Bulls'
-0	07:52:02.097	Compiling 'CCI'
-0	07:52:02.097	Compiling 'Custom Moving Averages'
-0	07:52:02.097	Compiling 'Heiken Ashi'
-0	07:52:02.097	Compiling 'Ichimoku'
-0	07:52:02.097	Compiling 'iExposure'
-0	07:52:02.097	Compiling 'MACD'
-0	07:52:02.097	Compiling 'Momentum'
-0	07:52:02.097	Compiling 'OsMA'
-0	07:52:02.097	Compiling 'Parabolic'
-0	07:52:02.097	Compiling 'RSI'
-0	07:52:02.097	Compiling 'Stochastic'
-0	07:52:02.097	Compiling 'ZigZag'
-0	07:52:02.097	Compiling 'SimplePanel'
-0	07:52:04.942	Compiling 'PeriodConverter'
-0	07:52:04.942	Compiling 'DLLSampleTester'
-0	07:52:04.942	Compiling 'PipeClient'
-0	07:52:04.942	Compiling 'PipeClientPure'
-0	07:52:05.645	Compiling 'stdlib'
+0	08:19:15.135	Compiling 'MACD Sample'
+0	08:19:15.135	Compiling 'Moving Average'
+0	08:19:15.983	Compiling 'Accelerator'
+0	08:19:15.983	Compiling 'Accumulation'
+0	08:19:15.983	Compiling 'Alligator'
+0	08:19:15.983	Compiling 'ATR'
+0	08:19:15.983	Compiling 'Awesome'
+0	08:19:15.983	Compiling 'Bands'
+0	08:19:15.983	Compiling 'Bears'
+0	08:19:15.983	Compiling 'Bulls'
+0	08:19:15.983	Compiling 'CCI'
+0	08:19:15.983	Compiling 'Custom Moving Averages'
+0	08:19:15.983	Compiling 'Heiken Ashi'
+0	08:19:15.983	Compiling 'Ichimoku'
+0	08:19:15.983	Compiling 'iExposure'
+0	08:19:15.983	Compiling 'MACD'
+0	08:19:15.983	Compiling 'Momentum'
+0	08:19:15.983	Compiling 'OsMA'
+0	08:19:15.983	Compiling 'Parabolic'
+0	08:19:15.983	Compiling 'RSI'
+0	08:19:15.983	Compiling 'Stochastic'
+0	08:19:15.983	Compiling 'ZigZag'
+0	08:19:15.983	Compiling 'SimplePanel'
+0	08:19:19.867	Compiling 'PeriodConverter'
+0	08:19:19.867	Compiling 'DLLSampleTester'
+0	08:19:19.867	Compiling 'PipeClient'
+0	08:19:19.867	Compiling 'PipeClientPure'
+0	08:19:20.789	Compiling 'stdlib'
+0	08:19:24.917	Expert CountInstruments EURUSD,H1: loaded successfully
+3	08:19:24.948	CountInstruments EURUSD,H1: cannot refresh history [4073]
+0	08:20:46.437	Expert CountInstruments EURUSDx,H1: loaded successfully
+0	08:22:19.634	Expert CountInstruments GBPUSD,H1: loaded successfully
+3	08:22:19.649	CountInstruments GBPUSD,H1: cannot refresh history [4073]
+0	08:23:52.887	Expert CountInstruments USDRUB,H1: loaded successfully
+3	08:23:52.903	CountInstruments USDRUB,H1: cannot refresh history [4073]
 --- end ---
 Listing C:\Program Files (x86)\MetaTrader 4\MQL4\Files :
 
@@ -90,90 +105,121 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 78 msec elapsed
+Result: 0 errors, 0 warnings, 88 msec elapsed
 
 --- end compile log ---
 
 Attempt with Symbol=EURUSD
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=710268540, server='ForexClub-MT4 Real 2 Server', symbol=EURUSD)
-Launching terminal.exe /portable /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /skipupdate
+Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
 [33;1mWARNING: Timed out (90s) on Symbol=EURUSD[0m
 
 Attempt with Symbol=EURUSDx
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=710268540, server='ForexClub-MT4 Real 2 Server', symbol=EURUSDx)
-Launching terminal.exe /portable /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /skipupdate
+Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
 [33;1mWARNING: Timed out (90s) on Symbol=EURUSDx[0m
 
 Attempt with Symbol=GBPUSD
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=710268540, server='ForexClub-MT4 Real 2 Server', symbol=GBPUSD)
-Launching terminal.exe /portable /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /skipupdate
+Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
 [33;1mWARNING: Timed out (90s) on Symbol=GBPUSD[0m
 
 Attempt with Symbol=USDRUB
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=710268540, server='ForexClub-MT4 Real 2 Server', symbol=USDRUB)
-Launching terminal.exe /portable /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /skipupdate
+Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
 [33;1mWARNING: Timed out (90s) on Symbol=USDRUB[0m
 --- C:\Program Files (x86)\MetaTrader 4\logs\20260525.log (tail) ---
-0	07:52:01.097	Migration: data to 'C:\Program Files (x86)\MetaTrader 4' migration started
-0	07:52:01.097	Migration: data migration finished, no virtual folder
-0	07:52:01.097	LiveUpdate: update C:\Program Files (x86)\MetaTrader 4\MQL4 folder started
-0	07:52:01.362	LiveUpdate: update C:\Program Files (x86)\MetaTrader 4\MQL4 folder finished
-0	07:52:01.440	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:52:01.440	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13790 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:52:01.440	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	07:52:01.518	Sources recompilation started
-0	07:52:05.989	Sources recompilation finished (28 compiled in 4469 msec)
-0	07:53:34.153	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:53:34.153	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13910 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:53:34.153	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	07:55:07.425	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:55:07.425	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13921 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:55:07.425	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	07:56:40.709	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:56:40.709	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13931 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:56:40.709	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	07:58:16.034	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:58:16.034	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13936 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:58:16.034	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	07:59:49.276	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	07:59:49.276	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13937 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	07:59:49.276	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	08:01:22.516	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	08:01:22.516	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13946 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	08:01:22.516	Data Folder: C:\Program Files (x86)\MetaTrader 4
-0	08:02:55.748	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
-0	08:02:55.748	Windows Server 2022 Datacenter x64, UAC, 4 x AMD EPYC 7763 64-Core Processor , Memory: 13926 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
-0	08:02:55.748	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:19:14.510	Migration: data to 'C:\Program Files (x86)\MetaTrader 4' migration started
+0	08:19:14.510	Migration: data migration finished, no virtual folder
+0	08:19:14.516	LiveUpdate: update C:\Program Files (x86)\MetaTrader 4\MQL4 folder started
+0	08:19:14.837	LiveUpdate: update C:\Program Files (x86)\MetaTrader 4\MQL4 folder finished
+0	08:19:14.941	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:19:14.941	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13751 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:19:14.941	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:19:15.135	Sources recompilation started
+0	08:19:21.227	Sources recompilation finished (28 compiled in 6094 msec)
+0	08:19:21.227	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:19:24.917	Expert CountInstruments EURUSD,H1: loaded successfully
+0	08:20:46.030	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:20:46.030	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13874 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:20:46.030	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:20:46.061	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:20:46.437	Expert CountInstruments EURUSDx,H1: loaded successfully
+0	08:22:19.259	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:22:19.259	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13891 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:22:19.259	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:22:19.306	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:22:19.634	Expert CountInstruments GBPUSD,H1: loaded successfully
+0	08:23:52.480	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:23:52.480	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13913 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:23:52.480	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:23:52.543	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:23:52.887	Expert CountInstruments USDRUB,H1: loaded successfully
+0	08:25:27.849	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:25:27.849	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13929 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:25:27.849	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:25:27.881	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:25:28.225	Expert CountInstruments EURUSD,H1: loaded successfully
+0	08:27:01.157	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:27:01.157	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13930 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:27:01.157	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:27:01.204	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:27:01.533	Expert CountInstruments EURUSDx,H1: loaded successfully
+0	08:28:34.616	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:28:34.616	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13927 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:28:34.616	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:28:34.663	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:28:35.058	Expert CountInstruments GBPUSD,H1: loaded successfully
+0	08:30:07.674	MetaTrader 4 build 1473 started (MetaQuotes Software Corp.)
+0	08:30:07.674	Windows Server 2022 Datacenter x64, UAC, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, Memory: 13927 / 16378 Mb, Disk: 85 / 255 Gb, GMT+0
+0	08:30:07.674	Data Folder: C:\Program Files (x86)\MetaTrader 4
+0	08:30:07.720	Started with configuration file 'D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini'
+2	08:30:08.065	Expert CountInstruments USDRUB,H1: loaded successfully
 --- end ---
 --- C:\Program Files (x86)\MetaTrader 4\MQL4\Logs\20260525.log (tail) ---
-0	07:52:01.518	Compiling 'MACD Sample'
-0	07:52:01.518	Compiling 'Moving Average'
-0	07:52:02.097	Compiling 'Accelerator'
-0	07:52:02.097	Compiling 'Accumulation'
-0	07:52:02.097	Compiling 'Alligator'
-0	07:52:02.097	Compiling 'ATR'
-0	07:52:02.097	Compiling 'Awesome'
-0	07:52:02.097	Compiling 'Bands'
-0	07:52:02.097	Compiling 'Bears'
-0	07:52:02.097	Compiling 'Bulls'
-0	07:52:02.097	Compiling 'CCI'
-0	07:52:02.097	Compiling 'Custom Moving Averages'
-0	07:52:02.097	Compiling 'Heiken Ashi'
-0	07:52:02.097	Compiling 'Ichimoku'
-0	07:52:02.097	Compiling 'iExposure'
-0	07:52:02.097	Compiling 'MACD'
-0	07:52:02.097	Compiling 'Momentum'
-0	07:52:02.097	Compiling 'OsMA'
-0	07:52:02.097	Compiling 'Parabolic'
-0	07:52:02.097	Compiling 'RSI'
-0	07:52:02.097	Compiling 'Stochastic'
-0	07:52:02.097	Compiling 'ZigZag'
-0	07:52:02.097	Compiling 'SimplePanel'
-0	07:52:04.942	Compiling 'PeriodConverter'
-0	07:52:04.942	Compiling 'DLLSampleTester'
-0	07:52:04.942	Compiling 'PipeClient'
-0	07:52:04.942	Compiling 'PipeClientPure'
-0	07:52:05.645	Compiling 'stdlib'
+0	08:19:15.135	Compiling 'MACD Sample'
+0	08:19:15.135	Compiling 'Moving Average'
+0	08:19:15.983	Compiling 'Accelerator'
+0	08:19:15.983	Compiling 'Accumulation'
+0	08:19:15.983	Compiling 'Alligator'
+0	08:19:15.983	Compiling 'ATR'
+0	08:19:15.983	Compiling 'Awesome'
+0	08:19:15.983	Compiling 'Bands'
+0	08:19:15.983	Compiling 'Bears'
+0	08:19:15.983	Compiling 'Bulls'
+0	08:19:15.983	Compiling 'CCI'
+0	08:19:15.983	Compiling 'Custom Moving Averages'
+0	08:19:15.983	Compiling 'Heiken Ashi'
+0	08:19:15.983	Compiling 'Ichimoku'
+0	08:19:15.983	Compiling 'iExposure'
+0	08:19:15.983	Compiling 'MACD'
+0	08:19:15.983	Compiling 'Momentum'
+0	08:19:15.983	Compiling 'OsMA'
+0	08:19:15.983	Compiling 'Parabolic'
+0	08:19:15.983	Compiling 'RSI'
+0	08:19:15.983	Compiling 'Stochastic'
+0	08:19:15.983	Compiling 'ZigZag'
+0	08:19:15.983	Compiling 'SimplePanel'
+0	08:19:19.867	Compiling 'PeriodConverter'
+0	08:19:19.867	Compiling 'DLLSampleTester'
+0	08:19:19.867	Compiling 'PipeClient'
+0	08:19:19.867	Compiling 'PipeClientPure'
+0	08:19:20.789	Compiling 'stdlib'
+0	08:19:24.917	Expert CountInstruments EURUSD,H1: loaded successfully
+3	08:19:24.948	CountInstruments EURUSD,H1: cannot refresh history [4073]
+0	08:20:46.437	Expert CountInstruments EURUSDx,H1: loaded successfully
+0	08:22:19.634	Expert CountInstruments GBPUSD,H1: loaded successfully
+3	08:22:19.649	CountInstruments GBPUSD,H1: cannot refresh history [4073]
+0	08:23:52.887	Expert CountInstruments USDRUB,H1: loaded successfully
+3	08:23:52.903	CountInstruments USDRUB,H1: cannot refresh history [4073]
+0	08:25:28.225	Expert CountInstruments EURUSD,H1: loaded successfully
+3	08:25:28.271	CountInstruments EURUSD,H1: cannot refresh history [4073]
+0	08:27:01.533	Expert CountInstruments EURUSDx,H1: loaded successfully
+3	08:27:01.626	CountInstruments EURUSDx,H1: cannot refresh history [4073]
+0	08:28:35.058	Expert CountInstruments GBPUSD,H1: loaded successfully
+3	08:28:35.088	CountInstruments GBPUSD,H1: cannot refresh history [4073]
+0	08:30:08.065	Expert CountInstruments USDRUB,H1: loaded successfully
+3	08:30:08.080	CountInstruments USDRUB,H1: cannot refresh history [4073]
 --- end ---
 Listing C:\Program Files (x86)\MetaTrader 4\MQL4\Files :
 
