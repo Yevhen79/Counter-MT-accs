@@ -2,142 +2,135 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>Tradeable Instruments — ForexClub</title>
+  <title>Инструменты ForexClub — MT4 / MT5</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
     :root { color-scheme: light dark; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      max-width: 980px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      line-height: 1.4;
+      max-width: 1000px; margin: 2rem auto; padding: 0 1rem; line-height: 1.45;
     }
-    h1 { margin-bottom: 0.2rem; }
-    .sub { color: #666; margin-top: 0; }
-    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-    th, td { border: 1px solid #ddd; padding: 0.55rem 0.8rem; text-align: right; }
+    h1 { margin-bottom: .2rem; }
+    .sub { color: #888; margin-top: 0; font-size: .9rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 2rem; }
+    th, td { border: 1px solid #ddd; padding: .5rem .8rem; text-align: right; }
     th:first-child, td:first-child { text-align: left; }
     thead th { background: #f4f4f4; }
-    .delta-pos { color: #137333; }
-    .delta-neg { color: #c5221f; }
-    .delta-zero { color: #888; }
-    .err { color: #c5221f; font-weight: bold; }
-    .chart-wrap { margin-top: 1.5rem; }
-    .footer { color: #999; font-size: 0.85rem; margin-top: 2rem; }
+    tbody tr:nth-child(even) { background: rgba(0,0,0,.02); }
+    .full { font-weight: 700; }
+    .muted { color: #999; }
+    .err { color: #c5221f; font-weight: 700; }
+    .chart-wrap { margin: 1rem 0 2rem; }
+    .footer { color: #999; font-size: .82rem; margin-top: 2rem; }
+    h2 { font-size: 1.15rem; margin-top: 1.5rem; }
   </style>
 </head>
 <body>
-  <h1>Tradeable instruments by account</h1>
-  <p class="sub">ForexClub / Libertex — symbols with full trading enabled, refreshed daily ~13:00 Kyiv.</p>
+  <h1>Инструменты ForexClub</h1>
+  <p class="sub" id="updated">загрузка…</p>
 
-  <h2>Latest snapshot</h2>
+  <h2>Текущая разбивка по счетам</h2>
   <table id="latest">
     <thead>
-      <tr><th>Account</th><th>Today</th><th>Yesterday</th><th>&Delta;</th></tr>
+      <tr><th>Счёт</th><th>Всего</th><th>FULL</th><th>CLOSEONLY</th><th>DISABLED</th></tr>
     </thead>
     <tbody></tbody>
   </table>
 
-  <h2>History</h2>
+  <h2>Динамика (FULL по дням)</h2>
   <div class="chart-wrap"><canvas id="chart" height="120"></canvas></div>
 
-  <h2>Full table</h2>
-  <table id="history">
-    <thead><tr></tr></thead>
-    <tbody></tbody>
-  </table>
+  <h2>История (FULL)</h2>
+  <table id="history"><thead><tr></tr></thead><tbody></tbody></table>
 
   <p class="footer">
-    Data: <a href="./history.csv">history.csv</a> &middot;
-    Source: <a href="https://github.com/yevhen79/counter-mt-accs">github.com/yevhen79/counter-mt-accs</a>
+    Данные: <a href="./latest.json">latest.json</a> ·
+    <a href="./history.csv">history.csv</a> ·
+    Источник: <a href="https://github.com/Yevhen79/Counter-MT-accs">github.com/Yevhen79/Counter-MT-accs</a>.
+    Считаются инструменты с режимом торговли Full (CLOSEONLY и DISABLED исключены).
   </p>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script>
-  async function load() {
-    const resp = await fetch("./history.csv?v=" + Date.now());
-    const text = (await resp.text()).trim();
+  const NA = '<span class="muted">—</span>';
+  function cell(v, cls) {
+    if (v === null || v === undefined) return NA;
+    return cls ? `<span class="${cls}">${v}</span>` : `${v}`;
+  }
+
+  async function loadLatest() {
+    try {
+      const r = await fetch("./latest.json?v=" + Date.now());
+      if (!r.ok) throw new Error("latest.json " + r.status);
+      const d = await r.json();
+      document.getElementById("updated").textContent = "Обновлено: " + d.date;
+      const body = document.querySelector("#latest tbody");
+      body.innerHTML = "";
+      for (const a of d.accounts) {
+        const acct = a.account ? ` <span class="muted">#${a.account}</span>` : "";
+        let row;
+        if (a.error) {
+          row = `<td>${a.label}${acct}</td><td colspan="4" class="err">${a.error}</td>`;
+        } else {
+          row = `<td>${a.label}${acct}</td>` +
+                `<td>${cell(a.total)}</td>` +
+                `<td>${cell(a.full, "full")}</td>` +
+                `<td>${cell(a.closeonly)}</td>` +
+                `<td>${cell(a.disabled)}</td>`;
+        }
+        body.insertAdjacentHTML("beforeend", `<tr>${row}</tr>`);
+      }
+    } catch (e) {
+      document.getElementById("updated").textContent = "latest.json пока нет (" + e.message + ")";
+    }
+  }
+
+  async function loadHistory() {
+    const r = await fetch("./history.csv?v=" + Date.now());
+    const text = (await r.text()).trim();
     const lines = text.split(/\r?\n/);
     const header = lines.shift().split(",");
     const rows = lines.filter(l => l.length).map(l => {
-      const parts = l.split(",");
-      const o = {};
-      header.forEach((h, i) => o[h] = parts[i]);
-      return o;
+      const p = l.split(","); const o = {};
+      header.forEach((h, i) => o[h] = p[i]); return o;
     });
-
     const accounts = header.slice(1);
 
-    // Latest snapshot table (today + yesterday + delta).
-    const latestBody = document.querySelector("#latest tbody");
-    const today = rows[rows.length - 1];
-    const yest  = rows[rows.length - 2];
-    if (!today) {
-      latestBody.innerHTML = `<tr><td colspan="4">No data yet. Wait for the first workflow run.</td></tr>`;
-    } else {
-      for (const a of accounts) {
-        const tv = today[a];
-        const yv = yest ? yest[a] : "";
-        const isNumT = tv && tv !== "ERR" && !isNaN(+tv);
-        const isNumY = yv && yv !== "ERR" && !isNaN(+yv);
-        let delta = "—";
-        let deltaCls = "delta-zero";
-        if (isNumT && isNumY) {
-          const d = +tv - +yv;
-          delta = (d > 0 ? "+" : "") + d;
-          deltaCls = d > 0 ? "delta-pos" : (d < 0 ? "delta-neg" : "delta-zero");
-        }
-        latestBody.insertAdjacentHTML("beforeend", `
-          <tr>
-            <td>${a}</td>
-            <td class="${isNumT ? "" : "err"}">${tv ?? "—"}</td>
-            <td class="${isNumY ? "" : (yv === "ERR" ? "err" : "")}">${yv ?? "—"}</td>
-            <td class="${deltaCls}">${delta}</td>
-          </tr>`);
-      }
-    }
-
-    // Full history table.
-    const histHead = document.querySelector("#history thead tr");
-    histHead.innerHTML = header.map(h => `<th>${h}</th>`).join("");
-    const histBody = document.querySelector("#history tbody");
+    const hh = document.querySelector("#history thead tr");
+    hh.innerHTML = header.map(h => `<th>${h}</th>`).join("");
+    const hb = document.querySelector("#history tbody");
+    hb.innerHTML = "";
     for (let i = rows.length - 1; i >= 0; i--) {
-      const r = rows[i];
-      histBody.insertAdjacentHTML("beforeend",
-        "<tr>" + header.map(h => {
-          const v = r[h];
-          const cls = (h !== "date" && v === "ERR") ? "err" : "";
-          return `<td class="${cls}">${v ?? ""}</td>`;
-        }).join("") + "</tr>");
+      const r2 = rows[i];
+      hb.insertAdjacentHTML("beforeend", "<tr>" + header.map(h => {
+        const v = r2[h];
+        const cls = (h !== "date" && v === "ERR") ? "err" : "";
+        return `<td class="${cls}">${v ?? ""}</td>`;
+      }).join("") + "</tr>");
     }
 
-    // Chart.
-    if (rows.length) {
-      const labels = rows.map(r => r.date);
-      const datasets = accounts.map(a => ({
-        label: a,
-        data: rows.map(r => {
-          const v = r[a];
-          return (v === "ERR" || v === undefined || v === "") ? null : +v;
-        }),
-        spanGaps: true,
-        tension: 0.2
-      }));
+    if (rows.length && window.Chart) {
       new Chart(document.getElementById("chart"), {
         type: "line",
-        data: { labels, datasets },
-        options: {
-          responsive: true,
-          interaction: { mode: "index", intersect: false },
-          scales: { y: { beginAtZero: false } }
-        }
+        data: {
+          labels: rows.map(r2 => r2.date),
+          datasets: accounts.map(a => ({
+            label: a,
+            data: rows.map(r2 => {
+              const v = r2[a];
+              return (v === "ERR" || v === undefined || v === "") ? null : +v;
+            }),
+            spanGaps: true, tension: .2
+          }))
+        },
+        options: { responsive: true, interaction: { mode: "index", intersect: false } }
       });
     }
   }
-  load().catch(e => {
-    document.body.insertAdjacentHTML("beforeend",
-      `<pre style="color:red">${e.message}</pre>`);
+
+  loadLatest();
+  loadHistory().catch(e => {
+    document.body.insertAdjacentHTML("beforeend", `<pre class="err">${e.message}</pre>`);
   });
   </script>
 </body>

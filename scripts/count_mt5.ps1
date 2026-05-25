@@ -196,6 +196,8 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt5" }) {
                         label = $label
                         full  = [int]$obj.full
                         total = [int]$obj.total
+                        closeonly = [int]$obj.closeonly
+                        disabled  = [int]$obj.disabled
                         full_marketwatch  = [int]$obj.full_marketwatch
                         total_marketwatch = [int]$obj.total_marketwatch
                         server = $server

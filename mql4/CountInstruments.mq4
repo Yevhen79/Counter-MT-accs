@@ -57,6 +57,7 @@ void OnTimer() {
 
    int fullAll = 0;
    int fullMw  = 0;
+   int cntClose = 0, cntDisabled = 0, cntLong = 0, cntShort = 0;
 
    int h = FileOpen("symbols.csv", FILE_WRITE | FILE_TXT | FILE_ANSI);
    if (h != INVALID_HANDLE)
@@ -72,9 +73,12 @@ void OnTimer() {
          if (mwNames[k] == name) { inMw = true; break; }
       }
 
-      if (mode == SYMBOL_TRADE_MODE_FULL) {
-         fullAll++;
-         if (inMw) fullMw++;
+      switch ((int)mode) {
+         case SYMBOL_TRADE_MODE_FULL:      fullAll++; if (inMw) fullMw++; break;
+         case SYMBOL_TRADE_MODE_CLOSEONLY: cntClose++; break;
+         case SYMBOL_TRADE_MODE_DISABLED:  cntDisabled++; break;
+         case SYMBOL_TRADE_MODE_LONGONLY:  cntLong++; break;
+         case SYMBOL_TRADE_MODE_SHORTONLY: cntShort++; break;
       }
       if (h != INVALID_HANDLE)
          FileWriteString(h, name + "," + TradeModeText(mode) + "," + (inMw ? "1" : "0") + "\r\n");
@@ -84,6 +88,10 @@ void OnTimer() {
    int account = (int)AccountNumber();
    string json = "{\"full\": " + IntegerToString(fullAll)
                + ", \"total\": " + IntegerToString(total)
+               + ", \"closeonly\": " + IntegerToString(cntClose)
+               + ", \"disabled\": " + IntegerToString(cntDisabled)
+               + ", \"longonly\": " + IntegerToString(cntLong)
+               + ", \"shortonly\": " + IntegerToString(cntShort)
                + ", \"full_marketwatch\": " + IntegerToString(fullMw)
                + ", \"total_marketwatch\": " + IntegerToString(mwTotal)
                + ", \"account\": " + IntegerToString(account) + "}";

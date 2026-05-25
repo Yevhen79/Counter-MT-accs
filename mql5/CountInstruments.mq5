@@ -48,6 +48,7 @@ void OnTimer() {
 
    int fullAll = 0;     // FULL across the whole tree
    int fullMw  = 0;     // FULL among Market Watch symbols
+   int cntClose = 0, cntDisabled = 0, cntLong = 0, cntShort = 0;
 
    int h = FileOpen("symbols.csv", FILE_WRITE | FILE_TXT | FILE_ANSI);
    if (h != INVALID_HANDLE)
@@ -58,9 +59,12 @@ void OnTimer() {
       if (StringLen(name) == 0) continue;
       long mode = SymbolInfoInteger(name, SYMBOL_TRADE_MODE);
       bool selected = (bool)SymbolInfoInteger(name, SYMBOL_SELECT);
-      if (mode == SYMBOL_TRADE_MODE_FULL) {
-         fullAll++;
-         if (selected) fullMw++;
+      switch ((int)mode) {
+         case SYMBOL_TRADE_MODE_FULL:      fullAll++; if (selected) fullMw++; break;
+         case SYMBOL_TRADE_MODE_CLOSEONLY: cntClose++; break;
+         case SYMBOL_TRADE_MODE_DISABLED:  cntDisabled++; break;
+         case SYMBOL_TRADE_MODE_LONGONLY:  cntLong++; break;
+         case SYMBOL_TRADE_MODE_SHORTONLY: cntShort++; break;
       }
       // SYMBOL_PATH is the category tree, e.g. "Forex\Majors\EURUSD".
       // Strip the trailing symbol to leave just the category folder.
@@ -76,6 +80,10 @@ void OnTimer() {
    long account = AccountInfoInteger(ACCOUNT_LOGIN);
    string json = "{\"full\": " + IntegerToString(fullAll)
                + ", \"total\": " + IntegerToString(total)
+               + ", \"closeonly\": " + IntegerToString(cntClose)
+               + ", \"disabled\": " + IntegerToString(cntDisabled)
+               + ", \"longonly\": " + IntegerToString(cntLong)
+               + ", \"shortonly\": " + IntegerToString(cntShort)
                + ", \"full_marketwatch\": " + IntegerToString(fullMw)
                + ", \"total_marketwatch\": " + IntegerToString(mwTotal)
                + ", \"account\": " + IntegerToString(account) + "}";

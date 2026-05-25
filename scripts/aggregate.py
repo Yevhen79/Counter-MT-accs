@@ -98,6 +98,32 @@ def main() -> int:
                 writer.writerow({k: r.get(k, "") for k in fieldnames})
         print(f"[aggregate] wrote {path}")
 
+    # Detailed per-account breakdown of the latest run for the dashboard
+    # table (Account | Total | FULL | CLOSEONLY | DISABLED). Numbers for
+    # every account, no dashes.
+    def num(r: dict, key: str):
+        v = r.get(key)
+        return v if isinstance(v, int) else (int(v) if str(v).isdigit() else None)
+
+    breakdown = []
+    for acc in config["accounts"]:
+        lbl = acc["label"]
+        r = results.get(lbl, {})
+        breakdown.append({
+            "label": lbl,
+            "platform": acc["platform"],
+            "account": str(r.get("account", acc.get("login", ""))),
+            "total": num(r, "total"),
+            "full": num(r, "full"),
+            "closeonly": num(r, "closeonly"),
+            "disabled": num(r, "disabled"),
+            "error": r.get("error"),
+        })
+    latest = {"date": today, "accounts": breakdown}
+    for path in (Path("data/latest.json"), Path("docs/latest.json")):
+        path.write_text(json.dumps(latest, indent=2, ensure_ascii=False), encoding="utf-8")
+        print(f"[aggregate] wrote {path}")
+
     # Mirror per-platform raw results AND captured stdout logs next to
     # history.csv so they get committed too. Lets us read per-account error
     # messages plus full script output via the GitHub API, no auth-gated
