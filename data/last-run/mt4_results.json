@@ -1,12 +1,12 @@
 [
   {
-    "label": "MT4 Market",
+    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB",
     "error": "no_symbol_worked",
-    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB"
+    "label": "MT4 Market"
   },
   {
-    "label": "MT4 Instant",
+    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB",
     "error": "no_symbol_worked",
-    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB"
+    "label": "MT4 Instant"
   }
 ]
