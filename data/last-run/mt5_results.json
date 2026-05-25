@@ -1,27 +1,27 @@
 [
   {
-    "disabled": 8,
     "full": 275,
+    "account": "550459323",
+    "server": "ForexClub-MT5 Real Server",
+    "closeonly": 17,
+    "total_marketwatch": 11,
+    "disabled": 8,
     "full_marketwatch": 11,
     "symbol": "EURUSD",
-    "closeonly": 17,
     "total": 300,
-    "total_marketwatch": 11,
-    "account": "550459323",
-    "label": "MT5 Market",
-    "server": "ForexClub-MT5 Real Server"
+    "label": "MT5 Market"
   },
   {
-    "disabled": 8,
     "full": 275,
+    "account": "555105689",
+    "server": "ForexClub-MT5 Instant Real Server",
+    "closeonly": 17,
+    "total_marketwatch": 11,
+    "disabled": 8,
     "full_marketwatch": 11,
     "symbol": "EURUSD",
-    "closeonly": 17,
     "total": 300,
-    "total_marketwatch": 11,
-    "account": "555105689",
-    "label": "MT5 Instant",
-    "server": "ForexClub-MT5 Instant Real Server"
+    "label": "MT5 Instant"
   },
   {
     "error": "terminal_not_installed",
