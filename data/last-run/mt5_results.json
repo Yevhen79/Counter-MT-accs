@@ -1,12 +1,16 @@
 [
   {
-    "label": "MT5 Market",
-    "error": "no_symbol_worked",
-    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB"
+    "symbol": "EURUSD",
+    "total": 10157,
+    "server": "ForexClub-MT5 Real Server",
+    "full": 10147,
+    "label": "MT5 Market"
   },
   {
-    "label": "MT5 Instant",
-    "error": "no_symbol_worked",
-    "tried": "EURUSD,EURUSDx,GBPUSD,USDRUB"
+    "symbol": "EURUSD",
+    "total": 10157,
+    "server": "ForexClub-MT5 Instant Real Server",
+    "full": 10147,
+    "label": "MT5 Instant"
   }
 ]
