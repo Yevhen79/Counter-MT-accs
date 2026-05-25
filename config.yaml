@@ -1,18 +1,26 @@
-# Account configuration for ForexClub / Libertex broker.
-# Server names and login numbers are NOT secret — they live in this file.
-# Passwords MUST be added to GitHub Secrets with the names listed below.
+# Accounts to count, across two brokers (ForexClub and Libertex Cyprus),
+# each on MetaTrader 4 and 5.
 #
-# How to add a secret:
-#   Repo Settings -> Secrets and variables -> Actions -> New repository secret
-#   Use the exact value from "password_secret" as the secret name.
+# Each account references the broker-branded terminal it must run on (the
+# symbol catalog the server returns depends on the branded terminal, so a
+# ForexClub account must use the ForexClub terminal and a Libertex account
+# the Libertex one). The installer is downloaded and installed once per
+# unique installer_url; dir_hint is the substring of the install folder
+# used to locate the terminal afterwards.
+#
+# Server names and login numbers are NOT secret. Passwords MUST be added
+# to GitHub Secrets with the names in password_secret.
 
 accounts:
+  # --- ForexClub ---
   - key: mt4_market
     label: "MT4 Market"
     platform: mt4
     login: 730232800
     server: "ForexClub-MT4 Market Real 2 Server"
     password_secret: MT4_MARKET_PASSWORD
+    installer_url: "https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe"
+    dir_hint: "ForexClub"
 
   - key: mt4_instant
     label: "MT4 Instant"
@@ -20,6 +28,8 @@ accounts:
     login: 710268540
     server: "ForexClub-MT4 Real 2 Server"
     password_secret: MT4_INSTANT_PASSWORD
+    installer_url: "https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe"
+    dir_hint: "ForexClub"
 
   - key: mt5_market
     label: "MT5 Market"
@@ -27,6 +37,8 @@ accounts:
     login: 550459323
     server: "ForexClub-MT5 Real Server"
     password_secret: MT5_MARKET_PASSWORD
+    installer_url: "https://download.libertex.org/metatrader/fcmt5setup.exe"
+    dir_hint: "ForexClub"
 
   - key: mt5_instant
     label: "MT5 Instant"
@@ -34,14 +46,24 @@ accounts:
     login: 555105689
     server: "ForexClub-MT5 Instant Real Server"
     password_secret: MT5_INSTANT_PASSWORD
+    installer_url: "https://download.libertex.org/metatrader/fcmt5setup.exe"
+    dir_hint: "ForexClub"
 
-# URL of the broker's MT4 installer. Direct .exe URL is preferred — the
-# script auto-detects, but a direct binary URL avoids the HTML scrape step.
-# Tried URLs (broker-branded NSIS installers, all use the same engine):
-#   https://download.libertex.org/en/Meta/fcmt4setup_eng.exe   # English
-#   https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe   # Russian
-# All known versions ignore /S /VERYSILENT /silent /quiet /auto and pop a
-# GUI, so the install script eventually falls back to MetaQuotes' generic
-# MT4 (which honors /auto). The broker server name still resolves via
-# MetaQuotes' global server registry.
-mt4_installer_url: "https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe"
+  # --- Libertex (Cyprus) ---
+  - key: lib_mt4_market
+    label: "Libertex MT4 Market"
+    platform: mt4
+    login: 950131906
+    server: "LibertexCom-MT4 Market Real Server"
+    password_secret: LIBERTEX_MT4_MARKET_PASSWORD
+    installer_url: "https://download.libertex.com/software/metatrader/libertexcom4setup.exe"
+    dir_hint: "Libertex"
+
+  - key: lib_mt5_market
+    label: "Libertex MT5 Market"
+    platform: mt5
+    login: 560033688
+    server: "LibertexCom-MT5 Real Server"
+    password_secret: LIBERTEX_MT5_MARKET_PASSWORD
+    installer_url: "https://download.libertex.com/software/metatrader5/libertexcom5setup.exe"
+    dir_hint: "Libertex"

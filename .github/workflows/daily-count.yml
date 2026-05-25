@@ -88,37 +88,34 @@ jobs:
           Write-Host "config.json:"
           Get-Content config.json -Raw | Write-Host
 
-      - name: Install MetaTrader 5
+      - name: Install broker terminals
         if: steps.check.outputs.should_run == 'true'
+        continue-on-error: true
         shell: pwsh
-        run: pwsh scripts/install_mt5.ps1
+        run: |
+          if (-not (Test-Path artifacts)) { New-Item -ItemType Directory -Path artifacts -Force | Out-Null }
+          pwsh scripts/install_terminals.ps1 2>&1 | Tee-Object -FilePath artifacts/install_log.txt
 
       - name: Count MT5 instruments
         if: steps.check.outputs.should_run == 'true'
         continue-on-error: true
         shell: pwsh
         env:
-          MT5_MARKET_PASSWORD:  ${{ secrets.MT5_MARKET_PASSWORD }}
-          MT5_INSTANT_PASSWORD: ${{ secrets.MT5_INSTANT_PASSWORD }}
+          MT5_MARKET_PASSWORD:          ${{ secrets.MT5_MARKET_PASSWORD }}
+          MT5_INSTANT_PASSWORD:         ${{ secrets.MT5_INSTANT_PASSWORD }}
+          LIBERTEX_MT5_MARKET_PASSWORD: ${{ secrets.LIBERTEX_MT5_MARKET_PASSWORD }}
         run: |
           if (-not (Test-Path artifacts)) { New-Item -ItemType Directory -Path artifacts -Force | Out-Null }
           pwsh scripts/count_mt5.ps1 2>&1 | Tee-Object -FilePath artifacts/count_mt5_log.txt
-
-      - name: Install MetaTrader 4
-        if: steps.check.outputs.should_run == 'true'
-        continue-on-error: true
-        shell: pwsh
-        run: |
-          if (-not (Test-Path artifacts)) { New-Item -ItemType Directory -Path artifacts -Force | Out-Null }
-          pwsh scripts/install_mt4.ps1 2>&1 | Tee-Object -FilePath artifacts/install_mt4_log.txt
 
       - name: Count MT4 instruments
         if: steps.check.outputs.should_run == 'true'
         continue-on-error: true
         shell: pwsh
         env:
-          MT4_MARKET_PASSWORD:  ${{ secrets.MT4_MARKET_PASSWORD }}
-          MT4_INSTANT_PASSWORD: ${{ secrets.MT4_INSTANT_PASSWORD }}
+          MT4_MARKET_PASSWORD:          ${{ secrets.MT4_MARKET_PASSWORD }}
+          MT4_INSTANT_PASSWORD:         ${{ secrets.MT4_INSTANT_PASSWORD }}
+          LIBERTEX_MT4_MARKET_PASSWORD: ${{ secrets.LIBERTEX_MT4_MARKET_PASSWORD }}
         run: |
           if (-not (Test-Path artifacts)) { New-Item -ItemType Directory -Path artifacts -Force | Out-Null }
           pwsh scripts/count_mt4.ps1 2>&1 | Tee-Object -FilePath artifacts/count_mt4_log.txt

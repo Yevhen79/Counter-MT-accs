@@ -26,17 +26,14 @@ if (-not (Test-Path "config.json")) {
     exit 0
 }
 $config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
-$mt5Dir = $env:MT5_DIR
-$terminal = $env:MT5_TERMINAL
-if ([string]::IsNullOrWhiteSpace($mt5Dir)) { $mt5Dir = "C:\Program Files\MetaTrader 5" }
-if ([string]::IsNullOrWhiteSpace($terminal)) { $terminal = Join-Path $mt5Dir "terminal64.exe" }
 
-if (-not (Test-Path $terminal)) {
-    Write-Warning "MT5 terminal not found at $terminal — install step probably failed."
-    exit 0
+# Map each installer_url to the folder its terminal landed in.
+$terminalDirByUrl = @{}
+if (Test-Path "terminals.json") {
+    foreach ($t in (Get-Content -Raw -Path "terminals.json" | ConvertFrom-Json)) {
+        if ($t.dir) { $terminalDirByUrl[$t.url] = $t.dir }
+    }
 }
-
-Write-Host "Using MT5 install: $mt5Dir"
 
 # Symbol candidates to try as the [StartUp] chart symbol. Pick the first one
 # the broker has — without a valid Symbol the chart does not open and the
@@ -54,6 +51,15 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt5" }) {
 
     Write-Host ""
     Write-Host "=== $label (login=$login, server='$server') ==="
+
+    $mt5Dir = $terminalDirByUrl[$acc.installer_url]
+    $terminal = if ($mt5Dir) { Join-Path $mt5Dir "terminal64.exe" } else { $null }
+    if ([string]::IsNullOrWhiteSpace($mt5Dir) -or -not (Test-Path $terminal)) {
+        Write-Warning "No installed terminal for $($acc.installer_url) — skipping $label."
+        [void]$results.Add(@{ label = $label; error = "terminal_not_installed" })
+        continue
+    }
+    Write-Host "Using MT5 install: $mt5Dir"
 
     if ([string]::IsNullOrWhiteSpace($password)) {
         Write-Warning "No password in env var $secret — skipping $label."

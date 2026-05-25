@@ -131,8 +131,8 @@ def main() -> int:
     DEBUG_DIR.mkdir(parents=True, exist_ok=True)
     debug_sources = [
         *ARTIFACT_FILES,
+        Path("artifacts/install_log.txt"),
         Path("artifacts/count_mt5_log.txt"),
-        Path("artifacts/install_mt4_log.txt"),
         Path("artifacts/count_mt4_log.txt"),
     ]
     for src in debug_sources:

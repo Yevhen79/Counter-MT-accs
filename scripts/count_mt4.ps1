@@ -28,14 +28,14 @@ if (-not (Test-Path "config.json")) {
     exit 0
 }
 $config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
-$mt4Dir = $env:MT4_DIR
 
-if ([string]::IsNullOrWhiteSpace($mt4Dir) -or -not (Test-Path "$mt4Dir\terminal.exe")) {
-    Write-Warning "MT4_DIR is empty or terminal.exe missing — MT4 install was skipped or failed."
-    exit 0
+# Map each installer_url to the folder its terminal landed in.
+$terminalDirByUrl = @{}
+if (Test-Path "terminals.json") {
+    foreach ($t in (Get-Content -Raw -Path "terminals.json" | ConvertFrom-Json)) {
+        if ($t.dir) { $terminalDirByUrl[$t.url] = $t.dir }
+    }
 }
-
-Write-Host "Using MT4 install: $mt4Dir"
 
 $results = New-Object System.Collections.ArrayList
 
@@ -48,6 +48,14 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
 
     Write-Host ""
     Write-Host "=== $label (login=$login, server='$server') ==="
+
+    $mt4Dir = $terminalDirByUrl[$acc.installer_url]
+    if ([string]::IsNullOrWhiteSpace($mt4Dir) -or -not (Test-Path (Join-Path $mt4Dir "terminal.exe"))) {
+        Write-Warning "No installed terminal for $($acc.installer_url) — skipping $label."
+        [void]$results.Add(@{ label = $label; error = "terminal_not_installed" })
+        continue
+    }
+    Write-Host "Using MT4 install: $mt4Dir"
 
     if ([string]::IsNullOrWhiteSpace($password)) {
         Write-Warning "No password in env var $secret — skipping $label."
