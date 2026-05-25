@@ -14,7 +14,7 @@ Currently needed (download in a browser, then upload here):
 
 | File | For | URL it stands in for |
 | ---- | --- | -------------------- |
-| `libertexcom5setup.exe` | Libertex MT5 Market | https://download.libertex.com/software/metatrader5/libertexcom5setup.exe |
+| `libertexcom5setup.exe` | MT5 Market (Cyprus) | https://download.libertex.com/software/metatrader5/libertexcom5setup.exe |
 
 To add it via the GitHub web UI: open this folder → **Add file → Upload
 files** → drag the `.exe` → commit to branch

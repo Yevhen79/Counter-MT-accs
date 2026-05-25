@@ -51,7 +51,7 @@ accounts:
 
   # --- Libertex (Cyprus) ---
   - key: lib_mt4_market
-    label: "Libertex MT4 Market"
+    label: "MT4 Market (Cyprus)"
     platform: mt4
     login: 950131906
     server: "LibertexCom-MT4 Market Real Server"
@@ -60,7 +60,7 @@ accounts:
     dir_hint: "Libertex"
 
   - key: lib_mt5_market
-    label: "Libertex MT5 Market"
+    label: "MT5 Market (Cyprus)"
     platform: mt5
     login: 560033688
     server: "LibertexCom-MT5 Real Server"

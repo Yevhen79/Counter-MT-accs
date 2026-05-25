@@ -42,7 +42,7 @@
       "error": null
     },
     {
-      "label": "Libertex MT4 Market",
+      "label": "MT4 Market (Cyprus)",
       "platform": "mt4",
       "account": "950131906",
       "total": 280,
@@ -52,7 +52,7 @@
       "error": null
     },
     {
-      "label": "Libertex MT5 Market",
+      "label": "MT5 Market (Cyprus)",
       "platform": "mt5",
       "account": "560033688",
       "total": 300,
