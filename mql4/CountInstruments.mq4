@@ -1,22 +1,33 @@
 //+------------------------------------------------------------------+
 //|                                          CountInstruments.mq4    |
-//| Counts symbols by trade-allowed flag and dumps a per-symbol list. |
+//| Counts symbols by static trade mode (matching the MT5 logic) and |
+//| dumps a per-symbol list.                                          |
 //|                                                                   |
 //| Writes to <data_dir>/MQL4/Files/:                                 |
 //|   count.json   - summary counts + logged-in account               |
-//|   symbols.csv  - every symbol: name,trade_allowed,in_market_watch |
+//|   symbols.csv  - every symbol: name,trade_mode,in_market_watch    |
 //|   done.flag    - signal for the host PowerShell                   |
 //|                                                                   |
-//| NB: MT4 has no TRADE_FULL vs TRADE_CLOSE_ONLY distinction; the    |
-//| closest signal is MarketInfo(name, MODE_TRADEALLOWED) == 1.       |
+//| Uses SymbolInfoInteger(name, SYMBOL_TRADE_MODE) which gives the   |
+//| static trade mode (FULL / CLOSEONLY / DISABLED / ...), unlike     |
+//| MarketInfo(MODE_TRADEALLOWED) which is session-dependent.         |
 //+------------------------------------------------------------------+
 #property strict
+
+string TradeModeText(long m) {
+   switch ((int)m) {
+      case SYMBOL_TRADE_MODE_DISABLED:  return "DISABLED";
+      case SYMBOL_TRADE_MODE_LONGONLY:  return "LONGONLY";
+      case SYMBOL_TRADE_MODE_SHORTONLY: return "SHORTONLY";
+      case SYMBOL_TRADE_MODE_CLOSEONLY: return "CLOSEONLY";
+      case SYMBOL_TRADE_MODE_FULL:      return "FULL";
+   }
+   return "UNKNOWN";
+}
 
 int OnInit() {
    EventSetTimer(2);
    Print("CountInstruments: OnInit, timer armed");
-   // Diagnostic marker so the host can tell OnInit actually ran (vs the EA
-   // loading but its events never firing because experts are disabled).
    int hm = FileOpen("ea_init.flag", FILE_WRITE | FILE_TXT | FILE_ANSI);
    if (hm != INVALID_HANDLE) { FileWriteString(hm, "init"); FileClose(hm); }
    return INIT_SUCCEEDED;
@@ -31,49 +42,49 @@ void OnTimer() {
    static bool wrote = false;
    if (wrote) return;
 
-   int total = SymbolsTotal(false); // all available symbols
+   int total = SymbolsTotal(false);
    if (total == 0 && retries > 0) {
       retries--;
       Print("CountInstruments: SymbolsTotal=0, waiting (", retries, " retries left)");
       return;
    }
 
-   // Cache Market Watch (selected) symbol names.
+   // Cache Market Watch (selected) names.
    int mwTotal = SymbolsTotal(true);
    string mwNames[];
    ArrayResize(mwNames, mwTotal);
    for (int j = 0; j < mwTotal; j++) mwNames[j] = SymbolName(j, true);
 
-   int allowedAll = 0;
-   int allowedMw  = 0;
+   int fullAll = 0;
+   int fullMw  = 0;
 
    int h = FileOpen("symbols.csv", FILE_WRITE | FILE_TXT | FILE_ANSI);
    if (h != INVALID_HANDLE)
-      FileWriteString(h, "symbol,trade_allowed,in_market_watch\r\n");
+      FileWriteString(h, "symbol,trade_mode,in_market_watch\r\n");
 
    for (int i = 0; i < total; i++) {
       string name = SymbolName(i, false);
       if (StringLen(name) == 0) continue;
-      int allowed = (int)MarketInfo(name, MODE_TRADEALLOWED);
+      long mode = SymbolInfoInteger(name, SYMBOL_TRADE_MODE);
 
       bool inMw = false;
       for (int k = 0; k < mwTotal; k++) {
          if (mwNames[k] == name) { inMw = true; break; }
       }
 
-      if (allowed == 1) {
-         allowedAll++;
-         if (inMw) allowedMw++;
+      if (mode == SYMBOL_TRADE_MODE_FULL) {
+         fullAll++;
+         if (inMw) fullMw++;
       }
       if (h != INVALID_HANDLE)
-         FileWriteString(h, name + "," + IntegerToString(allowed) + "," + (inMw ? "1" : "0") + "\r\n");
+         FileWriteString(h, name + "," + TradeModeText(mode) + "," + (inMw ? "1" : "0") + "\r\n");
    }
    if (h != INVALID_HANDLE) FileClose(h);
 
    int account = (int)AccountNumber();
-   string json = "{\"full\": " + IntegerToString(allowedAll)
+   string json = "{\"full\": " + IntegerToString(fullAll)
                + ", \"total\": " + IntegerToString(total)
-               + ", \"full_marketwatch\": " + IntegerToString(allowedMw)
+               + ", \"full_marketwatch\": " + IntegerToString(fullMw)
                + ", \"total_marketwatch\": " + IntegerToString(mwTotal)
                + ", \"account\": " + IntegerToString(account) + "}";
 

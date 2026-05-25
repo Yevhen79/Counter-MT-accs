@@ -58,24 +58,18 @@ def main() -> int:
     with open("config.yaml", encoding="utf-8") as f:
         config = yaml.safe_load(f)
     labels = [a["label"] for a in config["accounts"]]
-    platform_by_label = {a["label"]: a["platform"] for a in config["accounts"]}
 
     today = datetime.now(KYIV).strftime("%Y-%m-%d")
     results = collect_results()
 
-    # Metric per platform:
-    #  - MT5 has a static SYMBOL_TRADE_MODE, so "full" (SYMBOL_TRADE_MODE_FULL)
-    #    is the stable "fully tradeable" count.
-    #  - MT4 has no static trade-mode and MODE_TRADEALLOWED is session-
-    #    dependent (US stocks read as not-allowed outside US hours), so we
-    #    record "total" = every symbol in the tree ("Show all symbols"),
-    #    which is what the user counts manually (~300) and is time-stable.
+    # Both platforms now report "full" = symbols with SYMBOL_TRADE_MODE_FULL
+    # (CLOSEONLY and DISABLED excluded), so the metric is consistent across
+    # MT4 and MT5.
     row: dict[str, str] = {"date": today}
     for lbl in labels:
         r = results.get(lbl, {})
-        metric_key = "total" if platform_by_label.get(lbl) == "mt4" else "full"
-        if metric_key in r:
-            row[lbl] = str(r[metric_key])
+        if "full" in r:
+            row[lbl] = str(r["full"])
         else:
             row[lbl] = "ERR"
 
