@@ -34,6 +34,37 @@ function Get-TerminalExes($platform) {
     return @($found)
 }
 
+function Is-PE($path) {
+    if (-not (Test-Path $path)) { return $false }
+    try {
+        $fs = [System.IO.File]::OpenRead($path)
+        $b1 = $fs.ReadByte(); $b2 = $fs.ReadByte(); $fs.Close()
+        return ($b1 -eq 0x4D -and $b2 -eq 0x5A)   # "MZ"
+    } catch { return $false }
+}
+
+function Download-Installer($url, $out) {
+    $ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+    for ($attempt = 1; $attempt -le 4; $attempt++) {
+        try {
+            Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing -TimeoutSec 180 `
+                -UserAgent $ua -Headers @{ "Accept" = "*/*"; "Accept-Language" = "en-US,en;q=0.9" }
+        } catch {
+            Write-Warning "  download attempt $attempt failed: $_"
+        }
+        if ((Test-Path $out) -and (Is-PE $out)) {
+            Write-Host ("  downloaded {0:N0} bytes (attempt {1})" -f (Get-Item $out).Length, $attempt)
+            return $true
+        }
+        # Likely a Cloudflare 'Just a moment...' HTML challenge — back off
+        # (these are usually rate-based and clear after a pause) and retry.
+        $wait = [int][Math]::Pow(2, $attempt) * 5
+        Write-Warning "  attempt $attempt did not yield a PE binary (Cloudflare?), waiting ${wait}s..."
+        Start-Sleep -Seconds $wait
+    }
+    return $false
+}
+
 function Try-SilentInstall($installer, $flag, $timeoutSec) {
     Write-Host "  flag '$flag' (timeout ${timeoutSec}s)"
     $p = Start-Process -FilePath $installer -ArgumentList $flag -PassThru -ErrorAction SilentlyContinue
@@ -72,12 +103,8 @@ foreach ($url in $installers.Keys) {
     $before = Get-TerminalExes $t.platform
 
     $file = Join-Path $env:RUNNER_TEMP ("setup_{0}.exe" -f $i)
-    try {
-        Invoke-WebRequest -Uri $url -OutFile $file -UseBasicParsing -TimeoutSec 180 `
-            -UserAgent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-        Write-Host ("  downloaded {0:N0} bytes" -f (Get-Item $file).Length)
-    } catch {
-        Write-Warning "  download failed: $_"
+    if (-not (Download-Installer $url $file)) {
+        Write-Warning "  could not download a valid installer for $url — skipping."
         $results += [pscustomobject]@{ url = $url; platform = $t.platform; dir_hint = $t.dir_hint; dir = $null }
         continue
     }
