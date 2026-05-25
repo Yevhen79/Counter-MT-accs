@@ -1,22 +1,22 @@
 [
   {
-    "full": 157,
-    "label": "MT4 Market",
-    "symbol": "EURUSD",
-    "total": 280,
-    "server": "ForexClub-MT4 Market Real 2 Server",
     "full_marketwatch": 6,
+    "symbol": "EURUSD",
+    "full": 158,
+    "label": "MT4 Market",
+    "account": "730232800",
+    "server": "ForexClub-MT4 Market Real 2 Server",
     "total_marketwatch": 6,
-    "account": "730232800"
+    "total": 280
   },
   {
-    "full": 165,
-    "label": "MT4 Instant",
-    "symbol": "EURUSD",
-    "total": 288,
-    "server": "ForexClub-MT4 Real 2 Server",
     "full_marketwatch": 6,
+    "symbol": "EURUSD",
+    "full": 166,
+    "label": "MT4 Instant",
+    "account": "710268540",
+    "server": "ForexClub-MT4 Real 2 Server",
     "total_marketwatch": 6,
-    "account": "710268540"
+    "total": 288
   }
 ]
