@@ -15,6 +15,10 @@
 int OnInit() {
    EventSetTimer(2);
    Print("CountInstruments: OnInit, timer armed");
+   // Diagnostic marker so the host can tell OnInit actually ran (vs the EA
+   // loading but its events never firing because experts are disabled).
+   int hm = FileOpen("ea_init.flag", FILE_WRITE | FILE_TXT | FILE_ANSI);
+   if (hm != INVALID_HANDLE) { FileWriteString(hm, "init"); FileClose(hm); }
    return INIT_SUCCEEDED;
 }
 

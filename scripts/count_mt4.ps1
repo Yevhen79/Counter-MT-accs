@@ -122,11 +122,10 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
         continue
     }
 
-    # Try a handful of symbol candidates — Symbol=EURUSD might not exist on
-    # the broker, in which case the chart never opens and the EA never
-    # attaches. Keep the list short so the per-attempt timeout x candidates
-    # x accounts stays well inside the workflow's 30 min cap.
-    $symbolCandidates = @("EURUSD", "EURUSDx", "GBPUSD", "USDRUB")
+    # EURUSD is confirmed to exist and the EA now loads on it, so try it
+    # first with a short fallback. The per-attempt timeout (below) must
+    # exceed the EA's own retry budget so we don't kill it mid-count.
+    $symbolCandidates = @("EURUSD", "GBPUSD")
 
     $vsBase = Join-Path $env:LOCALAPPDATA "VirtualStore"
     $vsMt4 = Join-Path $vsBase ($mt4Dir.Substring(3))
@@ -189,10 +188,10 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
         Write-Host "Launching terminal.exe $($tArgs -join ' ')"
         $proc = Start-Process -FilePath $terminal -ArgumentList $tArgs -PassThru
 
-        # Poll for done flag. 90s is enough if [StartUp] is honored
-        # (terminal logs in + opens chart + EA runs within ~30-60s); if
-        # [StartUp] is ignored, no amount of waiting will help.
-        $timeout = 90
+        # Poll for done flag. The EA waits up to 60 timer ticks x 2s = 120s
+        # for the symbol list to populate before writing its result, so the
+        # host timeout must exceed that or we kill the terminal mid-count.
+        $timeout = 135
         $elapsed = 0
         while ($elapsed -lt $timeout) {
             if ((Test-Path (Join-Path $filesDir "done.flag")) -or
@@ -245,6 +244,9 @@ foreach ($acc in $config.accounts | Where-Object { $_.platform -eq "mt4" }) {
             }
         } else {
             Write-Warning "Timed out (${timeout}s) on Symbol=$symbol"
+            $eaInit = (Test-Path (Join-Path $filesDir "ea_init.flag")) -or
+                      (Test-Path (Join-Path $vsFilesDir "ea_init.flag"))
+            Write-Host "EA OnInit ran (ea_init.flag present): $eaInit"
 
             # Dump terminal logs for diagnosis. MT4 writes them to
             # <install>\logs\YYYYMMDD.log and <install>\MQL4\Logs\YYYYMMDD.log

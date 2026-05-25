@@ -51,7 +51,7 @@ void OnTimer() {
 
    int h = FileOpen("symbols.csv", FILE_WRITE | FILE_TXT | FILE_ANSI);
    if (h != INVALID_HANDLE)
-      FileWriteString(h, "symbol,trade_mode,in_market_watch\r\n");
+      FileWriteString(h, "symbol,trade_mode,in_market_watch,category\r\n");
 
    for (int i = 0; i < total; i++) {
       string name = SymbolName(i, false);
@@ -62,8 +62,14 @@ void OnTimer() {
          fullAll++;
          if (selected) fullMw++;
       }
+      // SYMBOL_PATH is the category tree, e.g. "Forex\Majors\EURUSD".
+      // Strip the trailing symbol to leave just the category folder.
+      string path = SymbolInfoString(name, SYMBOL_PATH);
+      int slash = StringLen(path) - 1;
+      while (slash >= 0 && StringGetCharacter(path, slash) != '\\') slash--;
+      string category = (slash > 0) ? StringSubstr(path, 0, slash) : path;
       if (h != INVALID_HANDLE)
-         FileWriteString(h, name + "," + TradeModeText(mode) + "," + (selected ? "1" : "0") + "\r\n");
+         FileWriteString(h, name + "," + TradeModeText(mode) + "," + (selected ? "1" : "0") + "," + category + "\r\n");
    }
    if (h != INVALID_HANDLE) FileClose(h);
 
