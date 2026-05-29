@@ -12,8 +12,28 @@ on:
     - cron: "0 11 * * 1-5"   # 13:00 Kyiv during EET (winter)
   workflow_dispatch:
     inputs:
+      account:
+        description: "Сменить счёт (выбери, чтобы вписать новые данные ниже)"
+        type: choice
+        default: "(no change - just run)"
+        options:
+          - "(no change - just run)"
+          - "MT4 Market"
+          - "MT4 Instant"
+          - "MT5 Market"
+          - "MT5 Instant"
+          - "MT4 Market (Cyprus)"
+          - "MT5 Market (Cyprus)"
+      login:
+        description: "Новый номер счёта (только если меняешь счёт выше)"
+        type: string
+        default: ""
+      server:
+        description: "Новый сервер (пусто = оставить прежний)"
+        type: string
+        default: ""
       force:
-        description: "Run even if today's row already exists"
+        description: "Пересчитать, даже если сегодня уже считали"
         type: boolean
         default: false
   push:
@@ -61,6 +81,32 @@ jobs:
         # converter) and tzdata (for zoneinfo("Europe/Kyiv") on Windows).
         run: pip install --no-cache-dir pyyaml tzdata
 
+      - name: Apply account change from the form
+        # When the user picks an account in the Run-workflow form and types a
+        # new login/server, write it into config.yaml and commit it. The push
+        # uses GITHUB_TOKEN, which does not re-trigger the workflow, so no loop.
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.account != '(no change - just run)'
+        shell: pwsh
+        env:
+          EDIT_ACCOUNT: ${{ github.event.inputs.account }}
+          EDIT_LOGIN:   ${{ github.event.inputs.login }}
+          EDIT_SERVER:  ${{ github.event.inputs.server }}
+        run: |
+          pip install --no-cache-dir "ruamel.yaml"
+          python scripts/apply_edit.py
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          git config user.name  "trading-counter-bot"
+          git config user.email "trading-counter-bot@users.noreply.github.com"
+          git diff --quiet config.yaml
+          if ($LASTEXITCODE -ne 0) {
+            git add config.yaml
+            git commit -m "Update ${{ github.event.inputs.account }} via Run-workflow form"
+            git push origin HEAD:$env:GITHUB_REF_NAME
+            Write-Host "config.yaml updated and pushed."
+          } else {
+            Write-Host "No change to config.yaml."
+          }
+
       - name: Validate config
         run: python scripts/validate_config.py
 
@@ -69,8 +115,9 @@ jobs:
         shell: pwsh
         env:
           # Push-triggered runs (i.e. me iterating on the code) always force.
-          # Manual dispatch honors the user's "force" input. Cron does not.
-          FORCE: ${{ github.event.inputs.force == 'true' || github.event_name == 'push' }}
+          # Manual dispatch honors the user's "force" input, and an account
+          # edit via the form always forces a fresh count. Cron does not.
+          FORCE: ${{ github.event.inputs.force == 'true' || github.event_name == 'push' || (github.event.inputs.account != null && github.event.inputs.account != '(no change - just run)') }}
         run: |
           Write-Host "Python: $(python --version)"
           Write-Host "Event: ${{ github.event_name }}"
