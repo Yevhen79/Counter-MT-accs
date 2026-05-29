@@ -61,6 +61,9 @@ jobs:
         # converter) and tzdata (for zoneinfo("Europe/Kyiv") on Windows).
         run: pip install --no-cache-dir pyyaml tzdata
 
+      - name: Validate config
+        run: python scripts/validate_config.py
+
       - name: Should we run today?
         id: check
         shell: pwsh

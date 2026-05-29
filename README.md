@@ -1,12 +1,44 @@
 # Counter-MT-accs
 
-Daily counter of tradeable instruments across 4 ForexClub / Libertex accounts
-(MT4 Market, MT4 Instant, MT5 Market, MT5 Instant). Runs on a GitHub Actions
-Windows runner at ~13:00 Kyiv on weekdays, commits the count to
-[`data/history.csv`](data/history.csv), and publishes a small dashboard at
-[`docs/index.html`](docs/index.html).
+Ежедневный счётчик торгуемых инструментов (режим **trade = Full**) по счетам
+ForexClub и Libertex Cyprus на MetaTrader 4 и 5. Работает на GitHub Actions
+по будням ~13:00 Киева, дописывает строку в
+[`data/history.csv`](data/history.csv) и показывает дашборд:
+**https://yevhen79.github.io/Counter-MT-accs/**
 
-Nothing runs on your machine. You only need to add 4 secrets once.
+Ничего не запускается на твоём компьютере. Робот сам ставит брокерские
+терминалы, логинится в каждый счёт, считает инструменты и коммитит результат.
+
+## Самостоятельное изменение счетов (без программиста)
+
+Всё, что задаёт счета — это файл [`config.yaml`](config.yaml) (логин, сервер,
+название) и GitHub Secrets (пароли). Менять можно прямо в браузере.
+
+**Поменять пароль** счёта (например, сменил мастер-пароль у брокера):
+- Settings → Secrets and variables → Actions → открыть нужный секрет
+  (имя видно в `config.yaml` в поле `password_secret`) → **Update** → новый пароль.
+
+**Поменять номер счёта / сервер** (например, счёт ушёл в close-only и нужен другой):
+1. Открой `config.yaml` → ✏️ Edit → у нужного блока поправь `login` (число без
+   кавычек) и при необходимости `server` (в кавычках).
+2. Обнови значение его секрета (`password_secret`) на пароль нового счёта.
+3. **Commit changes** в ветку `claude/trading-tools-report-MCrOV` — прогон
+   запустится сам, через ~15-20 мин дашборд обновится.
+
+**Добавить счёт**: скопируй целиком блок `- key: …` в `config.yaml`, задай
+новые уникальные `key` и `label`, заполни поля, заведи новый секрет с именем
+из `password_secret`. **Удалить** — удали блок `- key: …`.
+
+**Запустить вручную** в любой момент: вкладка **Actions** → **Daily Instrument
+Count** → **Run workflow**.
+
+Конфиг проверяется перед каждым прогоном (шаг **Validate config**): при опечатке
+(сломанные отступы, пропущенное поле, нечисловой `login`, повтор `label`)
+прогон упадёт сразу с понятным описанием, что именно поправить — данные при
+этом не портятся.
+
+> Примечание: пароли хранятся **только** в GitHub Secrets (репозиторий
+> публичный), поэтому в `config.yaml` их нет — там лишь имя секрета.
 
 ## What it counts
 
