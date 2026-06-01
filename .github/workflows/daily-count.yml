@@ -1,15 +1,22 @@
 name: Daily Instrument Count
 
 # Runs on schedule and on manual dispatch. Cron is UTC; Kyiv is UTC+2 (winter)
-# or UTC+3 (summer). To land on 13:00 Kyiv year-round we trigger at both
-# 10:00 UTC and 11:00 UTC and let scripts/should_run.py skip the second
-# trigger of the day idempotently. Mon-Fri only (FX markets are closed
-# Sat/Sun anyway, and MODE_TRADEALLOWED would falsely report 0 on weekends).
+# or UTC+3 (summer). We want one successful run per weekday around midday Kyiv.
+#
+# GitHub's scheduled trigger is unreliable on the hour boundary (:00) — the
+# docs warn it "can be delayed during periods of high load", and in practice
+# whole runs at :00 are silently dropped. So we (a) use off-the-hour minutes
+# and (b) fire several times across the day. scripts/should_run.py is
+# idempotent (one row per Kyiv date), so the first slot that actually fires
+# records the data and the rest skip themselves. Mon-Fri only (FX closed on
+# weekends).
 
 on:
   schedule:
-    - cron: "0 10 * * 1-5"   # 13:00 Kyiv during EEST (summer)
-    - cron: "0 11 * * 1-5"   # 13:00 Kyiv during EET (winter)
+    - cron: "17 10 * * 1-5"   # ~13:17 Kyiv (EEST) / 12:17 (EET)
+    - cron: "17 11 * * 1-5"   # backup ~1h later
+    - cron: "23 13 * * 1-5"   # afternoon backup
+    - cron: "37 16 * * 1-5"   # late backup, in case earlier slots were dropped
   workflow_dispatch:
     inputs:
       account:
