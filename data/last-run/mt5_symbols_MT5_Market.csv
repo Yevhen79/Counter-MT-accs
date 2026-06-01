@@ -1,4 +1,23 @@
 symbol,trade_mode,in_market_watch,category
+XAUUSD,FULL,1,Spot Metals
+EURUSD,FULL,1,FX Majors
+GBPUSD,FULL,1,FX Majors
+BTCUSD,FULL,1,Crypto
+NQCash,FULL,0,Indices US
+BRN,FULL,1,Energy
+USDJPY,FULL,0,FX Majors
+AUDUSD,FULL,0,FX Majors
+YM,FULL,1,Indices US
+NZDUSD,FULL,0,FX Majors
+USDCAD,FULL,0,FX Majors
+USDCHF,FULL,0,FX Majors
+AUDUSD.m,FULL,0,FX Majors
+EURUSD.m,FULL,0,FX Majors
+GBPUSD.m,FULL,0,FX Majors
+NZDUSD.m,FULL,0,FX Majors
+USDCAD.m,FULL,0,FX Majors
+USDCHF.m,FULL,0,FX Majors
+USDJPY.m,FULL,0,FX Majors
 AUDCAD,FULL,0,FX Crosses
 AUDCHF,FULL,0,FX Crosses
 AUDJPY,FULL,0,FX Crosses
@@ -20,13 +39,8 @@ GBPNZD,FULL,0,FX Crosses
 NZDCAD,FULL,0,FX Crosses
 NZDCHF,FULL,0,FX Crosses
 NZDJPY,FULL,0,FX Crosses
-AUDUSD,FULL,0,FX Majors
-EURUSD,FULL,1,FX Majors
-GBPUSD,FULL,1,FX Majors
-NZDUSD,FULL,0,FX Majors
-USDCAD,FULL,0,FX Majors
-USDCHF,FULL,0,FX Majors
-USDJPY,FULL,0,FX Majors
+EURPLN,FULL,0,FX Crosses
+USDPLN,FULL,0,FX Crosses
 CHFSGD,FULL,0,FX Exotics
 EURMXN,FULL,0,FX Exotics
 EURNOK,FULL,0,FX Exotics
@@ -41,120 +55,21 @@ USDMXN,FULL,0,FX Exotics
 USDNOK,FULL,0,FX Exotics
 USDSEK,FULL,0,FX Exotics
 USDSGD,FULL,0,FX Exotics
-USDHKD,DISABLED,0,Indicates
-USDILS,DISABLED,0,Indicates
-USDSAR,DISABLED,0,Indicates
+USDTRY,CLOSEONLY,0,FX Exotics
+USDZAR,CLOSEONLY,0,FX Exotics
+USDCNH,FULL,0,FX Exotics
+EURTRY,CLOSEONLY,0,FX Exotics
+EURCNH,FULL,0,FX Exotics
 XAGUSD,FULL,1,Spot Metals
-XAUUSD,FULL,1,Spot Metals
-Alcoa,FULL,0,Stocks Materials
-Adobe,FULL,0,Stocks Technologies
-Amazon,FULL,0,Stocks Technologies
-Apple,FULL,0,Stocks Technologies
-American_Express,FULL,0,Stocks Finance
-Boeing,FULL,0,Stocks Industrials
-Alibaba,FULL,0,Stocks Consumer Services
-Banco_Santander,FULL,0,Stocks Finance
-Bank_of_America,FULL,0,Stocks Finance
-Bayer,FULL,0,Stocks Healthcare
-Baidu,FULL,0,Stocks Technologies
-BMW,FULL,0,Stocks Automobile industries
-Citigroup,FULL,0,Stocks Finance
-Caterpillar,FULL,0,Stocks Industrials
-AT&T,FULL,0,Stocks Telecommunications
-Cisco,FULL,0,Stocks Technologies
-Daimler,FULL,0,Stocks Automobile industries
-Deutsche_Bank,FULL,0,Stocks Finance
-Disney,FULL,0,Stocks Consumer Services
-eBay,FULL,0,Stocks Consumer Services
-Estee_Lauder,FULL,0,Stocks Luxury
-ENI,FULL,0,Stocks Energy
-Ethan_Allen,FULL,0,Stocks Luxury
-Ferrari,FULL,0,Stocks Automobile industries
-Ford,FULL,0,Stocks Automobile industries
-Dropbox,FULL,0,Stocks Technologies
-Exxon,FULL,0,Stocks Energy
-General_Electrics,FULL,0,Stocks Industrials
-Google,FULL,0,Stocks Technologies
-Goldman_Sachs,FULL,0,Stocks Finance
-Home_Depot,FULL,0,Stocks Consumer Services
-Harley_Davidson,FULL,0,Stocks Automobile industries
-Hewlett_Packard,FULL,0,Stocks Technologies
-IBM,FULL,0,Stocks Technologies
-IDCB,DISABLED,0,Stocks Finance
-Adidas,FULL,0,Stocks Consumer Goods
-Coca-Cola,FULL,0,Stocks Consumer Goods
-IndiTex,DISABLED,0,Stocks Consumer Goods
-Intel,FULL,0,Stocks Technologies
-Johnson&Johnson,CLOSEONLY,0,Stocks Healthcare
-JPMorgan,FULL,0,Stocks Finance
-Michael_Kors,FULL,0,Stocks Luxury
-Nordstrom,DISABLED,0,Stocks Luxury
-Lenovo,DISABLED,0,Stocks Technologies
-Mastercard,FULL,0,Stocks Finance
-McDonald,FULL,0,Stocks Consumer Services
-Microsoft,FULL,0,Stocks Technologies
-Nintendo_US,DISABLED,0,Stocks Consumer Services
-Nike,FULL,0,Stocks Consumer Goods
-Netflix,FULL,0,Stocks Technologies
-nVidia,FULL,0,Stocks Technologies
-Oracle,FULL,0,Stocks Technologies
-Salesforce,FULL,0,Stocks Technologies
-Petrobras,FULL,0,Stocks Energy
-Pfizer,FULL,0,Stocks Healthcare
-Philip_Morris,FULL,0,Stocks Consumer Goods
-Procter&Gamble,FULL,0,Stocks Consumer Goods
-PVH,FULL,0,Stocks Luxury
-Ralph_Lauren,FULL,0,Stocks Luxury
-Starbucks,FULL,0,Stocks Consumer Services
-Snap,FULL,0,Stocks Technologies
-SQM,FULL,0,Stocks Materials
-Spotify,FULL,0,Stocks Technologies
-Tencent,DISABLED,0,Stocks Technologies
-Tesla,FULL,0,Stocks Automobile industries
-Toyota,CLOSEONLY,0,Stocks Automobile industries
-TripAdvisor,FULL,0,Stocks Consumer Services
-Travelers,FULL,0,Stocks Finance
-UnitedHealth,FULL,0,Stocks Healthcare
-Visa,FULL,0,Stocks Finance
-Vale,FULL,0,Stocks Materials
-VF,FULL,0,Stocks Luxury
-Volkswagen,FULL,0,Stocks Automobile industries
-Verizon,FULL,0,Stocks Telecommunications
-Vodafone,FULL,0,Stocks Telecommunications
-Wells_Fargo,FULL,0,Stocks Finance
-Williams_Sonoma,FULL,0,Stocks Luxury
-Yandex,FULL,0,Stocks Technologies
-BTCUSD,FULL,1,Crypto
+XAUEUR,FULL,0,Spot Metals
+XAUUSD.m,FULL,0,Spot Metals
+XAUXAG,FULL,0,Spot Metals
 LTCUSD,FULL,0,Crypto
 ETHUSD,FULL,1,Crypto
 BTCEUR,CLOSEONLY,0,Crypto
 BCHUSD,FULL,0,Crypto
 DSHUSD,FULL,0,Crypto
 XRPUSD,FULL,0,Crypto
-ES,FULL,1,Indices US
-NQ,FULL,1,Indices US
-TF,FULL,0,Indices US
-YM,FULL,1,Indices US
-FCE,FULL,0,Indices Europe
-FDAX,FULL,0,Indices Europe
-FESX,FULL,0,Indices Europe
-FTI,FULL,0,Indices Europe
-Z,FULL,0,Indices Europe
-HSI,FULL,0,Indices Asia
-COCOA,FULL,0,Agriculture
-COFFEE,FULL,0,Agriculture
-CORN,FULL,0,Agriculture
-SOYBEAN,FULL,0,Agriculture
-SUGAR,FULL,0,Agriculture
-WHEAT,FULL,0,Agriculture
-BRN,FULL,1,Energy
-CL,FULL,0,Energy
-HO,FULL,0,Energy
-NG,FULL,0,Energy
-WT,FULL,1,Energy
-HG,FULL,0,Metals
-PA,FULL,0,Metals
-PL,FULL,0,Metals
 ETCUSD,FULL,0,Crypto
 NEOUSD,FULL,0,Crypto
 XMRUSD,FULL,0,Crypto
@@ -180,14 +95,201 @@ NEOBTC,DISABLED,0,Crypto
 NEOETH,DISABLED,0,Crypto
 OMGETH,DISABLED,0,Crypto
 QTMETH,DISABLED,0,Crypto
-USDTRY,CLOSEONLY,0,FX Exotics
-USDZAR,CLOSEONLY,0,FX Exotics
 XMRETH,DISABLED,0,Crypto
 ZECETH,DISABLED,0,Crypto
 EOSUSD,DISABLED,0,Crypto
-USDCNH,FULL,0,FX Exotics
-EURTRY,CLOSEONLY,0,FX Exotics
-EURCNH,FULL,0,FX Exotics
+ADAUSD,FULL,0,Crypto
+XEMUSD,DISABLED,0,Crypto
+XLMUSD,FULL,0,Crypto
+TRXUSD,FULL,0,Crypto
+XTZUSD,FULL,0,Crypto
+LNKUSD,FULL,0,Crypto
+ATMUSD,FULL,0,Crypto
+MKRUSD,DISABLED,0,Crypto
+ONTUSD,FULL,0,Crypto
+DOGUSD,FULL,0,Crypto
+CMPUSD,FULL,0,Crypto
+DOTUSD,FULL,0,Crypto
+ICPUSD,FULL,0,Crypto
+MTCUSD,CLOSEONLY,0,Crypto
+SBAUSD,FULL,0,Crypto
+SNXUSD,FULL,0,Crypto
+SOLUSD,FULL,0,Crypto
+UNIUSD,FULL,0,Crypto
+VETUSD,FULL,0,Crypto
+ZRXUSD,FULL,0,Crypto
+APEUSD,FULL,0,Crypto
+GMTUSD,FULL,0,Crypto
+FLWUSD,FULL,0,Crypto
+FTMUSD,CLOSEONLY,0,Crypto
+SNDUSD,CLOSEONLY,0,Crypto
+TWTUSD,CLOSEONLY,0,Crypto
+TRUMPUSD,FULL,0,Crypto
+PEPEUSD,FULL,0,Crypto
+NOTUSD,CLOSEONLY,0,Crypto
+TONUSD,FULL,0,Crypto
+USDHKD,DISABLED,0,Indicates
+USDILS,DISABLED,0,Indicates
+USDSAR,DISABLED,0,Indicates
+TA35,DISABLED,0,Indices Near East
+ES,FULL,1,Indices US
+NQ,FULL,1,Indices US
+TF,FULL,0,Indices US
+ESCash,FULL,0,Indices US
+YMCash,FULL,0,Indices US
+VIX,FULL,0,Indices US
+FCE,FULL,0,Indices Europe
+FDAX,FULL,0,Indices Europe
+FESX,FULL,0,Indices Europe
+FTI,FULL,0,Indices Europe
+Z,FULL,0,Indices Europe
+FDAXCash,FULL,0,Indices Europe
+ZCash,FULL,0,Indices Europe
+HSI,FULL,0,Indices Asia
+NIY,FULL,0,Indices Asia
+NIYCash,FULL,0,Indices Asia
+XU,CLOSEONLY,0,Indices Asia
+XUCash,CLOSEONLY,0,Indices Asia
+COCOA,FULL,0,Agriculture
+COFFEE,FULL,0,Agriculture
+CORN,FULL,0,Agriculture
+SOYBEAN,FULL,0,Agriculture
+SUGAR,FULL,0,Agriculture
+WHEAT,FULL,0,Agriculture
+COTTON,FULL,0,Agriculture
+CL,FULL,0,Energy
+HO,FULL,0,Energy
+NG,FULL,0,Energy
+WT,FULL,1,Energy
+BRNCash,FULL,0,Energy
+NGASCash,FULL,0,Energy
+USOILCash,FULL,0,Energy
+HG,FULL,0,Metals
+PA,FULL,0,Metals
+PL,FULL,0,Metals
+BMW,FULL,0,Stocks Automobile industries
+Daimler,FULL,0,Stocks Automobile industries
+Ferrari,FULL,0,Stocks Automobile industries
+Ford,FULL,0,Stocks Automobile industries
+Harley_Davidson,FULL,0,Stocks Automobile industries
+Tesla,FULL,0,Stocks Automobile industries
+Toyota,CLOSEONLY,0,Stocks Automobile industries
+Volkswagen,FULL,0,Stocks Automobile industries
+RNO,FULL,0,Stocks Automobile industries
+P911,CLOSEONLY,0,Stocks Automobile industries
+Adidas,FULL,0,Stocks Consumer Goods
+Coca-Cola,FULL,0,Stocks Consumer Goods
+IndiTex,DISABLED,0,Stocks Consumer Goods
+Nike,FULL,0,Stocks Consumer Goods
+Philip_Morris,FULL,0,Stocks Consumer Goods
+Procter&Gamble,FULL,0,Stocks Consumer Goods
+GME,FULL,0,Stocks Consumer Goods
+SPCE,FULL,0,Stocks Consumer Goods
+Alibaba,FULL,0,Stocks Consumer Services
+Disney,FULL,0,Stocks Consumer Services
+eBay,FULL,0,Stocks Consumer Services
+Home_Depot,FULL,0,Stocks Consumer Services
+McDonald,FULL,0,Stocks Consumer Services
+Nintendo_US,DISABLED,0,Stocks Consumer Services
+Starbucks,FULL,0,Stocks Consumer Services
+TripAdvisor,FULL,0,Stocks Consumer Services
+LYFT,FULL,0,Stocks Consumer Services
+UBER,FULL,0,Stocks Consumer Services
+LTM,FULL,0,Stocks Consumer Services
+LUV,FULL,0,Stocks Consumer Services
+TUI,CLOSEONLY,0,Stocks Consumer Services
+SAVE,DISABLED,0,Stocks Consumer Services
+RCL,FULL,0,Stocks Consumer Services
+NCLH,FULL,0,Stocks Consumer Services
+AF,FULL,0,Stocks Consumer Services
+RYAAY,FULL,0,Stocks Consumer Services
+CCL,FULL,0,Stocks Consumer Services
+WYNN,FULL,0,Stocks Consumer Services
+AMC,FULL,0,Stocks Consumer Services
+ENI,FULL,0,Stocks Energy
+Exxon,FULL,0,Stocks Energy
+Petrobras,FULL,0,Stocks Energy
+EDF,CLOSEONLY,0,Stocks Energy
+ENEL,FULL,0,Stocks Energy
+REP,FULL,0,Stocks Energy
+ENIC,FULL,0,Stocks Energy
+EC,FULL,0,Stocks Energy
+TTE,DISABLED,0,Stocks Energy
+American_Express,FULL,0,Stocks Finance
+Banco_Santander,FULL,0,Stocks Finance
+Bank_of_America,FULL,0,Stocks Finance
+Citigroup,FULL,0,Stocks Finance
+Deutsche_Bank,FULL,0,Stocks Finance
+Goldman_Sachs,FULL,0,Stocks Finance
+IDCB,DISABLED,0,Stocks Finance
+JPMorgan,FULL,0,Stocks Finance
+Mastercard,FULL,0,Stocks Finance
+Travelers,FULL,0,Stocks Finance
+Visa,FULL,0,Stocks Finance
+Wells_Fargo,FULL,0,Stocks Finance
+BNP,FULL,0,Stocks Finance
+GBTC,FULL,0,Stocks Finance
+MARA,FULL,0,Stocks Finance
+COIN,FULL,0,Stocks Finance
+HOOD,FULL,0,Stocks Finance
+BBVA,CLOSEONLY,0,Stocks Finance
+CIB,FULL,0,Stocks Finance
+MELI,FULL,0,Stocks Finance
+Bayer,FULL,0,Stocks Healthcare
+Johnson&Johnson,CLOSEONLY,0,Stocks Healthcare
+Pfizer,FULL,0,Stocks Healthcare
+UnitedHealth,FULL,0,Stocks Healthcare
+MRNA,FULL,0,Stocks Healthcare
+GILD,FULL,0,Stocks Healthcare
+Boeing,FULL,0,Stocks Industrials
+Caterpillar,FULL,0,Stocks Industrials
+General_Electrics,FULL,0,Stocks Industrials
+BAS,FULL,0,Stocks Industrials
+AIR,FULL,0,Stocks Industrials
+CX,FULL,0,Stocks Industrials
+Estee_Lauder,FULL,0,Stocks Luxury
+Ethan_Allen,FULL,0,Stocks Luxury
+Michael_Kors,FULL,0,Stocks Luxury
+Nordstrom,DISABLED,0,Stocks Luxury
+PVH,FULL,0,Stocks Luxury
+Ralph_Lauren,FULL,0,Stocks Luxury
+VF,FULL,0,Stocks Luxury
+Williams_Sonoma,FULL,0,Stocks Luxury
+Alcoa,FULL,0,Stocks Materials
+SQM,FULL,0,Stocks Materials
+Vale,FULL,0,Stocks Materials
+Adobe,FULL,0,Stocks Technologies
+Amazon,FULL,0,Stocks Technologies
+Apple,FULL,0,Stocks Technologies
+Baidu,FULL,0,Stocks Technologies
+Cisco,FULL,0,Stocks Technologies
+Dropbox,FULL,0,Stocks Technologies
+Google,FULL,0,Stocks Technologies
+Hewlett_Packard,FULL,0,Stocks Technologies
+IBM,FULL,0,Stocks Technologies
+Intel,FULL,0,Stocks Technologies
+Lenovo,DISABLED,0,Stocks Technologies
+Microsoft,FULL,0,Stocks Technologies
+Netflix,FULL,0,Stocks Technologies
+nVidia,FULL,0,Stocks Technologies
+Oracle,FULL,0,Stocks Technologies
+Salesforce,FULL,0,Stocks Technologies
+Snap,FULL,0,Stocks Technologies
+Spotify,FULL,0,Stocks Technologies
+Tencent,DISABLED,0,Stocks Technologies
+Yandex,FULL,0,Stocks Technologies
+DG,FULL,0,Stocks Technologies
+SAP,FULL,0,Stocks Technologies
+SIE,FULL,0,Stocks Technologies
+PINS,FULL,0,Stocks Technologies
+SK,DISABLED,0,Stocks Technologies
+GTLB,FULL,0,Stocks Technologies
+MNTV,CLOSEONLY,0,Stocks Technologies
+META,FULL,0,Stocks Technologies
+AT&T,FULL,0,Stocks Telecommunications
+Verizon,FULL,0,Stocks Telecommunications
+Vodafone,FULL,0,Stocks Telecommunications
+AMX,FULL,0,Stocks Telecommunications
 SPY,FULL,0,ETF
 IJH,CLOSEONLY,0,ETF
 FXI,FULL,0,ETF
@@ -199,107 +301,5 @@ EWZ,FULL,0,ETF
 AGG,FULL,0,ETF
 EWU,FULL,0,ETF
 USDX,FULL,0,FX USD Index
-ADAUSD,FULL,0,Crypto
-XEMUSD,DISABLED,0,Crypto
-XLMUSD,FULL,0,Crypto
-TRXUSD,FULL,0,Crypto
-TA35,DISABLED,0,Indices Near East
 JUVE,FULL,0,Stocks Sport
-LYFT,FULL,0,Stocks Consumer Services
-EDF,CLOSEONLY,0,Stocks Energy
-ENEL,FULL,0,Stocks Energy
-REP,FULL,0,Stocks Energy
-BAS,FULL,0,Stocks Industrials
-DG,FULL,0,Stocks Technologies
-SAP,FULL,0,Stocks Technologies
-SIE,FULL,0,Stocks Technologies
-UBER,FULL,0,Stocks Consumer Services
-PINS,FULL,0,Stocks Technologies
-RNO,FULL,0,Stocks Automobile industries
-LTM,FULL,0,Stocks Consumer Services
-ENIC,FULL,0,Stocks Energy
-BNP,FULL,0,Stocks Finance
-AIR,FULL,0,Stocks Industrials
-SK,DISABLED,0,Stocks Technologies
-MRNA,FULL,0,Stocks Healthcare
-GILD,FULL,0,Stocks Healthcare
-XTZUSD,FULL,0,Crypto
-LNKUSD,FULL,0,Crypto
-ATMUSD,FULL,0,Crypto
-MKRUSD,DISABLED,0,Crypto
-ONTUSD,FULL,0,Crypto
-ESCash,FULL,0,Indices US
-FDAXCash,FULL,0,Indices Europe
-YMCash,FULL,0,Indices US
-LUV,FULL,0,Stocks Consumer Services
-TUI,CLOSEONLY,0,Stocks Consumer Services
-SAVE,DISABLED,0,Stocks Consumer Services
-RCL,FULL,0,Stocks Consumer Services
-NCLH,FULL,0,Stocks Consumer Services
-AF,FULL,0,Stocks Consumer Services
-RYAAY,FULL,0,Stocks Consumer Services
-CCL,FULL,0,Stocks Consumer Services
-WYNN,FULL,0,Stocks Consumer Services
-EURPLN,FULL,0,FX Crosses
-USDPLN,FULL,0,FX Crosses
-NQCash,FULL,0,Indices US
-ZCash,FULL,0,Indices Europe
-VIX,FULL,0,Indices US
-GBTC,FULL,0,Stocks Finance
-MARA,FULL,0,Stocks Finance
-DOGUSD,FULL,0,Crypto
-COIN,FULL,0,Stocks Finance
-GME,FULL,0,Stocks Consumer Goods
-AMC,FULL,0,Stocks Consumer Services
-SPCE,FULL,0,Stocks Consumer Goods
-HOOD,FULL,0,Stocks Finance
-GTLB,FULL,0,Stocks Technologies
-CMPUSD,FULL,0,Crypto
-DOTUSD,FULL,0,Crypto
-ICPUSD,FULL,0,Crypto
-MTCUSD,CLOSEONLY,0,Crypto
-SBAUSD,FULL,0,Crypto
-SNXUSD,FULL,0,Crypto
-SOLUSD,FULL,0,Crypto
-UNIUSD,FULL,0,Crypto
-VETUSD,FULL,0,Crypto
-ZRXUSD,FULL,0,Crypto
-MNTV,CLOSEONLY,0,Stocks Technologies
-NIY,FULL,0,Indices Asia
-NIYCash,FULL,0,Indices Asia
-XU,CLOSEONLY,0,Indices Asia
-APEUSD,FULL,0,Crypto
-GMTUSD,FULL,0,Crypto
 AUS200Cash,DISABLED,0,Indices Other
-META,FULL,0,Stocks Technologies
-EC,FULL,0,Stocks Energy
-BBVA,CLOSEONLY,0,Stocks Finance
-CIB,FULL,0,Stocks Finance
-MELI,FULL,0,Stocks Finance
-CX,FULL,0,Stocks Industrials
-AMX,FULL,0,Stocks Telecommunications
-XAUEUR,FULL,0,Spot Metals
-FLWUSD,FULL,0,Crypto
-FTMUSD,CLOSEONLY,0,Crypto
-SNDUSD,CLOSEONLY,0,Crypto
-TWTUSD,CLOSEONLY,0,Crypto
-BRNCash,FULL,0,Energy
-P911,CLOSEONLY,0,Stocks Automobile industries
-TTE,DISABLED,0,Stocks Energy
-NGASCash,FULL,0,Energy
-XUCash,CLOSEONLY,0,Indices Asia
-USOILCash,FULL,0,Energy
-TRUMPUSD,FULL,0,Crypto
-PEPEUSD,FULL,0,Crypto
-NOTUSD,CLOSEONLY,0,Crypto
-AUDUSD.m,FULL,0,FX Majors
-EURUSD.m,FULL,0,FX Majors
-GBPUSD.m,FULL,0,FX Majors
-NZDUSD.m,FULL,0,FX Majors
-USDCAD.m,FULL,0,FX Majors
-USDCHF.m,FULL,0,FX Majors
-USDJPY.m,FULL,0,FX Majors
-XAUUSD.m,FULL,0,Spot Metals
-TONUSD,FULL,0,Crypto
-COTTON,FULL,0,Agriculture
-XAUXAG,FULL,0,Spot Metals
