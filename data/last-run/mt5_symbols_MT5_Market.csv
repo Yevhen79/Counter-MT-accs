@@ -88,7 +88,6 @@ Intel,FULL,0,Stocks Technologies
 Johnson&Johnson,CLOSEONLY,0,Stocks Healthcare
 JPMorgan,FULL,0,Stocks Finance
 Michael_Kors,FULL,0,Stocks Luxury
-Nordstrom,DISABLED,0,Stocks Luxury
 Lenovo,DISABLED,0,Stocks Technologies
 Mastercard,FULL,0,Stocks Finance
 McDonald,FULL,0,Stocks Consumer Services
@@ -123,7 +122,6 @@ Verizon,FULL,0,Stocks Telecommunications
 Vodafone,FULL,0,Stocks Telecommunications
 Wells_Fargo,FULL,0,Stocks Finance
 Williams_Sonoma,FULL,0,Stocks Luxury
-Yandex,FULL,0,Stocks Technologies
 BTCUSD,FULL,1,Crypto
 LTCUSD,FULL,0,Crypto
 ETHUSD,FULL,1,Crypto
@@ -164,14 +162,12 @@ IOTUSD,FULL,0,Crypto
 QTMUSD,FULL,0,Crypto
 XMRBTC,DISABLED,0,Crypto
 ZECBTC,DISABLED,0,Crypto
-BTGUSD,DISABLED,0,Crypto
 BCHBTC,FULL,0,Crypto
 ETHBTC,FULL,0,Crypto
 LTCBTC,FULL,0,Crypto
 BTGBTC,DISABLED,0,Crypto
 BTGETH,DISABLED,0,Crypto
 DSHBTC,DISABLED,0,Crypto
-DSHETH,DISABLED,0,Crypto
 EOSETH,DISABLED,0,Crypto
 ETCETH,DISABLED,0,Crypto
 IOTETH,CLOSEONLY,0,Crypto
@@ -226,14 +222,12 @@ GILD,FULL,0,Stocks Healthcare
 XTZUSD,FULL,0,Crypto
 LNKUSD,FULL,0,Crypto
 ATMUSD,FULL,0,Crypto
-MKRUSD,DISABLED,0,Crypto
 ONTUSD,FULL,0,Crypto
 ESCash,FULL,0,Indices US
 FDAXCash,FULL,0,Indices Europe
 YMCash,FULL,0,Indices US
 LUV,FULL,0,Stocks Consumer Services
 TUI,CLOSEONLY,0,Stocks Consumer Services
-SAVE,DISABLED,0,Stocks Consumer Services
 RCL,FULL,0,Stocks Consumer Services
 NCLH,FULL,0,Stocks Consumer Services
 AF,FULL,0,Stocks Consumer Services
