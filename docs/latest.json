@@ -1,12 +1,12 @@
 {
-  "date": "2026-06-05",
+  "date": "2026-06-08",
   "accounts": [
     {
       "label": "MT4 Market",
       "platform": "mt4",
       "account": "730232800",
-      "total": 274,
-      "full": 248,
+      "total": 275,
+      "full": 249,
       "closeonly": 14,
       "disabled": 12,
       "error": null
@@ -15,8 +15,8 @@
       "label": "MT4 Instant",
       "platform": "mt4",
       "account": "710268540",
-      "total": 281,
-      "full": 256,
+      "total": 282,
+      "full": 257,
       "closeonly": 14,
       "disabled": 11,
       "error": null
@@ -45,8 +45,8 @@
       "label": "MT4 Market (Cyprus)",
       "platform": "mt4",
       "account": "950131906",
-      "total": 273,
-      "full": 248,
+      "total": 274,
+      "full": 249,
       "closeonly": 14,
       "disabled": 11,
       "error": null
