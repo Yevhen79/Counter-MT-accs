@@ -1,10 +1,16 @@
 symbol,trade_mode,in_market_watch,category
+XAUUSD,FULL,1,Spot Metals
 EURUSD,FULL,1,FX Majors
 GBPUSD,FULL,1,FX Majors
-USDCHF,FULL,0,FX Majors
+BTCUSD,FULL,1,Crypto
+NQCash,FULL,0,Indices US
+BRN,FULL,1,Energy
 USDJPY,FULL,0,FX Majors
-USDCAD,FULL,0,FX Majors
 AUDUSD,FULL,0,FX Majors
+YM,FULL,1,Indices US
+NZDUSD,FULL,0,FX Majors
+USDCHF,FULL,0,FX Majors
+USDCAD,FULL,0,FX Majors
 AUDNZD,FULL,0,FX Crosses
 AUDCAD,FULL,0,FX Crosses
 AUDCHF,FULL,0,FX Crosses
@@ -19,7 +25,6 @@ EURCAD,FULL,0,FX Crosses
 GBPCHF,FULL,0,FX Crosses
 GBPJPY,FULL,0,FX Crosses
 CADCHF,FULL,0,FX Crosses
-NZDUSD,FULL,0,FX Majors
 CADJPY,FULL,0,FX Crosses
 EURPLN,FULL,0,FX Crosses
 GBPAUD,FULL,0,FX Crosses
@@ -29,18 +34,18 @@ NZDCAD,FULL,0,FX Crosses
 NZDCHF,FULL,0,FX Crosses
 NZDJPY,FULL,0,FX Crosses
 USDPLN,FULL,0,FX Crosses
-CHFSGD,FULL,0,FX Exotics
+USDCNH,FULL,0,FX Exotics
+EURTRY,CLOSEONLY,0,FX Exotics
 EURCNH,FULL,0,FX Exotics
+CHFSGD,FULL,0,FX Exotics
 EURMXN,FULL,0,FX Exotics
 EURNOK,FULL,0,FX Exotics
 EURSEK,FULL,0,FX Exotics
 EURSGD,FULL,0,FX Exotics
-EURTRY,CLOSEONLY,0,FX Exotics
 GBPSEK,FULL,0,FX Exotics
 NOKJPY,FULL,0,FX Exotics
 SGDJPY,FULL,0,FX Exotics
 USDCLP,FULL,0,FX Exotics
-USDCNH,FULL,0,FX Exotics
 USDDKK,FULL,0,FX Exotics
 USDMXN,FULL,0,FX Exotics
 USDNOK,FULL,0,FX Exotics
@@ -49,14 +54,14 @@ USDSGD,FULL,0,FX Exotics
 USDTRY,CLOSEONLY,0,FX Exotics
 USDZAR,CLOSEONLY,0,FX Exotics
 XAGUSD,FULL,1,Spot Metals
-XAUUSD,FULL,1,Spot Metals
+XAUEUR,FULL,0,Spot Metals
+XAUXAG,FULL,0,Spot Metals
 ADAUSD,FULL,0,Crypto
 APEUSD,FULL,0,Crypto
 ATMUSD,FULL,0,Crypto
 BCHBTC,FULL,0,Crypto
 BCHUSD,FULL,0,Crypto
 BTCEUR,CLOSEONLY,0,Crypto
-BTCUSD,FULL,1,Crypto
 BTGBTC,DISABLED,0,Crypto
 BTGETH,DISABLED,0,Crypto
 CMPUSD,FULL,0,Crypto
@@ -104,16 +109,25 @@ ZECBTC,DISABLED,0,Crypto
 ZECETH,DISABLED,0,Crypto
 ZECUSD,FULL,0,Crypto
 ZRXUSD,FULL,0,Crypto
+FLWUSD,FULL,0,Crypto
+FTMUSD,CLOSEONLY,0,Crypto
+SNDUSD,CLOSEONLY,0,Crypto
+TWTUSD,CLOSEONLY,0,Crypto
+TRUMPUSD,FULL,0,Crypto
+PEPEUSD,FULL,0,Crypto
+NOTUSD,CLOSEONLY,0,Crypto
+TONUSD,CLOSEONLY,0,Crypto
+RUNEUSD,DISABLED,0,Crypto
+AVAXUSD,FULL,0,Crypto
 USDHKD,DISABLED,0,Indicates
 USDILS,DISABLED,0,Indicates
 USDSAR,DISABLED,0,Indicates
+TA35,DISABLED,0,Indices Near East
 ES,FULL,1,Indices US
 ESCash,FULL,0,Indices US
 NQ,FULL,1,Indices US
-NQCash,FULL,0,Indices US
 TF,FULL,0,Indices US
 VIX,FULL,0,Indices US
-YM,FULL,1,Indices US
 YMCash,FULL,0,Indices US
 FCE,FULL,0,Indices Europe
 FDAX,FULL,0,Indices Europe
@@ -126,18 +140,21 @@ HSI,FULL,0,Indices Asia
 NIY,FULL,0,Indices Asia
 NIYCash,FULL,0,Indices Asia
 XU,CLOSEONLY,0,Indices Asia
-TA35,DISABLED,0,Indices Near East
+XUCash,CLOSEONLY,0,Indices Asia
 COCOA,FULL,0,Agriculture
 COFFEE,FULL,0,Agriculture
 CORN,FULL,0,Agriculture
 SOYBEAN,FULL,0,Agriculture
 SUGAR,FULL,0,Agriculture
 WHEAT,FULL,0,Agriculture
-BRN,FULL,1,Energy
+COTTON,FULL,0,Agriculture
 CL,FULL,0,Energy
 HO,FULL,0,Energy
 NG,FULL,0,Energy
 WT,FULL,1,Energy
+BRNCash,FULL,0,Energy
+NGASCash,FULL,0,Energy
+USOILCash,FULL,0,Energy
 HG,FULL,0,Metals
 PA,FULL,0,Metals
 PL,FULL,0,Metals
@@ -150,6 +167,7 @@ RNO,FULL,0,Stocks Automobile industries
 Tesla,FULL,0,Stocks Automobile industries
 Toyota,CLOSEONLY,0,Stocks Automobile industries
 Volkswagen,FULL,0,Stocks Automobile industries
+P911,CLOSEONLY,0,Stocks Automobile industries
 Adidas,FULL,0,Stocks Consumer Goods
 Coca-Cola,FULL,0,Stocks Consumer Goods
 GME,FULL,0,Stocks Consumer Goods
@@ -186,6 +204,7 @@ ENIC,FULL,0,Stocks Energy
 Exxon,FULL,0,Stocks Energy
 Petrobras,FULL,0,Stocks Energy
 REP,FULL,0,Stocks Energy
+TTE,DISABLED,0,Stocks Energy
 American_Express,FULL,0,Stocks Finance
 BBVA,CLOSEONLY,0,Stocks Finance
 BNP,FULL,0,Stocks Finance
@@ -228,7 +247,6 @@ Williams_Sonoma,FULL,0,Stocks Luxury
 Alcoa,FULL,0,Stocks Materials
 SQM,FULL,0,Stocks Materials
 Vale,FULL,0,Stocks Materials
-JUVE,FULL,0,Stocks Sport
 Adobe,FULL,0,Stocks Technologies
 Amazon,FULL,0,Stocks Technologies
 Apple,FULL,0,Stocks Technologies
@@ -270,21 +288,8 @@ ILF,FULL,0,ETF
 SPY,FULL,0,ETF
 VGK,FULL,0,ETF
 USDX,FULL,0,FX USD Index
+JUVE,FULL,0,Stocks Sport
 AUS200Cash,DISABLED,0,Indices Other
-XAUEUR,FULL,0,Spot Metals
-FLWUSD,FULL,0,Crypto
-FTMUSD,CLOSEONLY,0,Crypto
-SNDUSD,CLOSEONLY,0,Crypto
-TWTUSD,CLOSEONLY,0,Crypto
-BRNCash,FULL,0,Energy
-P911,CLOSEONLY,0,Stocks Automobile industries
-TTE,DISABLED,0,Stocks Energy
-NGASCash,FULL,0,Energy
-XUCash,CLOSEONLY,0,Indices Asia
-USOILCash,FULL,0,Energy
-TRUMPUSD,FULL,0,Crypto
-PEPEUSD,FULL,0,Crypto
-NOTUSD,CLOSEONLY,0,Crypto
 AUDUSD.m,FULL,0,FX Majors
 EURUSD.m,FULL,0,FX Majors
 GBPUSD.m,FULL,0,FX Majors
@@ -293,7 +298,3 @@ USDCAD.m,FULL,0,FX Majors
 USDCHF.m,FULL,0,FX Majors
 USDJPY.m,FULL,0,FX Majors
 XAUUSD.m,FULL,0,Spot Metals
-TONUSD,FULL,0,Crypto
-COTTON,FULL,0,Agriculture
-XAUXAG,FULL,0,Spot Metals
-RUNEUSD,DISABLED,0,Crypto
