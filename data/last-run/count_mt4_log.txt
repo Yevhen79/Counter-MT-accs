@@ -7,7 +7,7 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 100 msec elapsed
+Result: 0 errors, 0 warnings, 160 msec elapsed
 
 --- end compile log ---
 
@@ -25,14 +25,14 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 88 msec elapsed
+Result: 0 errors, 0 warnings, 95 msec elapsed
 
 --- end compile log ---
 
 Attempt with Symbol=EURUSD
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=710268540, server='ForexClub-MT4 Real 2 Server', symbol=EURUSD)
 Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
-MT4 Instant: full(all)=256 total(all)=282 full(marketwatch)=6 total(marketwatch)=6 account=710268540 (expected 710268540, match=True, symbol=EURUSD)
+MT4 Instant: full(all)=258 total(all)=284 full(marketwatch)=6 total(marketwatch)=6 account=710268540 (expected 710268540, match=True, symbol=EURUSD)
 saved symbol list -> artifacts/mt4_symbols_MT4_Instant.csv
 
 === MT4 Market (Cyprus) (login=950131906, server='LibertexCom-MT4 Market Real Server') ===
@@ -43,7 +43,7 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 79 msec elapsed
+Result: 0 errors, 0 warnings, 91 msec elapsed
 
 --- end compile log ---
 
