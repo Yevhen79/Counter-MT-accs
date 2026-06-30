@@ -1,38 +1,38 @@
 [
   {
-    "account": "730232800",
-    "closeonly": 15,
-    "full_marketwatch": 6,
-    "symbol": "EURUSD",
-    "total": 282,
     "total_marketwatch": 6,
+    "full_marketwatch": 6,
+    "closeonly": 15,
+    "symbol": "EURUSD",
     "server": "ForexClub-MT4 Market Real 2 Server",
-    "label": "MT4 Market",
+    "full": 255,
+    "total": 282,
     "disabled": 12,
-    "full": 255
+    "account": "730232800",
+    "label": "MT4 Market"
   },
   {
-    "account": "710268540",
-    "closeonly": 15,
-    "full_marketwatch": 6,
-    "symbol": "EURUSD",
-    "total": 289,
     "total_marketwatch": 6,
+    "full_marketwatch": 6,
+    "closeonly": 15,
+    "symbol": "EURUSD",
     "server": "ForexClub-MT4 Real 2 Server",
-    "label": "MT4 Instant",
+    "full": 263,
+    "total": 289,
     "disabled": 11,
-    "full": 263
+    "account": "710268540",
+    "label": "MT4 Instant"
   },
   {
-    "account": "950131906",
-    "closeonly": 15,
-    "full_marketwatch": 4,
-    "symbol": "EURUSD",
-    "total": 281,
     "total_marketwatch": 4,
+    "full_marketwatch": 4,
+    "closeonly": 15,
+    "symbol": "EURUSD",
     "server": "LibertexCom-MT4 Market Real Server",
-    "label": "MT4 Market (Cyprus)",
+    "full": 255,
+    "total": 281,
     "disabled": 11,
-    "full": 255
+    "account": "950131906",
+    "label": "MT4 Market (Cyprus)"
   }
 ]
