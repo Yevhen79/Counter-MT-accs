@@ -1,0 +1,10 @@
+Marker file to nudge a GitHub Pages redeploy.
+
+GitHub's built-in "pages build and deployment" occasionally fails on a
+transient OIDC error (HTTP 503 "Failed to get ID Token / reset reason:
+overflow") — a GitHub-side outage, not a repo config problem. When that
+happens the live dashboard lags one deploy behind while the data in the
+repo is already correct. Touching this file re-triggers the Pages deploy
+without running the counting workflow (docs/ is not in its path filter).
+
+Last nudge: after the 2026-07-09 deploy failed (run 29019449249).
