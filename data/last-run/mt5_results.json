@@ -1,38 +1,38 @@
 [
   {
-    "disabled": 28,
     "full_marketwatch": 11,
+    "disabled": 28,
+    "total": 306,
+    "server": "ForexClub-MT5 Real Server",
     "closeonly": 22,
     "symbol": "EURUSD",
-    "server": "ForexClub-MT5 Real Server",
-    "full": 256,
-    "total": 306,
-    "total_marketwatch": 11,
+    "label": "MT5 Market",
     "account": "550459323",
-    "label": "MT5 Market"
+    "total_marketwatch": 11,
+    "full": 256
   },
   {
-    "disabled": 27,
     "full_marketwatch": 11,
+    "disabled": 27,
+    "total": 305,
+    "server": "ForexClub-MT5 Instant Real Server",
     "closeonly": 23,
     "symbol": "EURUSD",
-    "server": "ForexClub-MT5 Instant Real Server",
-    "full": 255,
-    "total": 305,
-    "total_marketwatch": 11,
+    "label": "MT5 Instant",
     "account": "555105689",
-    "label": "MT5 Instant"
+    "total_marketwatch": 11,
+    "full": 255
   },
   {
-    "disabled": 8,
     "full_marketwatch": 20,
+    "disabled": 8,
+    "total": 300,
+    "server": "LibertexCom-MT5 Real Server",
     "closeonly": 17,
     "symbol": "EURUSD",
-    "server": "LibertexCom-MT5 Real Server",
-    "full": 275,
-    "total": 300,
-    "total_marketwatch": 20,
+    "label": "MT5 Market (Cyprus)",
     "account": "560033688",
-    "label": "MT5 Market (Cyprus)"
+    "total_marketwatch": 20,
+    "full": 275
   }
 ]
