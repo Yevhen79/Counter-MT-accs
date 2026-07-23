@@ -1,9 +1,107 @@
 
 === MT5 Market (login=550459323, server='ForexClub-MT5 Real Server') ===
-[33;1mWARNING: No installed terminal for https://download.libertex.org/metatrader/fcmt5setup.exe — skipping MT5 Market.[0m
+Using MT5 install: C:\Program Files\ForexClub MT5
+Compiling EA via C:\Program Files\ForexClub MT5\metaeditor64.exe in C:\Program Files\ForexClub MT5\MQL5\Experts ...
+metaeditor64 exit code: 1
+--- compile log ---
+
+
+CountInstruments.mq5 : information: compiling CountInstruments.mq5
+ : information: generating code
+ : information: generating code 3%
+ : information: generating code 6%
+ : information: generating code 9%
+ : information: generating code 12%
+ : information: generating code 15%
+ : information: generating code 18%
+ : information: generating code 21%
+ : information: generating code 24%
+ : information: generating code 27%
+ : information: generating code 30%
+ : information: generating code 33%
+ : information: generating code 36%
+ : information: generating code 39%
+ : information: generating code 42%
+ : information: generating code 45%
+ : information: generating code 48%
+ : information: generating code 51%
+ : information: generating code 54%
+ : information: generating code 57%
+ : information: generating code 60%
+ : information: generating code 63%
+ : information: generating code 66%
+ : information: generating code 69%
+ : information: generating code 72%
+ : information: generating code 75%
+ : information: generating code 78%
+ : information: generating code 81%
+ : information: generating code 84%
+ : information: generating code 87%
+ : information: generating code 90%
+ : information: generating code 93%
+ : information: generating code 95%
+ : information: generating code 100%
+ : information: code generated
+Result: 0 errors, 0 warnings, 696 ms elapsed, cpu='X64 Regular'
+
+--- end compile log ---
+Trying with Symbol=EURUSD ...
+wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=550459323, server='ForexClub-MT5 Real Server', symbol=EURUSD)
+Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
+MT5 Market: full(all)=256 total(all)=291 full(marketwatch)=11 total(marketwatch)=11 account=550459323 (expected 550459323, match=True)
+saved symbol list -> artifacts/mt5_symbols_MT5_Market.csv
 
 === MT5 Instant (login=555105689, server='ForexClub-MT5 Instant Real Server') ===
-[33;1mWARNING: No installed terminal for https://download.libertex.org/metatrader/fcmt5setup.exe — skipping MT5 Instant.[0m
+Using MT5 install: C:\Program Files\ForexClub MT5
+Compiling EA via C:\Program Files\ForexClub MT5\metaeditor64.exe in C:\Program Files\ForexClub MT5\MQL5\Experts ...
+metaeditor64 exit code: 1
+--- compile log ---
+
+
+CountInstruments.mq5 : information: compiling CountInstruments.mq5
+ : information: generating code
+ : information: generating code 3%
+ : information: generating code 6%
+ : information: generating code 9%
+ : information: generating code 12%
+ : information: generating code 15%
+ : information: generating code 18%
+ : information: generating code 21%
+ : information: generating code 24%
+ : information: generating code 27%
+ : information: generating code 30%
+ : information: generating code 33%
+ : information: generating code 36%
+ : information: generating code 39%
+ : information: generating code 42%
+ : information: generating code 45%
+ : information: generating code 48%
+ : information: generating code 51%
+ : information: generating code 54%
+ : information: generating code 57%
+ : information: generating code 60%
+ : information: generating code 63%
+ : information: generating code 66%
+ : information: generating code 69%
+ : information: generating code 72%
+ : information: generating code 75%
+ : information: generating code 78%
+ : information: generating code 81%
+ : information: generating code 84%
+ : information: generating code 87%
+ : information: generating code 90%
+ : information: generating code 93%
+ : information: generating code 95%
+ : information: generating code 100%
+ : information: code generated
+Result: 0 errors, 0 warnings, 946 ms elapsed, cpu='X64 Regular'
+
+--- end compile log ---
+Trying with Symbol=EURUSD ...
+wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=555105689, server='ForexClub-MT5 Instant Real Server', symbol=EURUSD)
+Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
+MT5 Instant: full(all)=255 total(all)=290 full(marketwatch)=11 total(marketwatch)=11 account=555105689 (expected 555105689, match=True)
+saved symbol list -> artifacts/mt5_symbols_MT5_Instant.csv
 
 === MT5 Market (Cyprus) (login=560033688, server='LibertexCom-MT5 Real Server') ===
 Using MT5 install: C:\Program Files\Libertex MT5 Terminal
@@ -48,7 +146,7 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 687 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 960 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
