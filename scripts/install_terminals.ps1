@@ -3,10 +3,13 @@
 # folder its terminal landed in.
 #
 # Broker installers ignore documented silent flags and pop a GUI, so each
-# flag is tried with a short timeout and the leftover window is killed —
-# one of them completes the install in the background. The install folder
-# is found by diffing the set of terminal executables before/after (robust
-# to whatever folder name the broker uses).
+# flag is tried in turn while we poll for the terminal to appear; the first
+# flag that produces one wins, and only leftover GUI windows are killed
+# afterwards. We poll DURING the install (not just after a fixed timeout)
+# because some broker builds take well over 30s to lay down terminal64.exe —
+# killing early would abort a working install. The install folder is found
+# by diffing the set of terminal executables before/after (robust to
+# whatever folder name the broker uses).
 
 $ErrorActionPreference = "Stop"
 
@@ -65,18 +68,50 @@ function Download-Installer($url, $out) {
     return $false
 }
 
-function Try-SilentInstall($installer, $flag, $timeoutSec) {
-    Write-Host "  flag '$flag' (timeout ${timeoutSec}s)"
+function Find-NewTerminal($platform, $before, $dirHint) {
+    $after = Get-TerminalExes $platform
+    $new = @($after | Where-Object { $before -notcontains $_ })
+    if ($new.Count -eq 0) { return $null }
+    $hit = $new | Where-Object { (Split-Path $_ -Parent) -match [Regex]::Escape($dirHint) } | Select-Object -First 1
+    if (-not $hit) { $hit = $new[0] }
+    return $hit
+}
+
+function Kill-Installers {
+    Get-Process -ErrorAction SilentlyContinue | Where-Object {
+        $_.Name -match "(?i)(setup|install|forexclub|libertex|metatrader|metaquotes|fcmt)"
+    } | ForEach-Object { try { Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue } catch {} }
+}
+
+# Run the installer with one flag, polling for the terminal WHILE it installs.
+# Returns the install dir as soon as the terminal appears (without killing the
+# installer), or $null after the timeout. Some broker installers take well
+# over 30s to lay down terminal64.exe, so killing early aborts the install —
+# hence the in-flight polling and the longer window.
+function Install-With-Flag($installer, $flag, $platform, $before, $dirHint, $timeoutSec = 100) {
+    Write-Host "  flag '$flag' (up to ${timeoutSec}s, polling)"
     $p = Start-Process -FilePath $installer -ArgumentList $flag -PassThru -ErrorAction SilentlyContinue
-    if (-not $p) { return }
-    $w = 0
-    while (-not $p.HasExited -and $w -lt $timeoutSec) { Start-Sleep -Seconds 3; $w += 3 }
-    if (-not $p.HasExited) {
-        Get-Process -ErrorAction SilentlyContinue | Where-Object {
-            $_.Name -match "(?i)(setup|install|forexclub|libertex|metatrader|metaquotes|fcmt)"
-        } | ForEach-Object { try { Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue } catch {} }
-        Start-Sleep -Seconds 2
+    if (-not $p) { return $null }
+    $waited = 0
+    while ($waited -lt $timeoutSec) {
+        Start-Sleep -Seconds 5
+        $waited += 5
+        $hit = Find-NewTerminal $platform $before $dirHint
+        if ($hit) { Write-Host "    -> terminal appeared after ${waited}s"; return (Split-Path $hit -Parent) }
+        if ($p.HasExited) {
+            Start-Sleep -Seconds 3   # let the filesystem settle after exit
+            $hit = Find-NewTerminal $platform $before $dirHint
+            if ($hit) { return (Split-Path $hit -Parent) }
+            break   # installer finished without producing a terminal; try next flag
+        }
     }
+    # Not found (timeout or clean exit): kill any leftover GUI, then re-check
+    # once — the files may have landed just as we killed the wrapper window.
+    Kill-Installers
+    Start-Sleep -Seconds 3
+    $hit = Find-NewTerminal $platform $before $dirHint
+    if ($hit) { return (Split-Path $hit -Parent) }
+    return $null
 }
 
 # Unique installers, preserving the platform/dir_hint of the first account
@@ -124,13 +159,8 @@ foreach ($url in $installers.Keys) {
 
     $dir = $null
     foreach ($flag in @("/auto", "/S", "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-", "/silent", "/quiet")) {
-        Try-SilentInstall $file $flag 30
-        # Look for a newly-appeared terminal exe that also matches the hint.
-        $after = Get-TerminalExes $t.platform
-        $new = @($after | Where-Object { $before -notcontains $_ })
-        $hit = $new | Where-Object { (Split-Path $_ -Parent) -match [Regex]::Escape($t.dir_hint) } | Select-Object -First 1
-        if (-not $hit -and $new.Count -gt 0) { $hit = $new[0] }
-        if ($hit) { $dir = Split-Path $hit -Parent; break }
+        $dir = Install-With-Flag $file $flag $t.platform $before $t.dir_hint 100
+        if ($dir) { break }
     }
 
     if ($dir) {
