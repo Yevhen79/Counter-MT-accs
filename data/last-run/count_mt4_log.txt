@@ -7,14 +7,14 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 171 msec elapsed
+Result: 0 errors, 0 warnings, 104 msec elapsed
 
 --- end compile log ---
 
 Attempt with Symbol=EURUSD
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=730232800, server='ForexClub-MT4 Market Real 2 Server', symbol=EURUSD)
 Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
-MT4 Market: full(all)=255 total(all)=282 full(marketwatch)=6 total(marketwatch)=6 account=730232800 (expected 730232800, match=True, symbol=EURUSD)
+MT4 Market: full(all)=254 total(all)=282 full(marketwatch)=5 total(marketwatch)=6 account=730232800 (expected 730232800, match=True, symbol=EURUSD)
 saved symbol list -> artifacts/mt4_symbols_MT4_Market.csv
 
 === MT4 Instant (login=710268540, server='ForexClub-MT4 Real 2 Server') ===
@@ -25,14 +25,14 @@ metaeditor exit code: 1
 
 
 CountInstruments.mq4 : information: compiling 'CountInstruments.mq4'
-Result: 0 errors, 0 warnings, 88 msec elapsed
+Result: 0 errors, 0 warnings, 84 msec elapsed
 
 --- end compile log ---
 
 Attempt with Symbol=EURUSD
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=710268540, server='ForexClub-MT4 Real 2 Server', symbol=EURUSD)
 Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
-MT4 Instant: full(all)=263 total(all)=289 full(marketwatch)=6 total(marketwatch)=6 account=710268540 (expected 710268540, match=True, symbol=EURUSD)
+MT4 Instant: full(all)=262 total(all)=289 full(marketwatch)=5 total(marketwatch)=6 account=710268540 (expected 710268540, match=True, symbol=EURUSD)
 saved symbol list -> artifacts/mt4_symbols_MT4_Instant.csv
 
 === MT4 Market (Cyprus) (login=950131906, server='LibertexCom-MT4 Market Real Server') ===
@@ -50,7 +50,7 @@ Result: 0 errors, 0 warnings, 81 msec elapsed
 Attempt with Symbol=EURUSD
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini (login=950131906, server='LibertexCom-MT4 Market Real Server', symbol=EURUSD)
 Launching terminal.exe D:\a\Counter-MT-accs\Counter-MT-accs\mt4_start.ini /portable /skipupdate
-MT4 Market (Cyprus): full(all)=255 total(all)=281 full(marketwatch)=4 total(marketwatch)=4 account=950131906 (expected 950131906, match=True, symbol=EURUSD)
+MT4 Market (Cyprus): full(all)=254 total(all)=281 full(marketwatch)=3 total(marketwatch)=4 account=950131906 (expected 950131906, match=True, symbol=EURUSD)
 saved symbol list -> artifacts/mt4_symbols_MT4_Market_(Cyprus).csv
 
 Wrote artifacts/mt4_results.json

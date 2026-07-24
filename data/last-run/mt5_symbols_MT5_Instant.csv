@@ -118,7 +118,7 @@ CORN,FULL,0,Agriculture
 SOYBEAN,FULL,0,Agriculture
 SUGAR,FULL,0,Agriculture
 WHEAT,FULL,0,Agriculture
-BRN,FULL,1,Energy
+BRN,CLOSEONLY,1,Energy
 CL,FULL,0,Energy
 HO,FULL,0,Energy
 NG,FULL,0,Energy

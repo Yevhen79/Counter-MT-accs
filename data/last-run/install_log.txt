@@ -8,7 +8,7 @@
 === Installing terminal 2/4: https://download.libertex.org/metatrader/fcmt5setup.exe (platform=mt5, hint=ForexClub) ===
   downloaded 5,772,976 bytes (attempt 1)
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 20s
+    -> terminal appeared after 25s
   installed at: C:\Program Files\ForexClub MT5
 
 === Installing terminal 3/4: https://download.libertex.com/software/metatrader/libertexcom4setup.exe (platform=mt4, hint=Libertex) ===
