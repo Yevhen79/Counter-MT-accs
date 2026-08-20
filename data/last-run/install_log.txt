@@ -2,25 +2,25 @@
 === Installing terminal 1/4: https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe (platform=mt4, hint=ForexClub) ===
   downloaded 5,220,640 bytes (attempt 1)
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 10s
+    -> terminal appeared after 15s
   installed at: C:\Program Files (x86)\ForexClub MT4
 
 === Installing terminal 2/4: https://download.libertex.org/metatrader/fcmt5setup.exe (platform=mt5, hint=ForexClub) ===
   downloaded 5,772,976 bytes (attempt 1)
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 25s
+    -> terminal appeared after 20s
   installed at: C:\Program Files\ForexClub MT5
 
 === Installing terminal 3/4: https://download.libertex.com/software/metatrader/libertexcom4setup.exe (platform=mt4, hint=Libertex) ===
   downloaded 5,163,832 bytes (attempt 1)
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 10s
+    -> terminal appeared after 15s
   installed at: C:\Program Files (x86)\Libertex MT4
 
 === Installing terminal 4/4: https://download.libertex.com/software/metatrader5/libertexcom5setup.exe (platform=mt5, hint=Libertex) ===
   using committed installer: D:\a\Counter-MT-accs\Counter-MT-accs\installers\libertexcom5setup.exe
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 20s
+    -> terminal appeared after 15s
   installed at: C:\Program Files\Libertex MT5 Terminal
 
 Wrote terminals.json:

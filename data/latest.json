@@ -1,54 +1,54 @@
 {
-  "date": "2026-08-19",
+  "date": "2026-08-20",
   "accounts": [
     {
       "label": "MT4 Market",
       "platform": "mt4",
       "account": "730232800",
-      "total": 282,
+      "total": 281,
       "full": 255,
       "closeonly": 14,
-      "disabled": 13,
+      "disabled": 12,
       "error": null
     },
     {
       "label": "MT4 Instant",
       "platform": "mt4",
       "account": "710268540",
-      "total": 289,
+      "total": 288,
       "full": 263,
       "closeonly": 14,
-      "disabled": 12,
+      "disabled": 11,
       "error": null
     },
     {
       "label": "MT5 Market",
       "platform": "mt5",
       "account": "550459323",
-      "total": 291,
+      "total": 290,
       "full": 257,
       "closeonly": 21,
-      "disabled": 13,
+      "disabled": 12,
       "error": null
     },
     {
       "label": "MT5 Instant",
       "platform": "mt5",
       "account": "555105689",
-      "total": 290,
+      "total": 289,
       "full": 256,
       "closeonly": 22,
-      "disabled": 12,
+      "disabled": 11,
       "error": null
     },
     {
       "label": "MT4 Market (Cyprus)",
       "platform": "mt4",
       "account": "950131906",
-      "total": 281,
+      "total": 280,
       "full": 255,
       "closeonly": 14,
-      "disabled": 12,
+      "disabled": 11,
       "error": null
     },
     {
