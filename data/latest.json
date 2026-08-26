@@ -55,11 +55,11 @@
       "label": "MT5 Market (Cyprus)",
       "platform": "mt5",
       "account": "560033688",
-      "total": null,
-      "full": null,
-      "closeonly": null,
-      "disabled": null,
-      "error": "terminal_not_installed"
+      "total": 300,
+      "full": 275,
+      "closeonly": 17,
+      "disabled": 8,
+      "error": null
     }
   ]
 }

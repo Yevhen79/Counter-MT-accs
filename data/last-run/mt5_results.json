@@ -8,7 +8,15 @@
     "error": "terminal_not_installed"
   },
   {
+    "closeonly": 17,
+    "account": "560033688",
+    "total_marketwatch": 20,
+    "total": 300,
+    "server": "LibertexCom-MT5 Real Server",
     "label": "MT5 Market (Cyprus)",
-    "error": "terminal_not_installed"
+    "full": 275,
+    "full_marketwatch": 20,
+    "disabled": 8,
+    "symbol": "EURUSD"
   }
 ]
