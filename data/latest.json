@@ -25,21 +25,21 @@
       "label": "MT5 Market",
       "platform": "mt5",
       "account": "550459323",
-      "total": null,
-      "full": null,
-      "closeonly": null,
-      "disabled": null,
-      "error": "terminal_not_installed"
+      "total": 290,
+      "full": 257,
+      "closeonly": 21,
+      "disabled": 12,
+      "error": null
     },
     {
       "label": "MT5 Instant",
       "platform": "mt5",
       "account": "555105689",
-      "total": null,
-      "full": null,
-      "closeonly": null,
-      "disabled": null,
-      "error": "terminal_not_installed"
+      "total": 289,
+      "full": 256,
+      "closeonly": 22,
+      "disabled": 11,
+      "error": null
     },
     {
       "label": "MT4 Market (Cyprus)",
