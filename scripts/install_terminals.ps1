@@ -19,6 +19,25 @@ if (-not (Test-Path "config.json")) {
 }
 $config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
 
+# Disable Defender realtime scanning BEFORE any install runs. A late-August
+# 2026 windows-2022 runner-image update re-tightened Defender; the ForexClub
+# MT5 installer (byte-identical to the build that installed fine for months)
+# then launched but wrote nothing to disk — the signature of realtime
+# scanning blocking an unsigned installer's writes. Excluding the install
+# roots + temp and turning realtime off up front lets installs proceed.
+try {
+    Set-MpPreference -DisableRealtimeMonitoring $true -ErrorAction SilentlyContinue
+    Set-MpPreference -DisableBehaviorMonitoring $true -ErrorAction SilentlyContinue
+    Set-MpPreference -DisableScriptScanning $true -ErrorAction SilentlyContinue
+    foreach ($ex in @("C:\Program Files", "C:\Program Files (x86)", $env:RUNNER_TEMP,
+                      $env:LOCALAPPDATA, $env:ProgramData, (Get-Location).Path)) {
+        if ($ex) { Add-MpPreference -ExclusionPath $ex -ErrorAction SilentlyContinue }
+    }
+    Write-Host "Defender realtime/behavior/script scanning disabled and install roots excluded."
+} catch {
+    Write-Warning "Could not adjust Defender preferences up front: $_"
+}
+
 # Roots an MT5 (64-bit) install might land in. Newer broker installers /
 # runner images sometimes drop the terminal in a per-user location instead
 # of Program Files, so scan the profile/appdata roots too.
