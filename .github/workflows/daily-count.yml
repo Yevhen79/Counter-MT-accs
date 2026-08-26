@@ -210,27 +210,48 @@ jobs:
           }
           git commit -m "Daily count ${{ steps.check.outputs.today }}"
 
-          # Push with retry; on non-fast-forward, fetch + rebase the bot
-          # commit on top of remote before retrying. --autostash protects
-          # against any unrelated unstaged changes the runner produced.
+          $today = "${{ steps.check.outputs.today }}"
+
+          # Push with retry. Two scheduled/triggered runs can overlap and
+          # both try to record the same day; the loser hits a non-fast-forward
+          # (and a content conflict on today's row). That is NOT an error —
+          # the day is already recorded. So on push failure we fetch and:
+          #   * if the remote already has today's row  -> a concurrent run
+          #     won; discard our redundant commit and exit success (yield);
+          #   * otherwise -> rebase our commit onto remote (preferring our
+          #     freshly-computed values) and retry.
+          # Only a real, persistent failure with today still unrecorded
+          # exits non-zero.
           $maxAttempts = 4
+          $pushed = $false
           for ($i = 1; $i -le $maxAttempts; $i++) {
             git push origin HEAD:$env:GITHUB_REF_NAME
             if ($LASTEXITCODE -eq 0) {
               Write-Host "Push succeeded on attempt $i."
+              $pushed = $true
               break
             }
-            if ($i -eq $maxAttempts) {
-              Write-Error "Push failed after $maxAttempts attempts."
-              exit 1
-            }
-            $sleep = [Math]::Pow(2, $i)
-            Write-Warning "Push attempt $i failed — rebasing on remote and retrying in $sleep s..."
+            Write-Warning "Push attempt $i failed — syncing with remote..."
             git fetch origin $env:GITHUB_REF_NAME
-            git rebase --autostash origin/$env:GITHUB_REF_NAME
-            if ($LASTEXITCODE -ne 0) {
-              Write-Warning "Rebase reported conflicts — aborting and trying plain pull."
-              git rebase --abort
+
+            $remoteHistory = (git show "origin/$env:GITHUB_REF_NAME`:data/history.csv" 2>$null)
+            if ($remoteHistory -match "(?m)^$([Regex]::Escape($today)),") {
+              Write-Host "Today ($today) is already recorded on the remote by a concurrent run — yielding, nothing to push."
+              git reset --hard "origin/$env:GITHUB_REF_NAME" | Out-Null
+              $pushed = $true
+              break
             }
-            Start-Sleep -Seconds $sleep
+
+            # Remote doesn't have today yet: replay our commit on top,
+            # preferring our values on conflict, then retry the push.
+            git rebase --autostash -X theirs "origin/$env:GITHUB_REF_NAME"
+            if ($LASTEXITCODE -ne 0) {
+              Write-Warning "Rebase still conflicted — aborting; will retry plain push."
+              git rebase --abort 2>$null
+            }
+            Start-Sleep -Seconds ([Math]::Pow(2, $i))
+          }
+          if (-not $pushed) {
+            Write-Error "Push failed after $maxAttempts attempts and today ($today) is still not on the remote."
+            exit 1
           }
