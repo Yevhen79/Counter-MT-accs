@@ -228,3 +228,5 @@ $results | ConvertTo-Json -Depth 5 | Out-File -FilePath "terminals.json" -Encodi
 Write-Host ""
 Write-Host "Wrote terminals.json:"
 Get-Content terminals.json -Raw | Write-Host
+
+# (retrigger after transient startup_failure on run 302)
