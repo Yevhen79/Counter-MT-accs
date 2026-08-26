@@ -172,6 +172,11 @@ function Install-With-Flag($installer, $flag, $platform, $before, $dirHint, $tim
     }
     # Not found (timeout or clean exit): kill any leftover GUI, then re-check
     # once — the files may have landed just as we killed the wrapper window.
+    if (-not $p.HasExited) {
+        Write-Host "    installer still RUNNING at ${timeoutSec}s (likely GUI/interaction) — killing"
+    } else {
+        Write-Host "    installer had exited (code $($p.ExitCode)) with no terminal produced"
+    }
     Kill-Installers
     Start-Sleep -Seconds 3
     $hit = Find-NewTerminal $platform $before $dirHint
