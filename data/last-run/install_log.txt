@@ -2,7 +2,7 @@
 === Installing terminal 1/4: https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe (platform=mt4, hint=ForexClub) ===
   downloaded 5,220,640 bytes (attempt 1)
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 25s
+    -> terminal appeared after 30s
   installed at: C:\Program Files (x86)\ForexClub MT4
 
 === Installing terminal 2/4: https://download.libertex.org/metatrader/fcmt5setup.exe (platform=mt5, hint=ForexClub) ===

@@ -1,14 +1,14 @@
 [
   {
-    "error": "terminal_not_installed",
-    "label": "MT5 Market"
+    "label": "MT5 Market",
+    "error": "terminal_not_installed"
   },
   {
-    "error": "terminal_not_installed",
-    "label": "MT5 Instant"
+    "label": "MT5 Instant",
+    "error": "terminal_not_installed"
   },
   {
-    "error": "terminal_not_installed",
-    "label": "MT5 Market (Cyprus)"
+    "label": "MT5 Market (Cyprus)",
+    "error": "terminal_not_installed"
   }
 ]
