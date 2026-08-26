@@ -19,22 +19,67 @@ if (-not (Test-Path "config.json")) {
 }
 $config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
 
+# Roots an MT5 (64-bit) install might land in. Newer broker installers /
+# runner images sometimes drop the terminal in a per-user location instead
+# of Program Files, so scan the profile/appdata roots too.
+function Get-Mt5Roots {
+    $roots = @("C:\Program Files", "C:\Program Files (x86)")
+    foreach ($e in @($env:LOCALAPPDATA, $env:APPDATA, $env:ProgramData, $env:USERPROFILE)) {
+        if ($e -and (Test-Path $e)) { $roots += $e }
+    }
+    if (Test-Path "C:\Users") { $roots += "C:\Users" }
+    return ($roots | Select-Object -Unique)
+}
+
 function Get-TerminalExes($platform) {
     $found = @()
-    foreach ($root in @("C:\Program Files", "C:\Program Files (x86)")) {
-        if (-not (Test-Path $root)) { continue }
-        if ($platform -eq "mt5") {
-            $found += Get-ChildItem $root -Filter "terminal64.exe" -Recurse -Depth 3 -ErrorAction SilentlyContinue |
+    if ($platform -eq "mt5") {
+        foreach ($root in (Get-Mt5Roots)) {
+            if (-not (Test-Path $root)) { continue }
+            $found += Get-ChildItem $root -Filter "terminal64.exe" -Recurse -Depth 5 -ErrorAction SilentlyContinue |
                       ForEach-Object { $_.FullName }
-        } else {
+        }
+    } else {
+        foreach ($root in @("C:\Program Files", "C:\Program Files (x86)")) {
+            if (-not (Test-Path $root)) { continue }
             # MT4 = terminal.exe in a folder that has no terminal64.exe
             # (MT5 ships a 32-bit terminal.exe too; exclude those).
-            $found += Get-ChildItem $root -Filter "terminal.exe" -Recurse -Depth 3 -ErrorAction SilentlyContinue |
+            $found += Get-ChildItem $root -Filter "terminal.exe" -Recurse -Depth 5 -ErrorAction SilentlyContinue |
                       Where-Object { -not (Test-Path (Join-Path $_.DirectoryName "terminal64.exe")) } |
                       ForEach-Object { $_.FullName }
         }
     }
-    return @($found)
+    return @($found | Select-Object -Unique)
+}
+
+# On failure, dump where (if anywhere) a terminal64.exe exists and what the
+# installer left behind, so the next run's log tells us definitively what
+# changed (e.g. a new runner image installing MT5 to a different location).
+function Dump-Mt5Diagnostics {
+    Write-Host "  --- MT5 diagnostics ---"
+    try {
+        $hits = @()
+        foreach ($root in @("C:\Program Files", "C:\Program Files (x86)", $env:LOCALAPPDATA, $env:APPDATA, $env:ProgramData, "C:\Users")) {
+            if ($root -and (Test-Path $root)) {
+                $hits += Get-ChildItem $root -Filter "terminal64.exe" -Recurse -Depth 6 -ErrorAction SilentlyContinue |
+                         ForEach-Object { $_.FullName }
+            }
+        }
+        $hits = $hits | Select-Object -Unique
+        if ($hits.Count -gt 0) {
+            Write-Host "  terminal64.exe found at:"
+            $hits | ForEach-Object { Write-Host "    $_" }
+        } else {
+            Write-Host "  no terminal64.exe found anywhere under Program Files / user profile"
+        }
+    } catch { Write-Host "  diag scan failed: $_" }
+    try {
+        Write-Host "  new dirs in C:\Program Files (top level):"
+        Get-ChildItem "C:\Program Files" -Directory -ErrorAction SilentlyContinue |
+            Where-Object { $_.LastWriteTime -gt (Get-Date).AddMinutes(-30) } |
+            ForEach-Object { Write-Host "    $($_.FullName)  (modified $($_.LastWriteTime))" }
+    } catch {}
+    Write-Host "  --- end diagnostics ---"
 }
 
 function Is-PE($path) {
@@ -99,6 +144,7 @@ function Install-With-Flag($installer, $flag, $platform, $before, $dirHint, $tim
         $hit = Find-NewTerminal $platform $before $dirHint
         if ($hit) { Write-Host "    -> terminal appeared after ${waited}s"; return (Split-Path $hit -Parent) }
         if ($p.HasExited) {
+            Write-Host "    installer exited (code $($p.ExitCode)) after ${waited}s"
             Start-Sleep -Seconds 3   # let the filesystem settle after exit
             $hit = Find-NewTerminal $platform $before $dirHint
             if ($hit) { return (Split-Path $hit -Parent) }
@@ -168,6 +214,7 @@ foreach ($url in $installers.Keys) {
         try { Add-MpPreference -ExclusionPath $dir -ErrorAction SilentlyContinue } catch {}
     } else {
         Write-Warning "  could not locate installed terminal for $url"
+        if ($t.platform -eq "mt5") { Dump-Mt5Diagnostics }
     }
     $results += [pscustomobject]@{ url = $url; platform = $t.platform; dir_hint = $t.dir_hint; dir = $dir }
 }
