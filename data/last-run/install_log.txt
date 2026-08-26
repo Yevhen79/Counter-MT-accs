@@ -3,14 +3,26 @@ Defender realtime/behavior/script scanning disabled and install roots excluded.
 === Installing terminal 1/4: https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe (platform=mt4, hint=ForexClub) ===
   downloaded 5,220,640 bytes (attempt 1)
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 15s
+    -> terminal appeared after 25s
   installed at: C:\Program Files (x86)\ForexClub MT4
 
 === Installing terminal 2/4: https://download.libertex.org/metatrader/fcmt5setup.exe (platform=mt5, hint=ForexClub) ===
   downloaded 5,772,976 bytes (attempt 1)
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 55s
-  installed at: C:\Program Files\ForexClub MT5
+    installer still RUNNING at 100s (likely GUI/interaction) — killing
+  flag '/S' (up to 100s, polling)
+    installer still RUNNING at 100s (likely GUI/interaction) — killing
+  flag '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-' (up to 100s, polling)
+    installer still RUNNING at 100s (likely GUI/interaction) — killing
+  flag '/silent' (up to 100s, polling)
+    installer still RUNNING at 100s (likely GUI/interaction) — killing
+  flag '/quiet' (up to 100s, polling)
+    installer still RUNNING at 100s (likely GUI/interaction) — killing
+[33;1mWARNING:   could not locate installed terminal for https://download.libertex.org/metatrader/fcmt5setup.exe[0m
+  --- MT5 diagnostics ---
+  no terminal64.exe found anywhere under Program Files / user profile
+  new dirs in C:\Program Files (top level):
+  --- end diagnostics ---
 
 === Installing terminal 3/4: https://download.libertex.com/software/metatrader/libertexcom4setup.exe (platform=mt4, hint=Libertex) ===
   downloaded 5,163,832 bytes (attempt 1)
@@ -21,7 +33,7 @@ Defender realtime/behavior/script scanning disabled and install roots excluded.
 === Installing terminal 4/4: https://download.libertex.com/software/metatrader5/libertexcom5setup.exe (platform=mt5, hint=Libertex) ===
   using committed installer: D:\a\Counter-MT-accs\Counter-MT-accs\installers\libertexcom5setup.exe
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 25s
+    -> terminal appeared after 85s
   installed at: C:\Program Files\Libertex MT5 Terminal
 
 Wrote terminals.json:
@@ -36,7 +48,7 @@ Wrote terminals.json:
     "url": "https://download.libertex.org/metatrader/fcmt5setup.exe",
     "platform": "mt5",
     "dir_hint": "ForexClub",
-    "dir": "C:\\Program Files\\ForexClub MT5"
+    "dir": null
   },
   {
     "url": "https://download.libertex.com/software/metatrader/libertexcom4setup.exe",
