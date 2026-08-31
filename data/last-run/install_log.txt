@@ -21,7 +21,7 @@ Defender realtime/behavior/script scanning disabled and install roots excluded.
 === Installing terminal 4/4: https://download.libertex.com/software/metatrader5/libertexcom5setup.exe (platform=mt5, hint=Libertex) ===
   using committed installer: D:\a\Counter-MT-accs\Counter-MT-accs\installers\libertexcom5setup.exe
   flag '/auto' (up to 100s, polling)
-    -> terminal appeared after 20s
+    -> terminal appeared after 15s
   installed at: C:\Program Files\Libertex MT5 Terminal
 
 Wrote terminals.json:
