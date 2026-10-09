@@ -1,13 +1,13 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "accounts": [
     {
       "label": "MT4 Market",
       "platform": "mt4",
       "account": "730232800",
       "total": 269,
-      "full": 252,
-      "closeonly": 16,
+      "full": 255,
+      "closeonly": 13,
       "disabled": 1,
       "error": null
     },
@@ -16,8 +16,8 @@
       "platform": "mt4",
       "account": "710268540",
       "total": 276,
-      "full": 260,
-      "closeonly": 16,
+      "full": 263,
+      "closeonly": 13,
       "disabled": 0,
       "error": null
     },
@@ -26,8 +26,8 @@
       "platform": "mt5",
       "account": "550459323",
       "total": 282,
-      "full": 254,
-      "closeonly": 23,
+      "full": 257,
+      "closeonly": 20,
       "disabled": 5,
       "error": null
     },
@@ -36,8 +36,8 @@
       "platform": "mt5",
       "account": "555105689",
       "total": 280,
-      "full": 253,
-      "closeonly": 24,
+      "full": 256,
+      "closeonly": 21,
       "disabled": 3,
       "error": null
     },
@@ -46,8 +46,8 @@
       "platform": "mt4",
       "account": "950131906",
       "total": 268,
-      "full": 252,
-      "closeonly": 16,
+      "full": 255,
+      "closeonly": 13,
       "disabled": 0,
       "error": null
     },
