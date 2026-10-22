@@ -35,8 +35,15 @@ def main() -> int:
 
     yaml = YAML()
     yaml.preserve_quotes = True
+    # config.yaml has non-ASCII (Cyrillic) comments. On the Windows runner the
+    # default text encoding is cp1252, so letting ruamel open the file itself
+    # crashes with UnicodeEncodeError when it writes those comments back. Read
+    # and write the file through explicit UTF-8 streams, and keep non-ASCII
+    # verbatim instead of escaping it.
+    yaml.allow_unicode = True
     path = Path("config.yaml")
-    data = yaml.load(path)
+    with open(path, "r", encoding="utf-8") as f:
+        data = yaml.load(f)
 
     acc = next((a for a in data["accounts"] if a.get("label") == account), None)
     if acc is None:
@@ -55,7 +62,8 @@ def main() -> int:
         acc["server"] = new_server
         changed.append(f"server='{new_server}'")
 
-    yaml.dump(data, path)
+    with open(path, "w", encoding="utf-8") as f:
+        yaml.dump(data, f)
     print(f"Updated '{account}': " + ", ".join(changed))
     print("NOTE: if the password also changed, update the secret "
           f"'{acc.get('password_secret')}' in repo Settings -> Secrets.")

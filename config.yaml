@@ -96,7 +96,7 @@ accounts:
   - key: lib_mt5_market
     label: "MT5 Market (Cyprus)"
     platform: mt5
-    login: 560033688
+    login: 560035091
     server: "LibertexCom-MT5 Real Server"
     password_secret: LIBERTEX_MT5_MARKET_PASSWORD
     installer_url: "https://download.libertex.com/software/metatrader5/libertexcom5setup.exe"
