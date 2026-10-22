@@ -47,57 +47,57 @@
 
 accounts:
   # --- ForexClub ---
-  - key: mt4_market
-    label: "MT4 Market"
-    platform: mt4
-    login: 730232800
-    server: "ForexClub-MT4 Market Real 2 Server"
-    password_secret: MT4_MARKET_PASSWORD
-    installer_url: "https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe"
-    dir_hint: "ForexClub"
+- key: mt4_market
+  label: "MT4 Market"
+  platform: mt4
+  login: 730232800
+  server: "ForexClub-MT4 Market Real 2 Server"
+  password_secret: MT4_MARKET_PASSWORD
+  installer_url: "https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe"
+  dir_hint: "ForexClub"
 
-  - key: mt4_instant
-    label: "MT4 Instant"
-    platform: mt4
-    login: 710268540
-    server: "ForexClub-MT4 Real 2 Server"
-    password_secret: MT4_INSTANT_PASSWORD
-    installer_url: "https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe"
-    dir_hint: "ForexClub"
+- key: mt4_instant
+  label: "MT4 Instant"
+  platform: mt4
+  login: 710268540
+  server: "ForexClub-MT4 Real 2 Server"
+  password_secret: MT4_INSTANT_PASSWORD
+  installer_url: "https://download.fxclub.org/Metatrader/fcmt4setup_ru.exe"
+  dir_hint: "ForexClub"
 
-  - key: mt5_market
-    label: "MT5 Market"
-    platform: mt5
-    login: 550459323
-    server: "ForexClub-MT5 Real Server"
-    password_secret: MT5_MARKET_PASSWORD
-    installer_url: "https://download.libertex.org/metatrader/fcmt5setup.exe"
-    dir_hint: "ForexClub"
+- key: mt5_market
+  label: "MT5 Market"
+  platform: mt5
+  login: 550459323
+  server: "ForexClub-MT5 Real Server"
+  password_secret: MT5_MARKET_PASSWORD
+  installer_url: "https://download.libertex.org/metatrader/fcmt5setup.exe"
+  dir_hint: "ForexClub"
 
-  - key: mt5_instant
-    label: "MT5 Instant"
-    platform: mt5
-    login: 555105689
-    server: "ForexClub-MT5 Instant Real Server"
-    password_secret: MT5_INSTANT_PASSWORD
-    installer_url: "https://download.libertex.org/metatrader/fcmt5setup.exe"
-    dir_hint: "ForexClub"
+- key: mt5_instant
+  label: "MT5 Instant"
+  platform: mt5
+  login: 555105689
+  server: "ForexClub-MT5 Instant Real Server"
+  password_secret: MT5_INSTANT_PASSWORD
+  installer_url: "https://download.libertex.org/metatrader/fcmt5setup.exe"
+  dir_hint: "ForexClub"
 
   # --- Libertex (Cyprus) ---
-  - key: lib_mt4_market
-    label: "MT4 Market (Cyprus)"
-    platform: mt4
-    login: 950131906
-    server: "LibertexCom-MT4 Market Real Server"
-    password_secret: LIBERTEX_MT4_MARKET_PASSWORD
-    installer_url: "https://download.libertex.com/software/metatrader/libertexcom4setup.exe"
-    dir_hint: "Libertex"
+- key: lib_mt4_market
+  label: "MT4 Market (Cyprus)"
+  platform: mt4
+  login: 950131906
+  server: "LibertexCom-MT4 Market Real Server"
+  password_secret: LIBERTEX_MT4_MARKET_PASSWORD
+  installer_url: "https://download.libertex.com/software/metatrader/libertexcom4setup.exe"
+  dir_hint: "Libertex"
 
-  - key: lib_mt5_market
-    label: "MT5 Market (Cyprus)"
-    platform: mt5
-    login: 560035091
-    server: "LibertexCom-MT5 Real Server"
-    password_secret: LIBERTEX_MT5_MARKET_PASSWORD
-    installer_url: "https://download.libertex.com/software/metatrader5/libertexcom5setup.exe"
-    dir_hint: "Libertex"
+- key: lib_mt5_market
+  label: "MT5 Market (Cyprus)"
+  platform: mt5
+  login: 560033299
+  server: "LibertexCom-MT5 Real Server"
+  password_secret: LIBERTEX_MT5_MARKET_PASSWORD
+  installer_url: "https://download.libertex.com/software/metatrader5/libertexcom5setup.exe"
+  dir_hint: "Libertex"
