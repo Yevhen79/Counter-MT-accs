@@ -54,11 +54,11 @@
     {
       "label": "MT5 Market (Cyprus)",
       "platform": "mt5",
-      "account": "560035091",
+      "account": "560033299",
       "total": 282,
-      "full": 0,
-      "closeonly": 282,
-      "disabled": 0,
+      "full": 257,
+      "closeonly": 20,
+      "disabled": 5,
       "error": null
     }
   ]
