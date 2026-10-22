@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21",
+  "date": "2026-10-22",
   "accounts": [
     {
       "label": "MT4 Market",
@@ -54,7 +54,7 @@
     {
       "label": "MT5 Market (Cyprus)",
       "platform": "mt5",
-      "account": "560033688",
+      "account": "560035091",
       "total": 282,
       "full": 0,
       "closeonly": 282,
