@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "accounts": [
     {
       "label": "MT4 Market",
@@ -35,8 +35,8 @@
       "label": "MT5 Instant",
       "platform": "mt5",
       "account": "555105689",
-      "total": 280,
-      "full": 256,
+      "total": 295,
+      "full": 271,
       "closeonly": 21,
       "disabled": 3,
       "error": null
