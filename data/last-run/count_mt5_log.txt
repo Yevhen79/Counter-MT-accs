@@ -42,13 +42,13 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 759 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 783 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=550459323, server='ForexClub-MT5 Real Server', symbol=EURUSD)
 Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
-MT5 Market: full(all)=257 total(all)=282 full(marketwatch)=11 total(marketwatch)=11 account=550459323 (expected 550459323, match=True)
+MT5 Market: full(all)=258 total(all)=283 full(marketwatch)=11 total(marketwatch)=11 account=550459323 (expected 550459323, match=True)
 saved symbol list -> artifacts/mt5_symbols_MT5_Market.csv
 
 === MT5 Instant (login=555105689, server='ForexClub-MT5 Instant Real Server') ===
@@ -94,13 +94,13 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 931 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 1160 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=555105689, server='ForexClub-MT5 Instant Real Server', symbol=EURUSD)
 Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
-MT5 Instant: full(all)=271 total(all)=295 full(marketwatch)=11 total(marketwatch)=11 account=555105689 (expected 555105689, match=True)
+MT5 Instant: full(all)=272 total(all)=296 full(marketwatch)=11 total(marketwatch)=11 account=555105689 (expected 555105689, match=True)
 saved symbol list -> artifacts/mt5_symbols_MT5_Instant.csv
 
 === MT5 Market (Cyprus) (login=560033299, server='LibertexCom-MT5 Real Server') ===
@@ -146,13 +146,13 @@ CountInstruments.mq5 : information: compiling CountInstruments.mq5
  : information: generating code 95%
  : information: generating code 100%
  : information: code generated
-Result: 0 errors, 0 warnings, 1012 ms elapsed, cpu='X64 Regular'
+Result: 0 errors, 0 warnings, 1025 ms elapsed, cpu='X64 Regular'
 
 --- end compile log ---
 Trying with Symbol=EURUSD ...
 wrote D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini (login=560033299, server='LibertexCom-MT5 Real Server', symbol=EURUSD)
 Launching terminal64.exe with /config:D:\a\Counter-MT-accs\Counter-MT-accs\mt5_start.ini ...
-MT5 Market (Cyprus): full(all)=257 total(all)=282 full(marketwatch)=20 total(marketwatch)=20 account=560033299 (expected 560033299, match=True)
+MT5 Market (Cyprus): full(all)=258 total(all)=283 full(marketwatch)=20 total(marketwatch)=20 account=560033299 (expected 560033299, match=True)
 saved symbol list -> artifacts/mt5_symbols_MT5_Market_(Cyprus).csv
 
 Wrote artifacts/mt5_results.json

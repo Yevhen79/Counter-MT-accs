@@ -1,32 +1,32 @@
 {
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "accounts": [
     {
       "label": "MT4 Market",
       "platform": "mt4",
       "account": "730232800",
-      "total": 269,
+      "total": 270,
       "full": 255,
       "closeonly": 13,
-      "disabled": 1,
+      "disabled": 2,
       "error": null
     },
     {
       "label": "MT4 Instant",
       "platform": "mt4",
       "account": "710268540",
-      "total": 276,
+      "total": 277,
       "full": 263,
       "closeonly": 13,
-      "disabled": 0,
+      "disabled": 1,
       "error": null
     },
     {
       "label": "MT5 Market",
       "platform": "mt5",
       "account": "550459323",
-      "total": 282,
-      "full": 257,
+      "total": 283,
+      "full": 258,
       "closeonly": 20,
       "disabled": 5,
       "error": null
@@ -35,8 +35,8 @@
       "label": "MT5 Instant",
       "platform": "mt5",
       "account": "555105689",
-      "total": 295,
-      "full": 271,
+      "total": 296,
+      "full": 272,
       "closeonly": 21,
       "disabled": 3,
       "error": null
@@ -45,18 +45,18 @@
       "label": "MT4 Market (Cyprus)",
       "platform": "mt4",
       "account": "950131906",
-      "total": 268,
+      "total": 269,
       "full": 255,
       "closeonly": 13,
-      "disabled": 0,
+      "disabled": 1,
       "error": null
     },
     {
       "label": "MT5 Market (Cyprus)",
       "platform": "mt5",
       "account": "560033299",
-      "total": 282,
-      "full": 257,
+      "total": 283,
+      "full": 258,
       "closeonly": 20,
       "disabled": 5,
       "error": null

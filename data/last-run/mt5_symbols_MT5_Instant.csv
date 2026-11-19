@@ -1,6 +1,7 @@
 symbol,trade_mode,in_market_watch,category
 XAUUSD,FULL,1,Spot Metals
 EURUSD,FULL,1,FX Majors
+ANT,FULL,0,Stocks Technologies
 GBPUSD,FULL,1,FX Majors
 BTCUSD,FULL,1,Crypto
 NQCash,FULL,0,Indices US
